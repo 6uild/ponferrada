@@ -12,9 +12,9 @@
     {
       "chainSpec": {
         "codecType": "bns",
-        "chainId": "local-iov-devnet",
+        "chainId": "grafain-chilinet",
         "name": "IOV Devnet",
-        "node": "ws://localhost:23456/"
+        "node": "wss://rpc-chilinet.grafain.net:443"
       },
       "faucetSpec": {
         "uri": "http://localhost:8000",

@@ -4,9 +4,9 @@
     {
       "chainSpec": {
         "codecType": "bns",
-        "chainId": "local-iov-devnet",
+        "chainId": "grafain-chilinet",
         "name": "IOV Devnet",
-        "node": "http://localhost:23456/"
+        "node": "https://rpc-chilinet.grafain.net/"
       }
     }
   ],
