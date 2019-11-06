@@ -97,12 +97,14 @@ To get started, please go to the root directory and run:
 yarn install
 yarn build
 cd packages/sanes-browser-extension/
-yarn start
+yarn build
 ```
 
-**Work-around**
+**Warning**
+The above uses to use `yarn start`, which may be useful in some cases.
 Unfortunately this doesn't build the manifest properly. To do so, you need wait until you see "Compiled successfully!",
 then open another terminal and run: `yarn make-manifest-development`. Only then is it ready to load in the browser.
+(If you use `yarn build` you can ignore this paragraph)
 
 Then open your chrome browser and add the new generated extension (the build folder)
 
