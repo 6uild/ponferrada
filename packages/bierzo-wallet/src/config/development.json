@@ -20,31 +20,6 @@
         "uri": "http://localhost:8000",
         "tokens": ["CASH", "BASH"]
       }
-    },
-    {
-      "chainSpec": {
-        "codecType": "lsk",
-        "chainId": "lisk-198f2b61a8",
-        "name": "Lisk Devnet",
-        "node": "http://localhost:4000/"
-      },
-      "faucetSpec": {
-        "uri": "http://localhost:8002",
-        "tokens": ["LSK"]
-      }
-    },
-    {
-      "chainSpec": {
-        "codecType": "eth",
-        "chainId": "ethereum-eip155-5777",
-        "name": "Ganache",
-        "node": "http://localhost:8545",
-        "scraper": "http://localhost:8546/api"
-      },
-      "faucetSpec": {
-        "uri": "http://localhost:8003",
-        "tokens": ["ETH"]
-      }
     }
   ]
 }
