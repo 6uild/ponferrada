@@ -66,6 +66,31 @@ Builds of the browser extension are available through the CI.
 
 ### Development Environment
 
+#### Requirements
+
+Make sure you have node 10+ installed, along with yarn 1.19+. If you are not a node/js developer,
+my recommended approach is to first [install nvm](https://github.com/nvm-sh/nvm#installation-and-update), then:
+
+```
+nvm install 10
+nvm alias default lts/dubnium
+npm install -g yarn
+```
+
+Once this is done, the remaining commands should work... Oh, and you will need to have docker installed as well
+to run a local chain.
+
+#### Starting a local chain
+
+If you have docker, this is easy:
+
+`./scripts/dev_start.sh` will start a local bnsd instance along with a faucet that plays well with dev mode.
+All files are writen to `$HOME/tmp`. BNSD rpc port is at `localhost:23456`.
+
+To terminate, you don't just have to close this script, but run `./scripts/dev_stop.sh` to stop them. (Use `docker ps` to confirm)
+
+#### Compiling from source
+
 To get started, please go to the root directory and run:
 
 ```
@@ -75,12 +100,29 @@ cd packages/sanes-browser-extension/
 yarn start
 ```
 
+**Work-around**
+Unfortunately this doesn't build the manifest properly. To do so, you need wait until you see "Compiled successfully!",
+then open another terminal and run: `yarn make-manifest-development`. Only then is it ready to load in the browser.
+
 Then open your chrome browser and add the new generated extension (the build folder)
 
 1. open the following link chrome://extensions/
 2. Turn on `Developer mode`
 3. Click load unpacked and go to the `ponferrada/build` folder
 4. You have the iov-ponferrada extension in your browser!
+
+You can now click on the extension and create one default account. You must have that
+set up before you can connect it to another app.
+
+To view it in action, you will likely want the wallet dapp. For that, in another terminal:
+
+```
+cd packages/bierzo-wallet
+PORT=3003 yarn start
+```
+
+Then go to http://localhost:3003/ and use the extension to log into the wallet.
+(Make sure you open the wallet with the same browser window that has the extension installed)
 
 ### Testing
 
