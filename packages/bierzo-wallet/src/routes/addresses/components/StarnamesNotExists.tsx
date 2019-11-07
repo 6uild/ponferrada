@@ -20,10 +20,10 @@ export function GetYourAddressWithExtension({
       <NoUsernameHeader />
       <Block marginTop={3} />
       <Typography variant="subtitle1" weight="semibold" gutterBottom>
-        You have no starnames
+        You have no personalized addresses
       </Typography>
       <Typography variant="body2" color="textPrimary">
-        With Neuma you can choose your easy to read human readable address. No more complicated cryptography
+        With Haxor you can choose your easy to read human readable address. No more complicated cryptography
         when sending to friends.
       </Typography>
       <Block marginTop={3} />

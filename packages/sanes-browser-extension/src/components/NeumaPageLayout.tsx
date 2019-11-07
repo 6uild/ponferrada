@@ -1,7 +1,7 @@
 import { PageLayout } from "medulas-react-components";
 import * as React from "react";
 
-import neumaLogo from "./assets/NeumaLogo.svg";
+import haxorLogo from "./assets/NeumaLogo.svg";
 
 interface Props extends StyleProps {
   readonly id?: string;
@@ -20,7 +20,7 @@ const NeumaPageLayout = (props: Props): JSX.Element => {
   const allProps = {
     ...props,
     logoWidth: 100,
-    logoSource: neumaLogo,
+    logoSource: haxorLogo,
   };
   return <PageLayout {...allProps} />;
 };

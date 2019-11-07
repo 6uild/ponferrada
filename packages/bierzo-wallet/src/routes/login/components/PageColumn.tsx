@@ -5,15 +5,15 @@ import { Block, Button, Image, Typography } from "medulas-react-components";
 import React from "react";
 
 import ledgerIcon from "../assets/ledger.svg";
-import neumaIcon from "../assets/neuma.svg";
+import haxorIcon from "../assets/neuma.svg";
 import neumaWalletLogo from "../assets/neumaWalletLogo.svg";
 import SubtitleSection from "./SubtitleSection";
 import TitleSection from "./TitleSection";
 
 interface Props {
-  readonly onLoginWithNeuma: () => void;
+  readonly onLoginWithHaxor: () => void;
   readonly onLoginWithLedger: () => void;
-  readonly onGetNeumaExtension: () => void;
+  readonly onGetHaxorExtension: () => void;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -37,15 +37,15 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-function NeumaIcon(): JSX.Element {
-  return <Image src={neumaIcon} alt="Neuma login icon" />;
+function HaxorIcon(): JSX.Element {
+  return <Image src={haxorIcon} alt="Haxor login icon" />;
 }
 
 function LedgerIcon(): JSX.Element {
   return <Image src={ledgerIcon} alt="Ledger login icon" />;
 }
 
-const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }: Props): JSX.Element => {
+const PageColumn = ({ onLoginWithHaxor, onLoginWithLedger, onGetHaxorExtension }: Props): JSX.Element => {
   const classes = useStyles();
   const theme = useTheme<Theme>();
 
@@ -99,7 +99,7 @@ const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }
           borderRadius={30}
           className={classes.rect3}
         ></Block>
-        <Image src={neumaWalletLogo} alt="Neuma logo" />
+        <Image src={neumaWalletLogo} alt="Haxor logo" />
       </Block>
       <Block flexGrow={1} display="flex" alignItems="center" justifyContent="center">
         <Block
@@ -109,13 +109,13 @@ const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }
           padding={5}
           textAlign="center"
         >
-          <TitleSection primaryTitle="Welcome" secondaryTitle="to your Neuma wallet" />
+          <TitleSection primaryTitle="Welcome" secondaryTitle="to your Haxor wallet" />
           <SubtitleSection>
-            To access the wallet please authenticate using Neuma or Ledger Nano S
+            To access the wallet please authenticate using Haxor or Ledger Nano S
           </SubtitleSection>
           <Block marginBottom={2}>
-            <Button fullWidth onClick={onLoginWithNeuma} startIcon={<NeumaIcon />}>
-              Continue with Neuma Browser Extension
+            <Button fullWidth onClick={onLoginWithHaxor} startIcon={<HaxorIcon />}>
+              Continue with Haxor Browser Extension
             </Button>
           </Block>
           <Block marginBottom={4}>
@@ -131,10 +131,10 @@ const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }
           <Button
             fullWidth
             variant="text"
-            onClick={onGetNeumaExtension}
+            onClick={onGetHaxorExtension}
             endIcon={<ArrowForwardIcon fontSize="small" />}
           >
-            Get Neuma Browser Extension
+            Get Haxor Browser Extension
           </Button>
         </Block>
       </Block>

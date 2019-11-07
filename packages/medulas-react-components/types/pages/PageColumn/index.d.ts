@@ -1,11 +1,11 @@
 interface Props {
-  readonly onLoginWithNeuma: () => void;
+  readonly onLoginWithHaxor: () => void;
   readonly onLoginWithLedger: () => void;
-  readonly onGetNeumaExtension: () => void;
+  readonly onGetHaxorExtension: () => void;
 }
 declare const PageColumn: ({
-  onLoginWithNeuma,
+  onLoginWithHaxor,
   onLoginWithLedger,
-  onGetNeumaExtension,
+  onGetHaxorExtension,
 }: Props) => JSX.Element;
 export default PageColumn;

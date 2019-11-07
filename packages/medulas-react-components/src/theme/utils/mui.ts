@@ -6,27 +6,28 @@ import { backgroundColor, lightFont, secondaryColor, white } from "./variables";
 
 const theme = createMuiTheme({
   palette: {
-    primary: {
-      main: "#31E6C9",
-      contrastText: white,
-    },
+    primary: { main: "#311B92" },
     secondary: {
       main: secondaryColor,
     },
+    // primary: {
+    //   main: "#66BB6A",
+    //   contrastText: white,
+    // },
     error: {
-      main: "#ffb968",
+      main: "#BC1F3D",
     },
-    text: {
-      primary: "#6F749A",
-      secondary: "rgba(111, 116, 154, 0.47)",
-    },
+    // text: {
+    //   primary: "#6F749A",
+    //   secondary: "rgba(111, 116, 154, 0.47)",
+    // },
     background: {
       default: backgroundColor,
       paper: "#ffffff",
     },
     action: {
       disabled: white,
-      disabledBackground: "rgba(44, 208, 182, 0.40)",
+      disabledBackground: "rgba(146, 49, 27, 0.40)",
     },
     contrastThreshold: 3,
     tonalOffset: 0.2,

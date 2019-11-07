@@ -1,6 +1,6 @@
 {
   "extensionId": "ililemcipflfijjbkniehikepfpdgail",
-  "neumaUrl": "https://www.neuma.io/",
+  "haxorUrl": "https://www.haxor.io/",
   "ledger": {
     "chainIds": {
       "testnetBuild": "iov-clapnet",

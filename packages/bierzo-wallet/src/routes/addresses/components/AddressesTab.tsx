@@ -7,7 +7,7 @@ import { AddressesTableProps } from "../../../components/AddressesTable";
 import Starnames, { StarnamesProps } from "./Starnames";
 import UserAddresses from "./UserAddresses";
 
-export const yourStarnames = "Your starnames";
+export const yourStarnames = "Your personalized addresses";
 export const yourAddresses = "Your blockchain addresses";
 
 const useStyles = makeStyles((theme: Theme) => ({

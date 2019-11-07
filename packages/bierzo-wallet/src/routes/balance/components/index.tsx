@@ -42,7 +42,7 @@ const BalanceLayout = ({ iovAddress, balances, onRegisterUsername, rpcEndpointTy
         </Block>
       )}
       <Block margin={2} />
-      <PageContent icon={walletIcon} width={450} avatarColor="#31E6C9">
+      <PageContent icon={walletIcon} width={450} avatarColor="#311b92">
         <Block display="flex" flexDirection="column">
           <Typography variant="subtitle2" align="center" weight="semibold">
             {hasTokens ? "Your currencies" : "You have no funds available"}

@@ -92,7 +92,7 @@ function NeumaBillboardMessage({ text }: BillboardMessageProps): JSX.Element {
         {text}
       </Typography>
       <Typography variant="body2" align="center" color="textPrimary">
-        Use the Neuma Browser Extension located in the Browser menu in order to authorize your request.
+        Use the Haxor Browser Extension located in the Browser menu in order to authorize your request.
       </Typography>
     </Block>
   );

@@ -15,11 +15,11 @@ export type GetIdentitiesResponse = readonly Identity[];
 export type SignAndPostResponse = TransactionId | null;
 
 export const communicationTexts = {
-  authorizeGetIdentitiesMessage: "Please authorize request in Neuma to continue.",
-  authorizeSignAndPostMessage: "Please authorize request in Neuma to continue.",
-  notAvailableMessage: "You need to install the Neuma browser extension.",
-  notReadyMessage: "Please unlock Neuma to continue.",
-  noMatchingIdentityMessage: "Please unlock Neuma to continue.",
+  authorizeGetIdentitiesMessage: "Please authorize request in Haxor to continue.",
+  authorizeSignAndPostMessage: "Please authorize request in Haxor to continue.",
+  notAvailableMessage: "You need to install the Haxor browser extension.",
+  notReadyMessage: "Please unlock Haxor to continue.",
+  noMatchingIdentityMessage: "Please unlock Haxor to continue.",
 };
 
 export const browserExtensionErrorCodes = {

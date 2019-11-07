@@ -10,14 +10,14 @@ import Block from "../Block";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    backgroundColor: "rgba(49, 230, 201, 0.15)",
+    backgroundColor: "rgba(103, 70, 195, 0.15)",
   },
   label: {
     color: theme.palette.primary.main,
   },
   contained: {
     "&:hover": {
-      backgroundColor: "rgba(49, 230, 201, 0.15)",
+      backgroundColor: "rgba(103, 70, 195, 0.15)",
     },
   },
 }));

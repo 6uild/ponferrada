@@ -63,7 +63,7 @@ const ConfirmRegistration = ({ transactionId, onSeeTrasactions, onReturnToBalanc
   };
 
   return (
-    <PageContent id={USERNAME_CONFIRMATION_VIEW_ID} icon={tickIcon} avatarColor="#31E6C9" buttons={buttons}>
+    <PageContent id={USERNAME_CONFIRMATION_VIEW_ID} icon={tickIcon} avatarColor="#311b92" buttons={buttons}>
       <Typography color="textPrimary" variant="subtitle1" weight="semibold" align="center">
         Your personalized address registration request was successfully signed and sent to the network.
       </Typography>

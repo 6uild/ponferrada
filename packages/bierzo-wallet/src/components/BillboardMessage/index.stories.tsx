@@ -8,10 +8,10 @@ import NeumaBillboardMessage from "./NeumaBillboardMessage";
 
 storiesOf(`${bierzoRoot}/BillboardMessage`, module)
   .addParameters({ viewport: { defaultViewport: "responsive" } })
-  .add("Neuma", () => (
+  .add("Haxor", () => (
     <DecoratedStorybook>
       <Block bgcolor="rgba(26, 26, 26, 0.3)" width="100%" height="100%" padding={4}>
-        <NeumaBillboardMessage text="Please authorize request in Neuma Browser Extension to continue." />
+        <NeumaBillboardMessage text="Please authorize request in Haxor Browser Extension to continue." />
       </Block>
     </DecoratedStorybook>
   ))

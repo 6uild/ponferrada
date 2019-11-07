@@ -36,10 +36,10 @@ function parseGetIdentitiesResponse(response: any): readonly Identity[] {
 }
 
 export const extensionRpcEndpoint: RpcEndpoint = {
-  authorizeGetIdentitiesMessage: "Please authorize request in Neuma Browser Extension to continue.",
-  authorizeSignAndPostMessage: "Please authorize request in Neuma Browser Extension to continue.",
-  notAvailableMessage: "You need to install the Neuma browser extension.",
-  noMatchingIdentityMessage: "Please unlock Neuma to continue.",
+  authorizeGetIdentitiesMessage: "Please authorize request in Haxor Browser Extension to continue.",
+  authorizeSignAndPostMessage: "Please authorize request in Haxor Browser Extension to continue.",
+  notAvailableMessage: "You need to install the Haxor browser extension.",
+  noMatchingIdentityMessage: "Please unlock Haxor to continue.",
   type: "extension",
   sendGetIdentitiesRequest: async (request: JsonRpcRequest): Promise<GetIdentitiesResponse | undefined> => {
     if (!isExtensionContext()) return undefined;
