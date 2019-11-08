@@ -69,7 +69,16 @@ export { ToastContext, ToastContextInterface, ToastProvider } from "./context/To
 export { BillboardContext, BillboardContextInterface, BillboardProvider } from "./context/BillboardProvider";
 export { ToastVariant } from "./context/ToastProvider/Toast";
 export { useOpen } from "./hooks/open";
-export { backgroundColor, secondaryColor, white, lightFont, defaultColor } from "./theme/utils/variables";
+export {
+  backgroundColor,
+  defaultColor,
+  errorColor,
+  lightFont,
+  primaryColor,
+  secondaryColor,
+  white,
+} from "./theme/utils/variables";
+export { asTuple, contrast, multiply } from "./theme/utils/converter";
 export {
   composeValidators,
   FieldInputValue,

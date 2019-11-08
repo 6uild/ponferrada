@@ -15,6 +15,7 @@ import {
   SelectFieldItem,
   TextField,
   Typography,
+  secondaryColor,
 } from "medulas-react-components";
 import React, { useMemo, useState } from "react";
 import * as ReactRedux from "react-redux";
@@ -24,7 +25,7 @@ import { RootState } from "../../../../store/reducers";
 
 const useStyles = makeStyles({
   avatar: {
-    backgroundColor: "#ffe152",
+    backgroundColor: secondaryColor,
     fontSize: "27.5px",
     width: "72px",
     height: "72px",

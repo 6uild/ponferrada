@@ -7,11 +7,13 @@ import {
   Form,
   Image,
   makeStyles,
+  primaryColor,
   TextField,
   Tooltip,
   Typography,
   useForm,
 } from "medulas-react-components";
+
 import React from "react";
 import { amountToString } from "ui-logic";
 
@@ -31,7 +33,7 @@ const useStyles = makeStyles({
     boxShadow: "0px 0px 14px #EDEFF4",
   },
   addressesHeader: {
-    backgroundColor: "#31E6C9",
+    backgroundColor: primaryColor,
     fontSize: "27.5px",
     width: 56,
     height: 56,
@@ -126,7 +128,12 @@ const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }
 
   return (
     <Form onSubmit={handleSubmit}>
-      <PageContent id={REGISTER_USERNAME_VIEW_ID} icon={registerIcon} buttons={buttons} avatarColor="#31E6C9">
+      <PageContent
+        id={REGISTER_USERNAME_VIEW_ID}
+        icon={registerIcon}
+        buttons={buttons}
+        avatarColor={primaryColor}
+      >
         <Block textAlign="left">
           <Block display="flex" justifyContent="space-between" marginBottom={1}>
             <Typography variant="subtitle2" weight="semibold">

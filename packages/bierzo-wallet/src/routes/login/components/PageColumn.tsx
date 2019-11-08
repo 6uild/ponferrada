@@ -1,7 +1,7 @@
 import { makeStyles, Theme } from "@material-ui/core";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import useTheme from "@material-ui/styles/useTheme";
-import { Block, Button, Image, Typography } from "medulas-react-components";
+import { Block, Button, contrast, Image, primaryColor, Typography } from "medulas-react-components";
 import React from "react";
 
 import { extensionName } from "../../../theme/variables";
@@ -82,7 +82,7 @@ const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }
         ></Block>
         <Block
           position="absolute"
-          bgcolor="#5BB8A8"
+          bgcolor={contrast(primaryColor, 0.6)}
           width={330}
           height={330}
           left={-235}
