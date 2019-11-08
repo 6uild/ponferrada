@@ -2,6 +2,7 @@ import { Identity, isIdentity, TransactionId } from "@iov/bcp";
 import { TransactionEncoder } from "@iov/encoding";
 import { isJsonRpcErrorResponse, JsonRpcRequest, parseJsonRpcResponse } from "@iov/jsonrpc";
 
+import { extensionName } from "../theme/variables";
 import { getConfig } from "../config";
 import { GetIdentitiesResponse, RpcEndpoint, SignAndPostResponse } from "./rpcEndpoint";
 
@@ -36,10 +37,10 @@ function parseGetIdentitiesResponse(response: any): readonly Identity[] {
 }
 
 export const extensionRpcEndpoint: RpcEndpoint = {
-  authorizeGetIdentitiesMessage: "Please authorize request in Neuma Browser Extension to continue.",
-  authorizeSignAndPostMessage: "Please authorize request in Neuma Browser Extension to continue.",
-  notAvailableMessage: "You need to install the Neuma browser extension.",
-  noMatchingIdentityMessage: "Please unlock Neuma to continue.",
+  authorizeGetIdentitiesMessage: `Please authorize request in ${extensionName} Browser Extension to continue.`,
+  authorizeSignAndPostMessage: `Please authorize request in ${extensionName} Browser Extension to continue.`,
+  notAvailableMessage: `You need to install the ${extensionName} browser extension.`,
+  noMatchingIdentityMessage: `Please unlock ${extensionName} to continue.`,
   type: "extension",
   sendGetIdentitiesRequest: async (request: JsonRpcRequest): Promise<GetIdentitiesResponse | undefined> => {
     if (!isExtensionContext()) return undefined;

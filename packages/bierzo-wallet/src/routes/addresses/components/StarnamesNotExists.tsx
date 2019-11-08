@@ -3,6 +3,7 @@ import { useTheme } from "@material-ui/styles";
 import { Block, Typography } from "medulas-react-components";
 import React from "react";
 
+import { extensionName } from "../../../theme/variables";
 import { RpcEndpointType } from "../../../communication/rpcEndpoint";
 import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../../paths";
 import { NoUsernameHeader } from "../../registerName/components";
@@ -23,8 +24,8 @@ export function GetYourAddressWithExtension({
         You have no personalized addresses
       </Typography>
       <Typography variant="body2" color="textPrimary">
-        With Neuma you can choose your easy to read human readable address. No more complicated cryptography
-        when sending to friends.
+        With {extensionName} you can choose your easy to read human readable address. No more complicated
+        cryptography when sending to friends.
       </Typography>
       <Block marginTop={3} />
       <Typography

@@ -3,6 +3,7 @@ import { useTheme } from "@material-ui/styles";
 import { Block, Image, makeStyles, Typography } from "medulas-react-components";
 import React from "react";
 
+import { extensionName } from "../../theme/variables";
 import arrowBody from "./assets/arrow-body.svg";
 import arrowHead from "./assets/arrow-head.svg";
 import logoZoom from "./assets/logo-zoom.svg";
@@ -92,7 +93,8 @@ function NeumaBillboardMessage({ text }: BillboardMessageProps): JSX.Element {
         {text}
       </Typography>
       <Typography variant="body2" align="center" color="textPrimary">
-        Use the Neuma Browser Extension located in the Browser menu in order to authorize your request.
+        Use the {extensionName} Browser Extension located in the Browser menu in order to authorize your
+        request.
       </Typography>
     </Block>
   );

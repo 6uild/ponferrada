@@ -4,6 +4,7 @@ import useTheme from "@material-ui/styles/useTheme";
 import { Block, Button, Image, Typography } from "medulas-react-components";
 import React from "react";
 
+import { extensionName } from "../../../theme/variables";
 import ledgerIcon from "../assets/ledger.svg";
 import neumaIcon from "../assets/neuma.svg";
 import neumaWalletLogo from "../assets/neumaWalletLogo.svg";
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 function NeumaIcon(): JSX.Element {
-  return <Image src={neumaIcon} alt="Neuma login icon" />;
+  return <Image src={neumaIcon} alt="Extension login icon" />;
 }
 
 function LedgerIcon(): JSX.Element {
@@ -99,7 +100,7 @@ const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }
           borderRadius={30}
           className={classes.rect3}
         ></Block>
-        <Image src={neumaWalletLogo} alt="Neuma logo" />
+        <Image src={neumaWalletLogo} alt="Extension logo" />
       </Block>
       <Block flexGrow={1} display="flex" alignItems="center" justifyContent="center">
         <Block
@@ -109,13 +110,13 @@ const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }
           padding={5}
           textAlign="center"
         >
-          <TitleSection primaryTitle="Welcome" secondaryTitle="to your Neuma wallet" />
+          <TitleSection primaryTitle="Welcome" secondaryTitle={`to your ${extensionName} wallet`} />
           <SubtitleSection>
-            To access the wallet please authenticate using Neuma or Ledger Nano S
+            To access the wallet please authenticate using {extensionName} Browser Extension or Ledger Nano S
           </SubtitleSection>
           <Block marginBottom={2}>
             <Button fullWidth onClick={onLoginWithNeuma} startIcon={<NeumaIcon />}>
-              Continue with Neuma Browser Extension
+              Continue with {extensionName} Browser Extension
             </Button>
           </Block>
           <Block marginBottom={4}>
@@ -134,7 +135,7 @@ const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }
             onClick={onGetNeumaExtension}
             endIcon={<ArrowForwardIcon fontSize="small" />}
           >
-            Get Neuma Browser Extension
+            Get {extensionName} Browser Extension
           </Button>
         </Block>
       </Block>
