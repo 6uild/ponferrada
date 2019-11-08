@@ -84,7 +84,7 @@ const validate = async (values: object): Promise<object> => {
     case "valid":
       break;
     default:
-      throw new Error(`"Unknown IOV personalized address validation error: ${checkResult}`);
+      throw new Error(`"Unknown personalized address validation error: ${checkResult}`);
   }
 
   if (checkResult !== "valid") {

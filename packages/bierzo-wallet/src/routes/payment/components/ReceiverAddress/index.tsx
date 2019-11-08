@@ -27,7 +27,7 @@ const ReceiverAddress = ({ form, selectedChainCodec }: Props): JSX.Element => {
       if (isIov(value) || (selectedChainCodec && selectedChainCodec.isValidAddress(value))) {
         return undefined;
       } else {
-        return "Must be an IOV human readable address or a native address";
+        return "Must be an personalized address or a native blockchain address";
       }
     };
 

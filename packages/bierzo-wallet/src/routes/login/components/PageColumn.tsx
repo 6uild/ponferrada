@@ -112,11 +112,11 @@ const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }
         >
           <TitleSection primaryTitle="Welcome" secondaryTitle={`to your ${extensionName} wallet`} />
           <SubtitleSection>
-            To access the wallet please authenticate using {extensionName} Browser Extension or Ledger Nano S
+            {`To access the wallet please authenticate using ${extensionName} Browser Extension or Ledger Nano S`}
           </SubtitleSection>
           <Block marginBottom={2}>
             <Button fullWidth onClick={onLoginWithNeuma} startIcon={<NeumaIcon />}>
-              Continue with {extensionName} Browser Extension
+              {`Continue with ${extensionName} Browser Extension`}
             </Button>
           </Block>
           <Block marginBottom={4}>

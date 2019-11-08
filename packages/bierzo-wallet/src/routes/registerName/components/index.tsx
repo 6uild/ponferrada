@@ -15,6 +15,7 @@ import {
 import React from "react";
 import { amountToString } from "ui-logic";
 
+import { companyName } from "../../../theme/variables";
 import AddressesTable, { AddressesTableProps } from "../../../components/AddressesTable";
 import PageContent from "../../../components/PageContent";
 import shield from "../assets/shield.svg";
@@ -134,8 +135,7 @@ const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }
             <Block display="flex" alignItems="center">
               <Tooltip maxWidth={320}>
                 <TooltipContent header={<NoUsernameHeader />} title="Choose your address">
-                  With IOV you can choose your easy to read human readable address. No more complicated
-                  cryptography when sending to friends.
+                  {`With ${companyName} you can choose your easy to read human readable address. No more complicated cryptography when sending to friends.`}
                 </TooltipContent>
               </Tooltip>
               <Block marginRight={1} />
@@ -148,7 +148,7 @@ const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }
             <TextField
               name={REGISTER_USERNAME_FIELD}
               form={form}
-              placeholder="eg. username*iov"
+              placeholder={`eg. username*${companyName}`}
               fullWidth
               margin="none"
             />
@@ -161,8 +161,8 @@ const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }
               <Block marginRight={1} />
               <Tooltip maxWidth={320}>
                 <TooltipContent header={<AddressesTooltipHeader />} title="Your linked addresses">
-                  With IOV you can have an universal blockchain address that is linked to all your addresses.
-                  Just give your friends your personalized address.
+                  With {companyName} you can have an universal blockchain address that is linked to all your
+                  addresses. Just give your friends your personalized address.
                 </TooltipContent>
               </Tooltip>
             </Block>

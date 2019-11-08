@@ -1,4 +1,5 @@
 import { Identity, TransactionId } from "@iov/bcp";
+import { extensionName } from "../theme/variables";
 
 /**
  * The response of a successful "getIdentities" RPC call to an endpoint.
@@ -15,11 +16,11 @@ export type GetIdentitiesResponse = readonly Identity[];
 export type SignAndPostResponse = TransactionId | null;
 
 export const communicationTexts = {
-  authorizeGetIdentitiesMessage: "Please authorize request in Neuma to continue.",
-  authorizeSignAndPostMessage: "Please authorize request in Neuma to continue.",
-  notAvailableMessage: "You need to install the Neuma browser extension.",
-  notReadyMessage: "Please unlock Neuma to continue.",
-  noMatchingIdentityMessage: "Please unlock Neuma to continue.",
+  authorizeGetIdentitiesMessage: `Please authorize request in ${extensionName} to continue.`,
+  authorizeSignAndPostMessage: `Please authorize request in ${extensionName} to continue.`,
+  notAvailableMessage: `You need to install the ${extensionName} browser extension.`,
+  notReadyMessage: `Please unlock ${extensionName} to continue.`,
+  noMatchingIdentityMessage: `Please unlock ${extensionName} to continue.`,
 };
 
 export const browserExtensionErrorCodes = {

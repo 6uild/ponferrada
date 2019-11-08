@@ -81,11 +81,6 @@ And for now, revert in `*.tsx` (imports falsely changed):
 
 TODO: improve this - maybe rename images / files
 
-Replace "starnames" references: -> personalized addresses
-
-- bierzo-wallet/src/routes/addresses/components/AddressesTab.tsx (`Your starnames`)
-- bierzo-wallet/src/routes/addresses/components/StarnamesNotExists.tsx (`You have no starnames`)
-
 ## Change text
 
 Bierzo: src/routes/{policy,terms} both need removing (rewriting)
