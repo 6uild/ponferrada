@@ -5,7 +5,7 @@ export interface RGB {
 }
 
 export function fromHex(hex: string): RGB {
-  const val = hex[0] == "#" ? hex.substr(1, 6) : hex;
+  const val = hex[0] === "#" ? hex.substr(1, 6) : hex;
   return {
     r: parseInt(val.substr(0, 2), 16),
     g: parseInt(val.substr(2, 2), 16),
@@ -14,7 +14,7 @@ export function fromHex(hex: string): RGB {
 }
 
 export function toHex({ r, g, b }: RGB): string {
-  const hex = (x: number) => ("0" + x.toString(16)).slice(-2).toUpperCase();
+  const hex = (x: number): string => ("0" + x.toString(16)).slice(-2).toUpperCase();
   return "#" + hex(r) + hex(g) + hex(b);
 }
 
@@ -26,7 +26,7 @@ export function asTuple(hex: string): string {
 
 export function contrast(hex: string, mult: number): string {
   const { r, g, b } = fromHex(hex);
-  const f = (x: number) => Math.round((x - 128) * mult + 128);
+  const f = (x: number): number => Math.round((x - 128) * mult + 128);
   return toHex({ r: f(r), g: f(g), b: f(b) });
 }
 
@@ -41,13 +41,13 @@ function redistribute({ r, g, b }: RGB): RGB {
     return { r: 255, g: 255, b: 255 };
   }
   const x = (3 * threshold - total) / (3 * m - total);
-  const f = (color: number) => Math.ceil(threshold - x * m + x * color);
+  const f = (color: number): number => Math.ceil(threshold - x * m + x * color);
   return { r: f(r), g: f(g), b: f(b) };
 }
 
 export function multiply(hex: string, mult: number): string {
   const { r, g, b } = fromHex(hex);
-  const f = (x: number) => Math.ceil(x * mult);
+  const f = (x: number): number => Math.ceil(x * mult);
   const out = redistribute({ r: f(r), g: f(g), b: f(b) });
   return toHex(out);
 }
