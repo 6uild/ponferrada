@@ -8,7 +8,7 @@ export const SHARE_IDENTITY = "/share-identity";
 export const TX_REQUEST = "/tx-request";
 export const WALLET_STATUS_ROUTE = "/wallet";
 export const REQUEST_ROUTE = "/requests";
-export const TERMS_URL = "https://support.iov.one/hc/en-us";
+export const TERMS_URL = "https://github.com/6uild";
 
 export function initialUrl(personaLoaded: boolean, hasPersonaStored: boolean, hasRequests: boolean): string {
   if (personaLoaded && hasRequests) {

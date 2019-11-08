@@ -4,6 +4,7 @@ import * as React from "react";
 import NeumaPageLayout from "../../components/NeumaPageLayout";
 import { PersonaContext } from "../../context/PersonaProvider";
 import { getConfigurationFile } from "../../extension/background/model/persona/config";
+import { extensionName } from "../../theme/variables";
 import { history } from "../../utils/history";
 import { CREATE_WALLET_ROUTE, RESTORE_WALLET, UNLOCK_ROUTE, WELCOME_ROUTE } from "../paths";
 
@@ -36,7 +37,7 @@ const Welcome = (): JSX.Element => {
   };
 
   return (
-    <NeumaPageLayout id={WELCOME_ROUTE} primaryTitle="Welcome" title="to Neuma">
+    <NeumaPageLayout id={WELCOME_ROUTE} primaryTitle="Welcome" title={`to ${extensionName}`}>
       <Typography variant="body1" inline>
         This extension lets you manage all your accounts in one place.
       </Typography>

@@ -34,7 +34,7 @@ You should make the following replaces (over all files, or at least `*.ts`, `*.t
 - `#5dc0b7` => contrast(YOUR_PRIMARY, 0.6)
 - `rgba(49, 230, 201` => rgba of YOUR_PRIMARY
 
-Update: `yarn svg` should do this for you (WIP)
+Update: `yarn svg` should do this for you (WIP - properly detect oldColors)
 
 ## Add Custom Logos
 
@@ -69,10 +69,10 @@ Update configs in `sanes-browser-extension/config/*.json`:
 
 - replace `neuma.io`, `iov.one` with your sites
 
-## Change text
+## Change legal text
 
-Bierzo: src/routes/{policy,terms} both need removing (rewriting)
-Gil: src/routes/login needs overhaul
+`bierzo-wallet/src/routes/{policy,terms}` are now both rough placeholders - add something if you wish
+`sanes-browser-extension/src/routes/paths.ts` - update TERMS_URL
 
 ## Update Font
 
