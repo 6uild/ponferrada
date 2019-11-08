@@ -34,26 +34,26 @@ You should make the following replaces (over all files, or at least `*.ts`, `*.t
 - `#5dc0b7` => contrast(YOUR_PRIMARY, 0.6)
 - `rgba(49, 230, 201` => rgba of YOUR_PRIMARY
 
+Update: `yarn svg` should do this for you (WIP)
+
 ## Add Custom Logos
 
 From your color scheme, build a logo that matches them.
+
+First, you want to install your company logo - figured promenantly in the header of the webapps:
+
+`./customize/company_logo.sh <logo.svg>`
+
+Second, you will want to replace the neuma logo everywhere:
+
+`./customize/extension_logo.sh <icon.svg> <icon_with_text.svg>`
+
+TODO:
 
 - Billboard message
   - bierzo-wallet/src/components/BillboardMessage/assets/toolbar.png
   - bierzo-wallet/src/components/BillboardMessage/assets/logo-zoom.svg
   - maybe others there
-- IOV logos
-- title sil-governance/src/assets/iov-logo-title.svg
-- circle sil-governance/src/assets/iov-logo.svg
-- large bierzo-wallet/src/routes/login/assets/logoBlack.svg
-- medium bierzo-wallet/src/components/Header/assets/logoBlack.svg
-- favicon bierzo-wallet/public/favicon.ico
-- Neuma logos
-- bierzo-wallet/src/routes/login/assets/neuma.svg
-- bierzo-wallet/src/routes/login/assets/neumaWalletLogo.svg
-- sanes-browser-extension/src/components/assets/NeumaLogo.svg
-  - (maybe just overhaul src/components/NeumaPageLayout.tsx)
-- Extension Icon sanes-browser-extension/public/assets/icons/\*
 
 ## Update Font
 
