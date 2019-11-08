@@ -25,4 +25,5 @@ rsvg-convert "$1" -w 85 -h 39 -f svg -o packages/bierzo-wallet/src/components/He
 # make 16x16 ico
 rsvg-convert "$1" -w 16 -h 16 -f png -o favicon.png
 icotool -c favicon.png -o packages/bierzo-wallet/public/favicon.ico
+icotool -c favicon.png -o packages/sil-governance/public/favicon.ico
 rm favicon.png

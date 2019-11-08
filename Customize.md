@@ -55,33 +55,25 @@ TODO:
   - bierzo-wallet/src/components/BillboardMessage/assets/logo-zoom.svg
   - maybe others there
 
-## Update Font
-
-TODO
-
 ## Change names...
 
-replace `www.neuma.io` with your site
-replace `neumaUrl` with `extensionUrl`
+in `bierzo-wallet/src/theme/variables.ts` and `sil-governance/src/theme/variables.ts`,
+set `companyName` and `extensionName` to update the references throughout all text.
 
-In `sanes/config/manifest-*.json`: `*.iov.one` and `*.neuma.io` with your sites
+Update with proper titles:
 
-In _.json, _.ts, \*.tsx:
+- `sil-governance/public/manfest.json`
+- `bierzo-wallet/public/manfest.json`
 
-- s/neuma/haxor/
-- s/Neuma/Haxor/
+Update configs in `sanes-browser-extension/config/*.json`:
 
-And for now, revert in `*.tsx` (imports falsely changed):
-
-- `HaxorBillboardMessage` to `NeumaBillboardMessage`
-- `HaxorPageLayout` to `NeumaPageLayout`
-- `HaxorLogo` to `NeumaLogo`
-- `haxorWalletLogo` to `neumaWalletLogo`
-- `haxor.svg` to `neuma.svg`
-
-TODO: improve this - maybe rename images / files
+- replace `neuma.io`, `iov.one` with your sites
 
 ## Change text
 
 Bierzo: src/routes/{policy,terms} both need removing (rewriting)
 Gil: src/routes/login needs overhaul
+
+## Update Font
+
+TODO
