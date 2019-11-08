@@ -2,23 +2,24 @@ import grey from "@material-ui/core/colors/grey";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeOptions } from "@material-ui/core/styles/createMuiTheme";
 
-import { backgroundColor, lightFont, secondaryColor, white } from "./variables";
+import { asTuple, multiply } from "./converter";
+import { backgroundColor, errorColor, lightFont, primaryColor, secondaryColor, white } from "./variables";
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#31E6C9",
+      main: primaryColor,
       contrastText: white,
     },
     secondary: {
       main: secondaryColor,
     },
     error: {
-      main: "#ffb968",
+      main: errorColor,
     },
     text: {
-      primary: "#6F749A",
-      secondary: "rgba(111, 116, 154, 0.47)",
+      primary: secondaryColor,
+      secondary: `rgba(${asTuple(secondaryColor)}), 0.47)`,
     },
     background: {
       default: backgroundColor,
@@ -26,7 +27,7 @@ const theme = createMuiTheme({
     },
     action: {
       disabled: white,
-      disabledBackground: "rgba(44, 208, 182, 0.40)",
+      disabledBackground: `rgba(${asTuple(multiply(primaryColor, 0.91))}, 0.40)`,
     },
     contrastThreshold: 3,
     tonalOffset: 0.2,
@@ -94,7 +95,7 @@ const themeObject: ThemeOptions = {
       },
       containedPrimary: {
         "&:hover": {
-          backgroundColor: "#2cd0b6",
+          backgroundColor: multiply(primaryColor, 0.91),
         },
       },
       sizeLarge: {

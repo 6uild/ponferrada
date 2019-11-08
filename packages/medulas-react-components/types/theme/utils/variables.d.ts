@@ -1,5 +1,7 @@
 export declare const white = "#ffffff";
-export declare const secondaryColor = "#6F749A";
+export declare const primaryColor = "#6D3D1E";
+export declare const secondaryColor = "#02A553";
+export declare const errorColor = "#F97111";
 export declare const backgroundColor = "#F5F5F5";
 export declare const defaultColor = "#1C1C1C";
 export declare const lightFont = 300;

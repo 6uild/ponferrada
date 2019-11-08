@@ -11,31 +11,19 @@ Or try this [amazing color picker](https://colorsupplyyy.com/app/) to decide on 
 
 Once you have some colors (primary and seconday), [view how they look](https://material.io/resources/color) in a sample app, and tweak them as needed.
 
-Finally, you can export them just by [pasting the above URL here](https://react-theming.github.io/create-mui-theme/).
+We need to record:
 
-This will generate you some code that looks like:
+- primaryColor
+- secondaryColor
+- errorColor
 
-```js
-const palette = {
-  primary: { main: "#311B92" },
-  secondary: { main: "#FFE0B2" },
-};
-```
-
-From this scheme, build a logo that matches them.
+You can export them just by [pasting the above URL here](https://react-theming.github.io/create-mui-theme/). But I'm not sure how useful this is.
 
 ## Modify Theme
 
 Go to `packages/medulas-react-components/src/theme/utils/variables.ts`:
 
-- `secondaryColor` to secondary color above
-
-Go to `packages/medulas-react-components/src/theme/utils/mui.ts`:
-
-- Replace `palette.primary` with the results above
-- `palette.text`: primary is secondayColor(secondary is from_rgb(primary) with a 0.47 alpha applied)
-- `pallete.error.main` pick a new value , eg. `#b62843` (was `#ffb968`)
-- `pallete.action.disabledBackground` pick a new value, eg. multiply(YOUR_PRIMARY, 0.9)
+Set `primaryColor`, `secondaryColor`, and `errorColor` to the desired colors.
 
 ## Modify SVG Images
 
@@ -46,9 +34,9 @@ You should make the following replaces (over all files, or at least `*.ts`, `*.t
 - `#5dc0b7` => contrast(YOUR_PRIMARY, 0.6)
 - `rgba(49, 230, 201` => rgba of YOUR_PRIMARY
 
-TODO: which colors to use where
-
 ## Add Custom Logos
+
+From your color scheme, build a logo that matches them.
 
 - Billboard message
   - bierzo-wallet/src/components/BillboardMessage/assets/toolbar.png
