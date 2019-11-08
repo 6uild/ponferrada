@@ -51,10 +51,3 @@ export function multiply(hex: string, mult: number): string {
   const out = redistribute({ r: f(r), g: f(g), b: f(b) });
   return toHex(out);
 }
-
-console.log(contrast("#31E6C9", 1));
-console.log(contrast("#31E6C9", 0.91));
-
-console.log(multiply("#31E6C9", 1));
-console.log(multiply("#31E6C9", 0.9));
-console.log(multiply("#31E6C9", 1.1));
