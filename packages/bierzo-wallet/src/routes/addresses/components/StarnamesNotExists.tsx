@@ -3,8 +3,8 @@ import { useTheme } from "@material-ui/styles";
 import { Block, Typography } from "medulas-react-components";
 import React from "react";
 
-import { extensionName } from "../../../theme/variables";
 import { RpcEndpointType } from "../../../communication/rpcEndpoint";
+import { extensionName } from "../../../theme/variables";
 import { REGISTER_PERSONALIZED_ADDRESS_ROUTE } from "../../paths";
 import { NoUsernameHeader } from "../../registerName/components";
 

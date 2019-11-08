@@ -13,11 +13,11 @@ import {
 import React, { useContext } from "react";
 import * as ReactRedux from "react-redux";
 
-import { companyName } from "../../theme/variables";
 import icon from "../../assets/iov-logo.svg";
 import { communicationTexts } from "../../communication";
 import { sendGetIdentitiesRequest } from "../../communication/identities";
 import { bootApplication } from "../../logic/boot";
+import { companyName } from "../../theme/variables";
 import { history } from "../index";
 import { DASHBOARD_ROUTE } from "../paths";
 

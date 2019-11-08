@@ -1,4 +1,5 @@
 import { Identity, TransactionId } from "@iov/bcp";
+
 import { extensionName } from "../theme/variables";
 
 /**

@@ -2,8 +2,8 @@ import { Identity, isIdentity, TransactionId } from "@iov/bcp";
 import { TransactionEncoder } from "@iov/encoding";
 import { isJsonRpcErrorResponse, JsonRpcRequest, parseJsonRpcResponse } from "@iov/jsonrpc";
 
-import { extensionName } from "../theme/variables";
 import { getConfig } from "../config";
+import { extensionName } from "../theme/variables";
 import { GetIdentitiesResponse, RpcEndpoint, SignAndPostResponse } from "./rpcEndpoint";
 
 function isExtensionContext(): boolean {

@@ -13,13 +13,12 @@ import {
   Typography,
   useForm,
 } from "medulas-react-components";
-
 import React from "react";
 import { amountToString } from "ui-logic";
 
-import { companyName } from "../../../theme/variables";
 import AddressesTable, { AddressesTableProps } from "../../../components/AddressesTable";
 import PageContent from "../../../components/PageContent";
+import { companyName } from "../../../theme/variables";
 import shield from "../assets/shield.svg";
 
 export const REGISTER_USERNAME_VIEW_ID = "register-username-view-id";

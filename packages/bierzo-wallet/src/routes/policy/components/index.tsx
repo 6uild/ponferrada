@@ -1,18 +1,18 @@
-import { Block, Link, Paragraph, Section, Title, Typography } from "medulas-react-components";
+import { Block, Paragraph, Section, Title, Typography } from "medulas-react-components";
 import React from "react";
 
-import { companyName } from "../../../theme/variables";
 import { getConfig } from "../../../config";
+import { companyName } from "../../../theme/variables";
 
 /**
  * Workaround to avoid "Comment location overlaps with node location" error
  * https://github.com/prettier/prettier/issues/2347
  */
 
-const addLinkTo = (link: string): JSX.Element => <Link to={link}>{link}</Link>;
+// const addLinkTo = (link: string): JSX.Element => <Link to={link}>{link}</Link>;
 
 function PolicyLayoutInternal(): JSX.Element {
-  const [websiteName, setWebsiteName] = React.useState("");
+  const setWebsiteName = React.useState("")[1];
 
   React.useEffect(() => {
     async function getWebsiteName(): Promise<void> {
@@ -21,7 +21,7 @@ function PolicyLayoutInternal(): JSX.Element {
     }
 
     getWebsiteName();
-  }, []);
+  }, [setWebsiteName]);
 
   return (
     <React.Fragment>
