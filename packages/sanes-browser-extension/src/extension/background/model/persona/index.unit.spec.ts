@@ -1,5 +1,5 @@
 import { TokenTicker, WithCreator } from "@iov/bcp";
-import { bnsCodec, BnsConnection, RegisterUsernameTx } from "@iov/bns";
+import { bnsCodec, BnsConnection, RegisterUsernameTx } from "iov-bns";
 import { Bip39, EnglishMnemonic, Random } from "@iov/crypto";
 import { IovFaucet } from "@iov/faucets";
 import { Ed25519HdWallet, HdPaths, UserProfile } from "@iov/keycontrol";

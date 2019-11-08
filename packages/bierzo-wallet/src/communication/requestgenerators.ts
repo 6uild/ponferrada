@@ -7,13 +7,12 @@ import {
   UnsignedTransaction,
   WithCreator,
 } from "@iov/bcp";
-import { ChainAddressPair, RegisterUsernameTx } from "@iov/bns";
+import { CreateArtifactTX } from "iov-bns";
 import { TransactionEncoder } from "@iov/encoding";
 import { JsonRpcRequest, makeJsonRpcId } from "@iov/jsonrpc";
 
 import { getConfig } from "../config";
 import { getCodecForChainId } from "../logic/codec";
-import { getConnectionForChainId } from "../logic/connection";
 
 export async function generateGetIdentitiesRequest(): Promise<JsonRpcRequest> {
   const chains = (await getConfig()).chains;
@@ -31,12 +30,8 @@ export async function generateGetIdentitiesRequest(): Promise<JsonRpcRequest> {
 }
 
 async function withChainFee<T extends UnsignedTransaction>(chainId: ChainId, transaction: T): Promise<T> {
-  const connection = getConnectionForChainId(chainId);
-  if (!connection) {
-    throw new Error(`Active connection for chain with ${chainId} was not found.`);
-  }
-  const withFee = await connection.withDefaultFee(transaction);
-  return withFee;
+  // grafain-chilinet has no fees setup.
+  return { ...transaction, fee: undefined };
 }
 
 export const generateSendTxRequest = async (
@@ -67,27 +62,27 @@ export const generateSendTxRequest = async (
   };
 };
 
-export const generateRegisterUsernameTxWithFee = async (
+export const generateCreateArtifactTxWithFee = async (
   creator: Identity,
-  username: string,
-  targets: readonly ChainAddressPair[],
-): Promise<RegisterUsernameTx & WithCreator> => {
-  const regUsernameTx: RegisterUsernameTx & WithCreator = {
-    kind: "bns/register_username",
+  image: string,
+  checksum: string,
+): Promise<CreateArtifactTX & WithCreator> => {
+  const createArtifactTx: CreateArtifactTX & WithCreator = {
+    kind: "bns/create_artifact",
     creator,
-    username,
-    targets,
+    image,
+    checksum,
   };
 
-  return await withChainFee(creator.chainId, regUsernameTx);
+  return await withChainFee(creator.chainId, createArtifactTx);
 };
 
-export const generateRegisterUsernameTxRequest = async (
+export const generateCreateArtifactTxRequest = async (
   creator: Identity,
-  username: string,
-  targets: readonly ChainAddressPair[],
+  image: string,
+  checksum: string,
 ): Promise<JsonRpcRequest> => {
-  const transactionWithFee = await generateRegisterUsernameTxWithFee(creator, username, targets);
+  const transactionWithFee = await generateCreateArtifactTxWithFee(creator, image, checksum);
 
   return {
     jsonrpc: "2.0",

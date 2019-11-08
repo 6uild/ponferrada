@@ -1,5 +1,5 @@
 import { isSendTransaction } from "@iov/bcp";
-import { isCreateProposalTx, isRegisterUsernameTx, isVoteTx } from "@iov/bns";
+import { isCreateArtifactTX, isCreateProposalTx, isVoteTx } from "iov-bns";
 import { Block, Button, Typography } from "medulas-react-components";
 import * as React from "react";
 
@@ -7,7 +7,7 @@ import NeumaPageLayout from "../../../../components/NeumaPageLayout";
 import { SupportedTransaction } from "../../../../extension/background/model/persona";
 import { TX_REQUEST } from "../../../paths";
 import ReqCreateProposalTx from "./ReqCreateProposalTx";
-import ReqRegisterUsernameTx from "./ReqRegisterUsernameTx";
+import ReqCreateArtifactTx from "./ReqCreateArtifactTx";
 import ReqSendTransaction from "./ReqSendTransaction";
 import ReqVoteTx from "./ReqVoteTx";
 
@@ -25,8 +25,8 @@ const Layout = ({ sender, tx, onAcceptRequest, showRejectView }: Props): JSX.Ele
 
   if (isSendTransaction(tx)) {
     req = <ReqSendTransaction tx={tx} />;
-  } else if (isRegisterUsernameTx(tx)) {
-    req = <ReqRegisterUsernameTx tx={tx} />;
+  } else if (isCreateArtifactTX(tx)) {
+    req = <ReqCreateArtifactTx tx={tx} />;
   } else if (isCreateProposalTx(tx)) {
     req = <ReqCreateProposalTx tx={tx} />;
   } else if (isVoteTx(tx)) {

@@ -8,7 +8,7 @@ import {
   TokenTicker,
   WithCreator,
 } from "@iov/bcp";
-import { ActionKind, CreateProposalTx, RegisterUsernameTx, VoteOption, VoteTx } from "@iov/bns";
+import { ActionKind, CreateProposalTx, RegisterUsernameTx, VoteOption, VoteTx } from "iov-bns";
 import { Encoding } from "@iov/encoding";
 import { ethereumCodec } from "@iov/ethereum";
 import { storiesOf } from "@storybook/react";

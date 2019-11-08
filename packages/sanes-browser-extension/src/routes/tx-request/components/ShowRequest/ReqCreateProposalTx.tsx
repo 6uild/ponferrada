@@ -1,4 +1,4 @@
-import { CreateProposalTx } from "@iov/bns";
+import { CreateProposalTx } from "iov-bns";
 import { Block, List, ListItem, ListItemText } from "medulas-react-components";
 import * as React from "react";
 

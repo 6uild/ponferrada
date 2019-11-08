@@ -3,22 +3,22 @@ import React from "react";
 import { Route, Router, Switch } from "react-router";
 
 import RequireLogin from "../components/RequireLogin";
-import Addresses from "./addresses";
+import Artifacts from "./artifacts";
 import Balance from "./balance";
 import Login from "./login";
 import {
-  ADDRESSES_ROUTE,
+  ARTIFACT_ROUTE,
   BALANCE_ROUTE,
   LOGIN_ROUTE,
   PAYMENT_ROUTE,
   POLICY_ROUTE,
-  REGISTER_PERSONALIZED_ADDRESS_ROUTE,
+  REGISTER_ARTIFACT_ROUTE,
   TERMS_ROUTE,
   TRANSACTIONS_ROUTE,
 } from "./paths";
 import Payment from "./payment";
 import Policy from "./policy";
-import RegisterUsername from "./registerName";
+import RegisterArtifact from "./registerArtifact";
 import Terms from "./terms";
 import Transactions from "./transactions";
 
@@ -31,10 +31,10 @@ const Routes = (): JSX.Element => (
       <Route exact path={LOGIN_ROUTE} component={Login} />
       <RequireLogin>
         <Route exact path={PAYMENT_ROUTE} component={Payment} />
-        <Route exact path={ADDRESSES_ROUTE} component={Addresses} />
+        <Route exact path={ARTIFACT_ROUTE} component={Artifacts} />
         <Route exact path={TRANSACTIONS_ROUTE} component={Transactions} />
         <Route exact path={BALANCE_ROUTE} component={Balance} />
-        <Route exact path={REGISTER_PERSONALIZED_ADDRESS_ROUTE} component={RegisterUsername} />
+        <Route exact path={REGISTER_ARTIFACT_ROUTE} component={RegisterArtifact} />
         <Route exact path={TERMS_ROUTE} component={Terms} />
         <Route exact path={POLICY_ROUTE} component={Policy} />
       </RequireLogin>

@@ -1,5 +1,4 @@
 import "regenerator-runtime"; // required by @ledgerhq/hw-transport-webusb
-
 import {
   Algorithm,
   ChainId,
@@ -10,7 +9,7 @@ import {
   SignatureBytes,
   SignedTransaction,
 } from "@iov/bcp";
-import { bnsCodec } from "@iov/bns";
+import { bnsCodec } from "iov-bns";
 import { isJsonCompatibleDictionary, TransactionEncoder } from "@iov/encoding";
 import { JsonRpcRequest } from "@iov/jsonrpc";
 import {

@@ -1,4 +1,4 @@
-import { Fraction, UpdateElectionRuleAction } from "@iov/bns";
+import { Fraction, UpdateElectionRuleAction } from "iov-bns";
 import { ListItem, ListItemText } from "medulas-react-components";
 import * as React from "react";
 import { displayPeriod } from "ui-logic";

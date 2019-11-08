@@ -1,5 +1,5 @@
 import { isSendTransaction } from "@iov/bcp";
-import { isCreateProposalTx, isRegisterUsernameTx, isVoteTx } from "@iov/bns";
+import { isCreateArtifactTX, isCreateProposalTx, isVoteTx } from "iov-bns";
 import { makeStyles, Theme } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -11,7 +11,7 @@ import { ProcessedTx } from "../../../../extension/background/model/persona";
 import iconErrorTx from "../../assets/transactionError.svg";
 import iconSendTx from "../../assets/transactionSend.svg";
 import MsgCreateProposalTx from "./MsgCreateProposalTx";
-import MsgRegisterUsernameTx from "./MsgRegisterUsernameTx";
+import MsgCreateArtifactTx from "./MsgCreateArtifactTx";
 import MsgSendTransaction from "./MsgSendTransaction";
 import MsgVoteTx from "./MsgVoteTx";
 
@@ -53,15 +53,15 @@ const TxItem = ({ item, lastOne }: ItemProps): JSX.Element => {
         recipient={recipient}
       />
     );
-  } else if (isRegisterUsernameTx(item.original)) {
-    const { username } = item.original;
-    const iovAddress = username;
+  } else if (isCreateArtifactTX(item.original)) {
+    const { image, checksum } = item.original;
     msg = (
-      <MsgRegisterUsernameTx
+      <MsgCreateArtifactTx
         id={item.id}
         blockExplorerUrl={item.blockExplorerUrl}
         creator={item.creator}
-        iovAddress={iovAddress}
+        image={image}
+        checksum={checksum}
         error={error}
       />
     );

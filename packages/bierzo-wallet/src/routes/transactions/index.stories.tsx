@@ -1,5 +1,5 @@
 import { Address, ChainId, Token, TokenTicker, TransactionId } from "@iov/bcp";
-import { RegisterUsernameTx, VoteOption, VoteTx } from "@iov/bns";
+import { RegisterUsernameTx, VoteOption, VoteTx } from "iov-bns";
 import { Sha256 } from "@iov/crypto";
 import { Encoding, Uint64 } from "@iov/encoding";
 import { action } from "@storybook/addon-actions";

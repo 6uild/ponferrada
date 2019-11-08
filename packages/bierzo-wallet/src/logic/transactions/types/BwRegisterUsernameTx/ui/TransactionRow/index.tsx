@@ -1,4 +1,4 @@
-import { RegisterUsernameTx } from "@iov/bns";
+import { RegisterUsernameTx } from "iov-bns";
 import { makeStyles, Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import { Block, CircleImage, Hairline, Image, Typography, useOpen } from "medulas-react-components";

@@ -1,4 +1,4 @@
-import { ElectorProperties, UpdateElectorateAction } from "@iov/bns";
+import { ElectorProperties, UpdateElectorateAction } from "iov-bns";
 import { ListItem, ListItemText } from "medulas-react-components";
 import * as React from "react";
 import { ellipsifyMiddle } from "ui-logic";

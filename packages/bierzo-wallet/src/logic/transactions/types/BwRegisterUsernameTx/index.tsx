@@ -1,5 +1,5 @@
 import { Address, BlockchainConnection, ConfirmedTransaction } from "@iov/bcp";
-import { RegisterUsernameTx } from "@iov/bns";
+import { RegisterUsernameTx } from "iov-bns";
 import * as React from "react";
 
 import { BwParser, ProcessedTx } from "../../types/BwParser";

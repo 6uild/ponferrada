@@ -1,4 +1,4 @@
-import { SendAction } from "@iov/bns";
+import { SendAction } from "iov-bns";
 import { ListItem, ListItemText } from "medulas-react-components";
 import * as React from "react";
 import { amountToString } from "ui-logic";

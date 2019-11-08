@@ -40,7 +40,6 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@iov/bns": "^1.0.0",
     "@iov/crypto": "^1.0.0",
     "@iov/encoding": "^1.0.0",
     "@iov/ethereum": "^1.0.0",

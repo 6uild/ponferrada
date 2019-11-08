@@ -1,4 +1,4 @@
-import { ReleaseEscrowAction } from "@iov/bns";
+import { ReleaseEscrowAction } from "iov-bns";
 import { ListItem, ListItemText } from "medulas-react-components";
 import * as React from "react";
 import { amountToString } from "ui-logic";

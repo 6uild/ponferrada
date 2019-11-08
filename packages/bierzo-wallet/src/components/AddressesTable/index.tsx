@@ -1,9 +1,7 @@
-import { ChainAddressPair } from "@iov/bns";
-import { Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
-import { Theme } from "@material-ui/core";
+import { ChainAddressPair } from "iov-bns";
+import { Table, TableBody, TableCell, TableHead, TableRow, Theme } from "@material-ui/core";
 import clipboardCopy from "clipboard-copy";
-import { Block, Image, makeStyles, ToastContext, ToastVariant } from "medulas-react-components";
-import { defaultColor } from "medulas-react-components";
+import { Block, defaultColor, Image, makeStyles, ToastContext, ToastVariant } from "medulas-react-components";
 import React from "react";
 
 import copy from "./assets/copy.svg";

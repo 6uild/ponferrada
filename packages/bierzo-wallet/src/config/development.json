@@ -1,6 +1,6 @@
 {
   "extensionId": "dafekhlcpidfaopcimocbcpciholgkkb",
-  "neumaUrl": "https://www.neuma.io/",
+  "neumaUrl": "https://grafain.net/",
   "ledger": {
     "chainIds": {
       "testnetBuild": "local-iov-devnet",

@@ -1,4 +1,4 @@
-import { CreateTextResolutionAction } from "@iov/bns";
+import { CreateTextResolutionAction } from "iov-bns";
 import { ListItem, ListItemText } from "medulas-react-components";
 import * as React from "react";
 

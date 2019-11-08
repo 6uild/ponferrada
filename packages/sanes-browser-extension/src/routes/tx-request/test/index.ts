@@ -9,7 +9,7 @@ import {
   TokenTicker,
   WithCreator,
 } from "@iov/bcp";
-import { ActionKind, bnsCodec, CreateProposalTx, RegisterUsernameTx, VoteOption, VoteTx } from "@iov/bns";
+import { ActionKind, bnsCodec, CreateProposalTx, RegisterUsernameTx, VoteOption, VoteTx } from "iov-bns";
 import { Encoding } from "@iov/encoding";
 import { ethereumCodec } from "@iov/ethereum";
 

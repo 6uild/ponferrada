@@ -10,7 +10,7 @@ import { aNewStore } from "../../store";
 import { BalanceState } from "../../store/balances";
 import { ExtendedIdentity, IdentitiesState } from "../../store/identities";
 import { RootState } from "../../store/reducers";
-import { UsernamesState } from "../../store/usernames";
+import { ArtifactState } from "../../store/artifacts";
 import { click, expectRoute } from "../../utils/test/dom";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
 import { TRANSACTIONS_ROUTE } from "../paths";
@@ -31,7 +31,7 @@ const balancesAmount: DeepPartial<BalanceState> = {
 };
 
 const bnsChainId = "local-iov-devnet" as ChainId;
-const usernames: DeepPartial<UsernamesState> = [
+const usernames: DeepPartial<ArtifactState> = [
   {
     username: "albert*iov",
     addresses: [
@@ -68,7 +68,7 @@ describe("The /balance route", () => {
       store = aNewStore({
         identities: identities,
         balances: balancesAmount,
-        usernames: usernames,
+        artifacts: usernames,
         rpcEndpoint: extensionRpcEndpoint,
       });
       balanceDom = await travelToBalance(store);

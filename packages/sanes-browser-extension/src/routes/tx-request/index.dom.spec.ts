@@ -4,7 +4,7 @@ import { Request } from "../../extension/background/model/requestsHandler/reques
 import { travelToTXRequest, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
 import { REQUEST_ROUTE } from "../paths";
-import { REQ_REGISTER_USERNAME } from "./components/ShowRequest/ReqRegisterUsernameTx";
+import { REQ_CREATE_ARTIFACT } from "./components/ShowRequest/ReqCreateArtifactTx";
 import { REQ_SEND_TX } from "./components/ShowRequest/ReqSendTransaction";
 import { getCashTransaction, getCreateTextResolutionActionTransaction, getUsernameTransaction } from "./test";
 import {
@@ -115,7 +115,7 @@ describe("DOM > Feature > Username Registration Request", () => {
   }, 60000);
 
   it("should show register username request accept view", async () => {
-    await findRenderedDOMComponentWithId(txRequestDOM, REQ_REGISTER_USERNAME);
+    await findRenderedDOMComponentWithId(txRequestDOM, REQ_CREATE_ARTIFACT);
   }, 60000);
 });
 

@@ -1,4 +1,4 @@
-import { ChainAddressPair, RegisterUsernameTx } from "@iov/bns";
+import { ChainAddressPair, RegisterUsernameTx } from "iov-bns";
 import { makeStyles } from "@material-ui/core";
 import { Block, Typography } from "medulas-react-components";
 import * as React from "react";

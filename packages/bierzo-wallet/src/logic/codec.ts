@@ -1,5 +1,5 @@
 import { ChainId, TxCodec } from "@iov/bcp";
-import { bnsCodec } from "@iov/bns";
+import { bnsCodec } from "iov-bns";
 import { ethereumCodec } from "@iov/ethereum";
 import { liskCodec } from "@iov/lisk";
 

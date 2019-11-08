@@ -1,4 +1,4 @@
-import { ExecuteProposalBatchAction } from "@iov/bns";
+import { ExecuteProposalBatchAction } from "iov-bns";
 import * as React from "react";
 
 import { ProposalActionOptions } from "./index";

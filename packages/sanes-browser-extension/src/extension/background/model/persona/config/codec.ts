@@ -1,5 +1,5 @@
 import { Algorithm, ChainConnector, ChainId } from "@iov/bcp";
-import { createBnsConnector } from "@iov/bns";
+import { createBnsConnector } from "iov-bns";
 import { Slip10RawIndex } from "@iov/crypto";
 import { createEthereumConnector } from "@iov/ethereum";
 import { HdPaths } from "@iov/keycontrol";

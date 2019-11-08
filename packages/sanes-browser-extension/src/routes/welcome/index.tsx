@@ -4,7 +4,6 @@ import * as React from "react";
 import NeumaPageLayout from "../../components/NeumaPageLayout";
 import { PersonaContext } from "../../context/PersonaProvider";
 import { getConfigurationFile } from "../../extension/background/model/persona/config";
-import { extensionName } from "../../theme/variables";
 import { history } from "../../utils/history";
 import { CREATE_WALLET_ROUTE, RESTORE_WALLET, UNLOCK_ROUTE, WELCOME_ROUTE } from "../paths";
 

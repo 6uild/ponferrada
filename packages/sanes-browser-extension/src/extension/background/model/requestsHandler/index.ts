@@ -71,7 +71,7 @@ export default class RequestsHandler {
         }
 
         if (!isSupportedTransaction(transaction)) {
-          throw new Error("Unexpected unsigned transaction");
+          throw new Error("alex: Unexpected unsigned transaction");
         }
 
         const data: SignAndPostResponseData = { tx: transaction };

@@ -7,7 +7,7 @@ import {
   isSendTransaction,
   LightTransaction,
 } from "@iov/bcp";
-import { isRegisterUsernameTx, RegisterUsernameTx } from "@iov/bns";
+import { isRegisterUsernameTx, RegisterUsernameTx } from "iov-bns";
 
 import { ProcessedSendTransaction } from "../../../store/notifications";
 import { BwParser, ProcessedTx } from "../types/BwParser";

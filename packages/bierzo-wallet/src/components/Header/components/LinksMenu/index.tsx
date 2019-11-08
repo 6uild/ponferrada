@@ -5,7 +5,7 @@ import * as React from "react";
 
 import { ProcessedTx } from "../../../../logic/transactions/types/BwParser";
 import { history } from "../../../../routes";
-import { ADDRESSES_ROUTE, BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../../../../routes/paths";
+import { ARTIFACT_ROUTE, BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../../../../routes/paths";
 import { getLastTx, TxMeta } from "../../../../utils/localstorage/transactions";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -40,7 +40,7 @@ const onBalance = (): void => {
 };
 
 const onAddresses = (): void => {
-  history.push(ADDRESSES_ROUTE);
+  history.push(ARTIFACT_ROUTE);
 };
 
 const onTransactions = (): void => {
@@ -76,7 +76,7 @@ const calcTxBadgeVisibilityState = (
 };
 
 const BALANCE_TEXT = "Balances";
-export const ADDRESSES_TEXT = "Addresses";
+export const ARTIFACT_TEXT = "Artifacts";
 export const TRANSACTIONS_TEXT = "Transactions";
 
 interface MenuItemProps {
@@ -109,7 +109,7 @@ const LinksMenu = ({ path, lastTx }: Props): JSX.Element => {
   const classes = useStyles();
   const showBalance = path === BALANCE_ROUTE;
   const showTransactions = path === TRANSACTIONS_ROUTE;
-  const showAddresses = path === ADDRESSES_ROUTE;
+  const showAddresses = path === ARTIFACT_ROUTE;
 
   const balanceClasses = classNames(classes.item, showBalance ? classes.activated : undefined);
   const addressesClasses = classNames(classes.item, showAddresses ? classes.activated : undefined);
@@ -124,7 +124,7 @@ const LinksMenu = ({ path, lastTx }: Props): JSX.Element => {
         <Block className={classes.line} />
       </Block>
       <Block className={addressesClasses}>
-        <LinkMenuItem onClick={onAddresses} itemTitle={ADDRESSES_TEXT} />
+        <LinkMenuItem onClick={onAddresses} itemTitle={ARTIFACT_TEXT} />
         <Block className={classes.line} />
       </Block>
       <Block className={transactionsClasses}>

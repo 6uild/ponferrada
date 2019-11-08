@@ -20,7 +20,7 @@ import { addBalancesAction, getBalances } from "../../store/balances";
 import { setIdentities } from "../../store/identities";
 import { setRpcEndpoint } from "../../store/rpcendpoint";
 import { addTickersAction, getTokens } from "../../store/tokens";
-import { addUsernamesAction, getUsernames } from "../../store/usernames/actions";
+import { addArtifactAction, getArtifacts } from "../../store/artifacts/actions";
 import { BALANCE_ROUTE } from "../paths";
 import PageColumn from "./components/PageColumn";
 
@@ -51,8 +51,9 @@ export const loginBootSequence = async (
   await subscribeBalance(identities, dispatch);
   await subscribeTransaction(identities, dispatch);
 
-  const usernames = await getUsernames(identities);
-  dispatch(addUsernamesAction(usernames));
+  const artifacts = await getArtifacts(identities);
+  console.log("got #artifacts: ", artifacts.length);
+  dispatch(addArtifactAction(artifacts));
 };
 
 /**

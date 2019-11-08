@@ -1,5 +1,5 @@
 import { BlockchainConnection, ChainId } from "@iov/bcp";
-import { BnsConnection, createBnsConnector } from "@iov/bns";
+import { BnsConnection, createBnsConnector } from "iov-bns";
 import { createEthereumConnector, EthereumConnectionOptions } from "@iov/ethereum";
 import { createLiskConnector } from "@iov/lisk";
 

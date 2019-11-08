@@ -1,4 +1,4 @@
-import { SetValidatorsAction, ValidatorProperties } from "@iov/bns";
+import { SetValidatorsAction, ValidatorProperties } from "iov-bns";
 import { ListItem, ListItemText } from "medulas-react-components";
 import * as React from "react";
 import { ellipsifyMiddle } from "ui-logic";

@@ -8,7 +8,7 @@ import {
   TokenTicker,
   WithCreator,
 } from "@iov/bcp";
-import { RegisterUsernameTx } from "@iov/bns";
+import { RegisterUsernameTx } from "iov-bns";
 import { Encoding, TransactionEncoder } from "@iov/encoding";
 import { ethereumCodec } from "@iov/ethereum";
 import { JsonRpcSuccessResponse, parseJsonRpcResponse } from "@iov/jsonrpc";

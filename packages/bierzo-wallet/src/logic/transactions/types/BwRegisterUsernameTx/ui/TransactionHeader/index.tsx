@@ -1,4 +1,4 @@
-import { RegisterUsernameTx } from "@iov/bns";
+import { RegisterUsernameTx } from "iov-bns";
 import { makeStyles, Theme } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";

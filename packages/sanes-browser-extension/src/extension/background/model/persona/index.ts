@@ -1,17 +1,18 @@
 import { Address, isSendTransaction, SendTransaction, UnsignedTransaction, WithCreator } from "@iov/bcp";
 import {
   BnsConnection,
+  CreateArtifactTX,
   CreateProposalTx,
+  isCreateArtifactTX,
   isCreateProposalTx,
   isRegisterUsernameTx,
   isVoteTx,
   RegisterUsernameTx,
   VoteTx,
-} from "@iov/bns";
+} from "iov-bns";
 import { Bip39, Random } from "@iov/crypto";
 import { Encoding } from "@iov/encoding";
-import { UserProfile } from "@iov/keycontrol";
-import { UserProfileEncryptionKey } from "@iov/keycontrol";
+import { UserProfile, UserProfileEncryptionKey } from "@iov/keycontrol";
 import {
   GetIdentitiesAuthorization,
   JsonRpcSigningServer,
@@ -45,11 +46,27 @@ function isNonNull<T>(t: T | null): t is T {
 /**
  * All transaction types that can be displayed and signed by the extension
  */
-export type SupportedTransaction = (SendTransaction | RegisterUsernameTx | CreateProposalTx | VoteTx) &
+export type SupportedTransaction = (
+  | SendTransaction
+  | CreateArtifactTX
+  | RegisterUsernameTx
+  | CreateProposalTx
+  | VoteTx) &
   WithCreator;
 
 export function isSupportedTransaction(tx: UnsignedTransaction): tx is SupportedTransaction {
-  return isSendTransaction(tx) || isRegisterUsernameTx(tx) || isCreateProposalTx(tx) || isVoteTx(tx);
+  console.log("1: ", isSendTransaction(tx));
+  console.log("2: ", isCreateArtifactTX(tx));
+  console.log("3: ", isRegisterUsernameTx(tx));
+  console.log("4: ", isCreateProposalTx(tx));
+  console.log("5: ", isVoteTx(tx));
+  return (
+    isSendTransaction(tx) ||
+    isCreateArtifactTX(tx) ||
+    isRegisterUsernameTx(tx) ||
+    isCreateProposalTx(tx) ||
+    isVoteTx(tx)
+  );
 }
 
 /**
