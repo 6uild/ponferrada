@@ -1,6 +1,6 @@
 import { Address, ChainId } from "@iov/bcp";
 
-import { getConnectionForBns } from "./connection";
+import { getConnectionForGrafain } from "./connection";
 
 export function isIov(username: string): boolean {
   return username.endsWith("*iov");
@@ -18,7 +18,7 @@ export async function lookupRecipientAddressByName(
     throw new Error("Username must include namespace suffix");
   }
 
-  const connection = await getConnectionForBns();
+  const connection = await getConnectionForGrafain();
   const usernames = await connection.getUsernames({ username });
   if (usernames.length !== 1) {
     return "name_not_found";

@@ -1,4 +1,4 @@
-import { ChainAddressPair } from "iov-bns";
+import { ChainAddressPair } from "@6uild/grafain";
 import { Table, TableBody, TableCell, TableHead, TableRow, Theme } from "@material-ui/core";
 import clipboardCopy from "clipboard-copy";
 import { Block, defaultColor, Image, makeStyles, ToastContext, ToastVariant } from "medulas-react-components";

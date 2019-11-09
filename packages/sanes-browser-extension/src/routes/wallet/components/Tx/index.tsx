@@ -1,5 +1,5 @@
 import { isSendTransaction } from "@iov/bcp";
-import { isCreateArtifactTX, isCreateProposalTx, isVoteTx } from "iov-bns";
+import { isCreateArtifactTX, isCreateProposalTx, isVoteTx } from "@6uild/grafain";
 import { makeStyles, Theme } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";

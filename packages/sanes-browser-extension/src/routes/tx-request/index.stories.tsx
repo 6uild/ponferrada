@@ -16,19 +16,16 @@ import {
   getCashTransaction,
   getCreateTextResolutionActionTransaction,
   getEthTransaction,
-  getUsernameTransaction,
   getVoteTransaction,
 } from "./test";
 
 export const TX_REQUEST_PATH = `${sanesRoot}/Transaction Request`;
-const SEND_BNS_REQUEST_PAGE = "Send (BNS)";
+const SEND_GRAFAIN_REQUEST_PAGE = "Send (GRAFAIN)";
 const SEND_TX_ETHEREUM_REQUEST_PAGE = "Send (Ethereum)";
-const REGISTER_USERNAME_REQUEST_PAGE = "Create Username";
-const CREATE_PROPOSAL_REQUEST_PAGE = "Create Proposal";
 const VOTE_REQUEST_PAGE = "Vote";
 export const REJECT_REQUEST_PAGE = "Reject Request";
 
-const sendBnsRequest: Request<SignAndPostResponseData> = {
+const sendGrafainRequest: Request<SignAndPostResponseData> = {
   id: 0,
   accept: () => action("accept request"),
   reject: (permanent: boolean) => action(`reject request. Permanently: ${permanent ? "yes" : "no"}`),
@@ -47,17 +44,6 @@ const sendEthereumRequest: Request<SignAndPostResponseData> = {
   reason: "I would like you to sign this Ethereum TX",
   responseData: {
     tx: getEthTransaction(),
-  },
-};
-
-const registerUsernameRequest: Request<SignAndPostResponseData> = {
-  id: 0,
-  accept: () => action("accept request"),
-  reject: (permanent: boolean) => action(`reject request. Permanently: ${permanent ? "yes" : "no"}`),
-  senderUrl: "http://localhost/",
-  reason: "I would like you to sign this TX",
-  responseData: {
-    tx: getUsernameTransaction(),
   },
 };
 
@@ -84,14 +70,14 @@ const voteRequest: Request<SignAndPostResponseData> = {
 };
 
 storiesOf(TX_REQUEST_PATH, module)
-  .add(SEND_BNS_REQUEST_PAGE, () => {
-    const { tx } = sendBnsRequest.responseData;
+  .add(SEND_GRAFAIN_REQUEST_PAGE, () => {
+    const { tx } = sendGrafainRequest.responseData;
 
     return (
       <Storybook>
         <ShowRequest
           tx={tx}
-          sender={sendBnsRequest.senderUrl}
+          sender={sendGrafainRequest.senderUrl}
           onAcceptRequest={linkTo(sanesRoot, WALLET_STATUS_PAGE)}
           showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
         />
@@ -107,36 +93,6 @@ storiesOf(TX_REQUEST_PATH, module)
         <ShowRequest
           tx={tx}
           sender={senderUrl}
-          onAcceptRequest={linkTo(sanesRoot, WALLET_STATUS_PAGE)}
-          showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
-        />
-      </Storybook>
-    );
-  })
-  .add(REGISTER_USERNAME_REQUEST_PAGE, () => {
-    const { senderUrl } = registerUsernameRequest;
-    const { tx } = registerUsernameRequest.responseData;
-
-    return (
-      <Storybook>
-        <ShowRequest
-          sender={senderUrl}
-          tx={tx}
-          onAcceptRequest={linkTo(sanesRoot, WALLET_STATUS_PAGE)}
-          showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
-        />
-      </Storybook>
-    );
-  })
-  .add(CREATE_PROPOSAL_REQUEST_PAGE, () => {
-    const { senderUrl } = createProposalRequest;
-    const { tx } = createProposalRequest.responseData;
-
-    return (
-      <Storybook>
-        <ShowRequest
-          sender={senderUrl}
-          tx={tx}
           onAcceptRequest={linkTo(sanesRoot, WALLET_STATUS_PAGE)}
           showRejectView={linkTo(TX_REQUEST_PATH, REJECT_REQUEST_PAGE)}
         />
@@ -159,13 +115,13 @@ storiesOf(TX_REQUEST_PATH, module)
     );
   })
   .add(REJECT_REQUEST_PAGE, () => {
-    const { senderUrl } = sendBnsRequest;
+    const { senderUrl } = sendGrafainRequest;
 
     return (
       <Storybook>
         <RejectRequest
           sender={senderUrl}
-          onBack={linkTo(TX_REQUEST_PATH, SEND_BNS_REQUEST_PAGE)}
+          onBack={linkTo(TX_REQUEST_PATH, SEND_GRAFAIN_REQUEST_PAGE)}
           onRejectRequest={action("onAcceptRequest")}
         />
       </Storybook>

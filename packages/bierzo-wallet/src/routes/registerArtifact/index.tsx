@@ -1,5 +1,5 @@
 import { ChainId, Identity, TransactionId } from "@iov/bcp";
-import { BnsConnection } from "iov-bns";
+import { GrafainConnection } from "@6uild/grafain";
 import {
   BillboardContext,
   FormValues,
@@ -30,9 +30,9 @@ function onReturnToBalance(): void {
   history.push(BALANCE_ROUTE);
 }
 
-function getBnsIdentity(identities: ReadonlyMap<ChainId, ExtendedIdentity>): Identity | undefined {
+function getGrafainIdentity(identities: ReadonlyMap<ChainId, ExtendedIdentity>): Identity | undefined {
   for (const identity of Array.from(identities.values()).map(ext => ext.identity)) {
-    if (getConnectionForChainId(identity.chainId) instanceof BnsConnection) {
+    if (getConnectionForChainId(identity.chainId) instanceof GrafainConnection) {
       return identity;
     }
   }
@@ -107,7 +107,7 @@ const validate = async (values: object): Promise<object> => {
     return errors;
   }
   // TODO: check image does not exists yet.
-  // const connection = await getConnectionForBns();
+  // const connection = await getConnectionForGrafain();
   // const usernames = await connection.getUsernames({ username: image });
   // if (usernames.length > 0) {
   //   errors[REGISTER_IMAGE_FIELD] = "Personalized address already exists";
@@ -126,9 +126,9 @@ const RegisterArtifact = (): JSX.Element => {
   const identities = ReactRedux.useSelector((state: RootState) => state.identities);
   const addresses = getChainAddressPairWithNames(identities);
 
-  const bnsIdentity = getBnsIdentity(identities);
+  const grafainIdentity = getGrafainIdentity(identities);
 
-  if (!bnsIdentity) throw new Error("No BNS identity available.");
+  if (!grafainIdentity) throw new Error("No GRAFAIN identity available.");
   if (!rpcEndpoint) throw new Error("RPC endpoint not set in redux store. This is a bug.");
 
   const onSubmit = async (values: object): Promise<void> => {
@@ -138,7 +138,7 @@ const RegisterArtifact = (): JSX.Element => {
     const checksum = formValues[REGISTER_CHECKSUM_FIELD];
 
     try {
-      const request = await generateCreateArtifactTxRequest(bnsIdentity, image, checksum);
+      const request = await generateCreateArtifactTxRequest(grafainIdentity, image, checksum);
       if (rpcEndpoint.type === "extension") {
         billboard.show(
           <NeumaBillboardMessage text={rpcEndpoint.authorizeSignAndPostMessage} />,

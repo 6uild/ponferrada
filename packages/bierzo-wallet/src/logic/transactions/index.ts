@@ -1,5 +1,5 @@
 import { ChainId, Identity, isFailedTransaction } from "@iov/bcp";
-import { CreateArtifactTX, isCreateArtifactTX } from "iov-bns";
+import { CreateArtifactTX, isCreateArtifactTX } from "@6uild/grafain";
 import { Dispatch } from "redux";
 import { Subscription } from "xstream";
 

@@ -3,9 +3,9 @@
   "chains": [
     {
       "chainSpec": {
-        "codecType": "bns",
+        "codecType": "grafain",
         "chainId": "grafain-chilinet",
-        "name": "IOV Devnet",
+        "name": "6uild Chilinet",
         "node": "https://rpc-chilinet.grafain.net/"
       }
     }

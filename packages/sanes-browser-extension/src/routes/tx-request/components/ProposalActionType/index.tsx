@@ -1,4 +1,4 @@
-import { ActionKind, ProposalAction } from "iov-bns";
+import { ActionKind, ProposalAction } from "@6uild/grafain";
 import { List, ListItem, ListItemText } from "medulas-react-components";
 import * as React from "react";
 

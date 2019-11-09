@@ -1,4 +1,4 @@
-import { ChainId, Identity } from "@iov/bcp";
+import { Address, ChainId, Identity } from "@iov/bcp";
 import { singleton } from "ui-logic";
 
 import { getCodecForChainId } from "../logic/codec";
@@ -95,11 +95,18 @@ export async function getChainName(chainId: ChainId): Promise<string> {
 export async function makeExtendedIdentities(
   identities: readonly Identity[],
 ): Promise<Map<ChainId, ExtendedIdentity>> {
+  console.log("++identities: ", identities);
   const out = new Map<ChainId, ExtendedIdentity>();
   for (const identity of identities) {
+    let txCodec = await getCodecForChainId(identity.chainId);
+    console.log("++codec: ", txCodec);
+    let address = "undefined" as Address;
+    if (txCodec !== undefined) {
+      address = txCodec.identityToAddress(identity);
+    }
     out.set(identity.chainId, {
       identity: identity,
-      address: (await getCodecForChainId(identity.chainId)).identityToAddress(identity),
+      address: address,
       chainName: await getChainName(identity.chainId),
     });
   }

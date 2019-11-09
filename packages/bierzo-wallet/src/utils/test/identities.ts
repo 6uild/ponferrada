@@ -15,11 +15,11 @@ export async function createIdentities(): Promise<readonly Identity[]> {
     },
   };
 
-  // get BNS pubkey
-  const bnsChain = "local-iov-devnet" as ChainId;
+  // get GRAFAIN pubkey
+  const grafainChain = "local-iov-devnet" as ChainId;
   const rawKeypair = await Ed25519.makeKeypair(await Random.getBytes(32));
-  const bnsIdentity: Identity = {
-    chainId: bnsChain,
+  const grafainIdentity: Identity = {
+    chainId: grafainChain,
     pubkey: {
       algo: Algorithm.Ed25519,
       data: rawKeypair.pubkey as PubkeyBytes,
@@ -27,7 +27,7 @@ export async function createIdentities(): Promise<readonly Identity[]> {
   };
 
   identities.push(ethIdentity);
-  identities.push(bnsIdentity);
+  identities.push(grafainIdentity);
 
   return identities;
 }

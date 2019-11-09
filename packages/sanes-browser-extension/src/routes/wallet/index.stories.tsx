@@ -8,7 +8,7 @@ import {
   TokenTicker,
   WithCreator,
 } from "@iov/bcp";
-import { ActionKind, CreateProposalTx, RegisterUsernameTx, VoteOption, VoteTx } from "iov-bns";
+import { ActionKind, CreateProposalTx, VoteOption, VoteTx } from "@6uild/grafain";
 import { Encoding } from "@iov/encoding";
 import { ethereumCodec } from "@iov/ethereum";
 import { storiesOf } from "@storybook/react";
@@ -51,18 +51,8 @@ const send: SendTransaction & WithCreator = {
   recipient: defaultAddress,
 };
 
-const usernameCreate: RegisterUsernameTx & WithCreator = {
-  kind: "bns/register_username",
-  creator: defaultCreator,
-  fee: ethereumFee,
-  username: "test*iov",
-  targets: [
-    { chainId: "foobar" as ChainId, address: "tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f" as Address },
-  ],
-};
-
 const createProposal: CreateProposalTx & WithCreator = {
-  kind: "bns/create_proposal",
+  kind: "grafain/create_proposal",
   creator: defaultCreator,
   fee: {
     tokens: defaultAmount,
@@ -79,7 +69,7 @@ const createProposal: CreateProposalTx & WithCreator = {
 };
 
 const vote: VoteTx & WithCreator = {
-  kind: "bns/vote",
+  kind: "grafain/vote",
   creator: defaultCreator,
   fee: {
     tokens: defaultAmount,
@@ -111,26 +101,6 @@ const blockExplorerProcessedTx: ProcessedTx = {
   error: null,
   blockExplorerUrl: "https://iov.one",
   original: send,
-};
-
-const usernameCreatedTx: ProcessedTx = {
-  id: newTxId(),
-  signer: "Example Signer",
-  creator: ethereumCodec.identityToAddress(defaultCreator),
-  time: "Sat May 25 10:10:00 2019 +0200",
-  error: null,
-  blockExplorerUrl: null,
-  original: usernameCreate,
-};
-
-const errorUsernameCreatedTx: ProcessedTx = {
-  id: newTxId(),
-  signer: "Example Signer",
-  creator: ethereumCodec.identityToAddress(defaultCreator),
-  time: "Sat May 25 10:10:00 2019 +0200",
-  error: "This is an example of reported error",
-  blockExplorerUrl: null,
-  original: usernameCreate,
 };
 
 const errorProcessedTx: ProcessedTx = {
@@ -172,53 +142,3 @@ const errorVoteTx: ProcessedTx = {
   blockExplorerUrl: null,
   original: vote,
 };
-
-storiesOf(`${sanesRoot}/${WALLET_STATUS_PAGE}`, module)
-  .add("With transactions", () => {
-    const processedTx2 = { ...processedTx, id: (txId++).toString() };
-    const processedTx3 = { ...processedTx, id: (txId++).toString() };
-
-    const persona: GetPersonaResponse = {
-      mnemonic: "",
-      accounts: [{ label: "Account 0" }],
-      txs: [
-        usernameCreatedTx,
-        errorUsernameCreatedTx,
-        blockExplorerProcessedTx,
-        processedTx,
-        errorProcessedTx,
-        processedTx2,
-        processedTx3,
-        createProposalTx,
-        voteTx,
-        errorVoteTx,
-      ],
-    };
-
-    return (
-      <PersonaProvider persona={persona} hasStoredPersona={true}>
-        <Storybook>
-          <ToastProvider>
-            <Layout />
-          </ToastProvider>
-        </Storybook>
-      </PersonaProvider>
-    );
-  })
-  .add("No transactions", () => {
-    const persona: GetPersonaResponse = {
-      mnemonic: "",
-      accounts: [{ label: "Account 0" }],
-      txs: [],
-    };
-
-    return (
-      <PersonaProvider persona={persona} hasStoredPersona={true}>
-        <Storybook>
-          <ToastProvider>
-            <Layout />
-          </ToastProvider>
-        </Storybook>
-      </PersonaProvider>
-    );
-  });

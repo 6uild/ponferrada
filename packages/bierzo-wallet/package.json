@@ -3,9 +3,11 @@
   "version": "1.0.1",
   "private": true,
   "dependencies": {
+    "@6uild/grafain": "file:../../../../my/iov-core/packages/6uild-grafain",
     "@fortawesome/fontawesome-svg-core": "^1.2.21",
     "@fortawesome/free-regular-svg-icons": "^5.10.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "@iov/bcp": "^1.1.0",
     "@iov/encoding": "^1.1.0",
     "@iov/ethereum": "^1.1.0",
     "@iov/faucets": "^1.1.0",

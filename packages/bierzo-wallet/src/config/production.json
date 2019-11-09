@@ -11,7 +11,7 @@
   "chains": [
     {
       "chainSpec": {
-        "codecType": "bns",
+        "codecType": "grafain",
         "chainId": "iov-mainnet",
         "name": "IOV Mainnet",
         "node": "wss://rpc-private-a-vip-mainnet.iov.one/"

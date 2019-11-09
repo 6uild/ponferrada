@@ -1,22 +1,22 @@
 import { Identity } from "@iov/bcp";
 
-import { getConnectionForBns } from "../../logic/connection";
+import { getConnectionForGrafain } from "../../logic/connection";
 import { AddArtifactActionType, BwArtifact } from "./reducer";
 
 export async function getArtifacts(identities: readonly Identity[]): Promise<readonly BwArtifact[]> {
-  const bnsConnection = await getConnectionForBns();
+  const grafainConnection = await getConnectionForGrafain();
 
-  const bnsIdentity = identities.find(ident => ident.chainId === bnsConnection.chainId());
-  if (!bnsIdentity) {
-    console.log("not bnsIdentity! No artifacts");
+  const grafainIdentity = identities.find(ident => ident.chainId === grafainConnection.chainId());
+  if (!grafainIdentity) {
+    console.log("not grafainIdentity! No artifacts");
     return [];
   }
 
-  console.log("ja, bnsIdentity");
+  console.log("ja, grafainIdentity");
 
-  // const bnsAddress = bnsCodec.identityToAddress(bnsIdentity);
-  // const artifacts = await bnsConnection.getArtifacts({ owner: bnsAddress });
-  const artifacts = await bnsConnection.getAllArtifacts();
+  // const grafainAddress = grafainCodec.identityToAddress(grafainIdentity);
+  // const artifacts = await grafainConnection.getArtifacts({ owner: grafainAddress });
+  const artifacts = await grafainConnection.getAllArtifacts();
 
   return artifacts.map(artf => ({
     image: artf.image,

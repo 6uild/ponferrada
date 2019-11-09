@@ -1,5 +1,5 @@
-import { Address, ChainId, Token, TokenTicker, TransactionId } from "@iov/bcp";
-import { RegisterUsernameTx, VoteOption, VoteTx } from "iov-bns";
+import { Address, Token, TokenTicker, TransactionId } from "@iov/bcp";
+import { VoteOption, VoteTx } from "@6uild/grafain";
 import { Sha256 } from "@iov/crypto";
 import { Encoding, Uint64 } from "@iov/encoding";
 import { action } from "@storybook/addon-actions";
@@ -9,11 +9,10 @@ import { ReadonlyDate } from "readonly-date";
 import { stringToAmount } from "ui-logic";
 
 import { ProcessedTx } from "../../logic/transactions/types/BwParser";
-import { BwParserFactory } from "../../logic/transactions/types/BwParserFactory";
 import { ProcessedSendTransaction } from "../../store/notifications";
 import DecoratedStorybook, { bierzoRoot } from "../../utils/storybook";
 import Layout from "./components";
-import { filterTxsBy, ORDER_DESC, SortOrder, TX_DATE_COLUMN, TxsOrder } from "./components/sorting";
+import { ORDER_DESC, SortOrder, TX_DATE_COLUMN, TxsOrder } from "./components/sorting";
 
 export const TRANSACTIONS_STORY_PATH = `${bierzoRoot}/Transactions`;
 export const TRANSACTIONS_STORY_SHOW_PATH = "With transactions";
@@ -96,137 +95,12 @@ const voteTx: ProcessedTx<VoteTx> = {
   id: makeExampleIovTransactionId(),
   time: new ReadonlyDate("2018-03-05T05:04:03.763Z"),
   original: {
-    kind: "bns/vote",
+    kind: "grafain/vote",
     fee: { tokens: stringToAmount("0.5", iov) },
     proposalId: 55,
     selection: VoteOption.Abstain,
   },
 };
-
-const parsedTxs: readonly (ProcessedSendTransaction | ProcessedTx<RegisterUsernameTx> | ProcessedTx)[] = [
-  incomingSendTransaction,
-  voteTx,
-  {
-    id: makeExampleIovTransactionId(),
-    time: new ReadonlyDate("2018-04-07T06:05:04.763Z"),
-    original: {
-      kind: "bns/register_username",
-      username: "albert*iov",
-      targets: [
-        {
-          chainId: "local-iov-devnet" as ChainId,
-          address: "tiov1yeyyqj3zxgs500xvzp38vu3c336yj8q48a5jx0" as Address,
-        },
-        {
-          chainId: "lisk-198f2b61a8" as ChainId,
-          address: "13751834438426525516L" as Address,
-        },
-        {
-          chainId: "ethereum-eip155-5777" as ChainId,
-          address: "0x695874053fcB8D9cF038ee4E53b7b24fB0baFa4c" as Address,
-        },
-      ],
-      fee: {
-        tokens: stringToAmount("100", iov),
-      },
-    },
-  },
-  incomingAndOutgoingSendTransaction,
-  {
-    time: new ReadonlyDate("2018-05-09T07:06:05.763Z"),
-    id: makeExampleIovTransactionId(),
-    original: {
-      kind: "bns/register_username",
-      fee: {
-        tokens: stringToAmount("100", iov),
-      },
-    },
-  },
-  {
-    time: new ReadonlyDate("2018-06-10T08:07:06.763Z"),
-    id: makeExampleIovTransactionId(),
-    original: {
-      kind: "bcp/send",
-      sender: "me" as Address,
-      recipient: "tiov18c8a0mn8hr5geyq4s9dmqajzep07uml724cl27" as Address,
-      amount: stringToAmount("25.5", iov),
-      fee: {
-        tokens: stringToAmount("1.2", iov),
-      },
-    },
-    incoming: false,
-    outgoing: true,
-  },
-  {
-    time: new ReadonlyDate("2019-07-12T13:12:11.763Z"),
-    id: makeExampleIovTransactionId(),
-    original: {
-      kind: "bcp/send",
-      sender: "me" as Address,
-      recipient: "tiov18c8a0mn8hr5geyq4s9dmqajzep07uml724cl27" as Address,
-      amount: stringToAmount("100.5", iov),
-      memo: "Another note",
-      fee: {
-        tokens: stringToAmount("1.2", iov),
-      },
-    },
-    incoming: false,
-    outgoing: true,
-  },
-  {
-    time: new ReadonlyDate("2019-08-14T14:13:12.763Z"),
-    id: makeExampleLiskTransactionId(),
-    original: {
-      kind: "bcp/send",
-      sender: "4652772502274938600L" as Address,
-      recipient: currentUsersLiskAddress,
-      amount: stringToAmount("10.5", lsk),
-      memo: "And again note",
-      fee: { tokens: stringToAmount("0.1", lsk) },
-    },
-    incoming: true,
-    outgoing: false,
-  },
-  {
-    time: new ReadonlyDate("2019-09-16T15:14:13.763Z"),
-    id: makeExampleIovTransactionId(),
-    original: {
-      kind: "bcp/send",
-      sender: currentUsersIovAddress,
-      recipient: "tiov18c8a0mn8hr5geyq4s9dmqajzep07uml724cl27" as Address,
-      amount: stringToAmount("25.5", iov),
-      fee: { tokens: stringToAmount("1.2", iov) },
-    },
-    incoming: false,
-    outgoing: true,
-  },
-  {
-    time: new ReadonlyDate("2019-10-18T16:15:14.763Z"),
-    id: makeExampleIovTransactionId(),
-    original: {
-      kind: "bcp/send",
-      sender: currentUsersIovAddress,
-      recipient: "tiov18c8a0mn8hr5geyq4s9dmqajzep07uml724cl27" as Address,
-      amount: stringToAmount("100.5", iov),
-      fee: { tokens: stringToAmount("1.2", iov) },
-    },
-    incoming: false,
-    outgoing: true,
-  },
-  {
-    time: new ReadonlyDate("2019-11-20T17:16:15.763Z"),
-    id: makeExampleIovTransactionId(),
-    original: {
-      kind: "bcp/send",
-      sender: currentUsersIovAddress,
-      recipient: "tiov18c8a0mn8hr5geyq4s9dmqajzep07uml724cl27" as Address,
-      amount: stringToAmount("25.5", iov),
-      fee: { tokens: stringToAmount("1.2", iov) },
-    },
-    incoming: false,
-    outgoing: true,
-  },
-];
 
 function onChangeRows(): void {
   action("onChangeRows action")();
@@ -257,21 +131,4 @@ storiesOf(TRANSACTIONS_STORY_PATH, module)
         order={ORDER_DESC}
       />
     </DecoratedStorybook>
-  ))
-  .add(TRANSACTIONS_STORY_SHOW_PATH, () => {
-    const orderedTxs = filterTxsBy(parsedTxs, 20, 0, TX_DATE_COLUMN, ORDER_DESC);
-    const txs = orderedTxs.map(tx => BwParserFactory.getReactComponent(tx, currentUsersAddresses));
-    return (
-      <DecoratedStorybook>
-        <Layout
-          rows={txs}
-          onChangeRows={onChangeRows}
-          onPrevPage={onPrevPage}
-          onNextPage={onNextPage}
-          onSort={onSort}
-          orderBy={TX_DATE_COLUMN}
-          order={ORDER_DESC}
-        />
-      </DecoratedStorybook>
-    );
-  });
+  ));

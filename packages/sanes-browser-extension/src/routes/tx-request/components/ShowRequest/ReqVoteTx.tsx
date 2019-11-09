@@ -1,4 +1,4 @@
-import { VoteTx } from "iov-bns";
+import { VoteTx } from "@6uild/grafain";
 import { List, ListItem, ListItemText } from "medulas-react-components";
 import * as React from "react";
 import { voteToString } from "ui-logic";

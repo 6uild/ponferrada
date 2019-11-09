@@ -1,22 +1,21 @@
 import { Algorithm, ChainConnector, ChainId } from "@iov/bcp";
-import { createBnsConnector } from "iov-bns";
+
+import { createGrafainConnector } from "@6uild/grafain";
 import { Slip10RawIndex } from "@iov/crypto";
-import { createEthereumConnector } from "@iov/ethereum";
 import { HdPaths } from "@iov/keycontrol";
-import { createLiskConnector } from "@iov/lisk";
 
 import { CodecString } from "./configurationfile";
 
 export enum CodecType {
-  Bns,
+  Grafain,
   Lisk,
   Ethereum,
 }
 
 export function codecTypeFromString(input: CodecString): CodecType {
   switch (input) {
-    case "bns":
-      return CodecType.Bns;
+    case "grafain":
+      return CodecType.Grafain;
     case "lsk":
       return CodecType.Lisk;
     case "eth":
@@ -28,7 +27,7 @@ export function codecTypeFromString(input: CodecString): CodecType {
 
 export function algorithmForCodec(codec: CodecType): Algorithm {
   switch (codec) {
-    case CodecType.Bns:
+    case CodecType.Grafain:
     case CodecType.Lisk:
       return Algorithm.Ed25519;
     case CodecType.Ethereum:
@@ -41,7 +40,7 @@ export function algorithmForCodec(codec: CodecType): Algorithm {
 export function pathBuilderForCodec(codecType: CodecType): (derivation: number) => readonly Slip10RawIndex[] {
   const pathBuilder = (derivation: number): readonly Slip10RawIndex[] => {
     switch (codecType) {
-      case CodecType.Bns:
+      case CodecType.Grafain:
         return HdPaths.iov(derivation);
       case CodecType.Lisk:
         return HdPaths.bip44Like(134, derivation);
@@ -61,12 +60,8 @@ export function chainConnector(
   scraper: string | undefined,
 ): ChainConnector {
   switch (codec) {
-    case CodecType.Bns:
-      return createBnsConnector(nodeUrl, expectedChainId);
-    case CodecType.Lisk:
-      return createLiskConnector(nodeUrl, expectedChainId);
-    case CodecType.Ethereum:
-      return createEthereumConnector(nodeUrl, { scraperApiUrl: scraper }, expectedChainId);
+    case CodecType.Grafain:
+      return createGrafainConnector(nodeUrl, expectedChainId);
     default:
       throw new Error("No connector for this codec found");
   }

@@ -1,15 +1,13 @@
 import { Address, isSendTransaction, SendTransaction, UnsignedTransaction, WithCreator } from "@iov/bcp";
 import {
-  BnsConnection,
+  GrafainConnection,
   CreateArtifactTX,
   CreateProposalTx,
   isCreateArtifactTX,
   isCreateProposalTx,
-  isRegisterUsernameTx,
   isVoteTx,
-  RegisterUsernameTx,
   VoteTx,
-} from "iov-bns";
+} from "@6uild/grafain";
 import { Bip39, Random } from "@iov/crypto";
 import { Encoding } from "@iov/encoding";
 import { UserProfile, UserProfileEncryptionKey } from "@iov/keycontrol";
@@ -46,27 +44,15 @@ function isNonNull<T>(t: T | null): t is T {
 /**
  * All transaction types that can be displayed and signed by the extension
  */
-export type SupportedTransaction = (
-  | SendTransaction
-  | CreateArtifactTX
-  | RegisterUsernameTx
-  | CreateProposalTx
-  | VoteTx) &
+export type SupportedTransaction = (SendTransaction | CreateArtifactTX | CreateProposalTx | VoteTx) &
   WithCreator;
 
 export function isSupportedTransaction(tx: UnsignedTransaction): tx is SupportedTransaction {
   console.log("1: ", isSendTransaction(tx));
   console.log("2: ", isCreateArtifactTX(tx));
-  console.log("3: ", isRegisterUsernameTx(tx));
   console.log("4: ", isCreateProposalTx(tx));
   console.log("5: ", isVoteTx(tx));
-  return (
-    isSendTransaction(tx) ||
-    isCreateArtifactTX(tx) ||
-    isRegisterUsernameTx(tx) ||
-    isCreateProposalTx(tx) ||
-    isVoteTx(tx)
-  );
+  return isSendTransaction(tx) || isCreateArtifactTX(tx) || isCreateProposalTx(tx) || isVoteTx(tx);
 }
 
 /**
@@ -269,17 +255,21 @@ export class Persona {
   public async getAccounts(): Promise<readonly PersonaAcccount[]> {
     const accounts = await this.accountManager.accounts();
 
-    const bnsConnection = this.getBnsConnection();
+    const grafainConnection = this.getGrafainConnection();
 
     return Promise.all(
       accounts.map(async (account, index) => {
-        const bnsIdentity = account.identities.find(ident => ident.chainId === bnsConnection.chainId());
-        if (!bnsIdentity) {
-          throw new Error(`Missing BNS identity for account at index ${index}`);
+        const grafainIdentity = account.identities.find(
+          ident => ident.chainId === grafainConnection.chainId(),
+        );
+        if (!grafainIdentity) {
+          throw new Error(`Missing GRAFAIN identity for account at index ${index}`);
         }
 
         let label: string;
-        const names = await bnsConnection.getUsernames({ owner: this.signer.identityToAddress(bnsIdentity) });
+        const names = await grafainConnection.getUsernames({
+          owner: this.signer.identityToAddress(grafainIdentity),
+        });
         if (names.length > 1) {
           // this case will not happen for regular users that do not professionally collect username NFTs
           label = `Multiple names`;
@@ -311,14 +301,14 @@ export class Persona {
     return filtered;
   }
 
-  private getBnsConnection(): BnsConnection {
+  private getGrafainConnection(): GrafainConnection {
     for (const chainId of this.signer.chainIds()) {
       const connection = this.signer.connection(chainId);
-      if (connection instanceof BnsConnection) {
+      if (connection instanceof GrafainConnection) {
         return connection;
       }
     }
 
-    throw new Error("No BNS connection found");
+    throw new Error("No GRAFAIN connection found");
   }
 }

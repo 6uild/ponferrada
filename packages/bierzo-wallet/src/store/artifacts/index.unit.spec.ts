@@ -25,7 +25,7 @@ withChainsDescribe("Artfifacts reducer", () => {
     expect(artfifacts).toEqual([]);
   });
 
-  it("returns empty when no bns identity key is s passed to getArtifacts function", async () => {
+  it("returns empty when no grafain identity key is s passed to getArtifacts function", async () => {
     const identities: Identity[] = [
       {
         chainId: "ethereum-eip155-5777" as ChainId,

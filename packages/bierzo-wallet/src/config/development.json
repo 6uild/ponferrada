@@ -11,9 +11,9 @@
   "chains": [
     {
       "chainSpec": {
-        "codecType": "bns",
+        "codecType": "grafain",
         "chainId": "grafain-chilinet",
-        "name": "IOV Devnet",
+        "name": "6uild chilinet",
         "node": "wss://rpc-chilinet.grafain.net:443"
       },
       "faucetSpec": {

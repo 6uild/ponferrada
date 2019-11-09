@@ -7,7 +7,7 @@ import {
   UnsignedTransaction,
   WithCreator,
 } from "@iov/bcp";
-import { CreateArtifactTX } from "iov-bns";
+import { CreateArtifactTX } from "@6uild/grafain";
 import { TransactionEncoder } from "@iov/encoding";
 import { JsonRpcRequest, makeJsonRpcId } from "@iov/jsonrpc";
 
@@ -68,7 +68,7 @@ export const generateCreateArtifactTxWithFee = async (
   checksum: string,
 ): Promise<CreateArtifactTX & WithCreator> => {
   const createArtifactTx: CreateArtifactTX & WithCreator = {
-    kind: "bns/create_artifact",
+    kind: "grafain/create_artifact",
     creator,
     image,
     checksum,

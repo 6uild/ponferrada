@@ -1,32 +1,28 @@
 import { ChainId, TxCodec } from "@iov/bcp";
-import { bnsCodec } from "iov-bns";
-import { ethereumCodec } from "@iov/ethereum";
-import { liskCodec } from "@iov/lisk";
 
 import { ChainSpec, getConfig } from "../config";
-import { isBnsSpec, isEthSpec, isLskSpec } from "./connection";
+import { isGrafainSpec } from "./connection";
+import { grafainCodec } from "@6uild/grafain";
 
 export function getCodec(spec: ChainSpec): TxCodec {
-  if (isEthSpec(spec)) {
-    return ethereumCodec;
-  }
+  console.log("++getCodec-spec:", spec);
+  if (isGrafainSpec(spec)) {
+    let grafainCodec1 = grafainCodec;
+    console.log("++getCodec-grafainCodec:", grafainCodec1);
 
-  if (isBnsSpec(spec)) {
-    return bnsCodec;
+    return grafainCodec1;
   }
-
-  if (isLskSpec(spec)) {
-    return liskCodec;
-  }
-
   throw new Error("Unsupported codecType for chain spec");
 }
 
 export async function getCodecForChainId(chainId: ChainId): Promise<TxCodec> {
   const chains = (await getConfig()).chains;
   const specificChain = chains.find(chain => chain.chainSpec.chainId === chainId);
+  console.log("++ specifiChain: ", specificChain);
   if (specificChain) {
-    return getCodec(specificChain.chainSpec);
+    let codec = getCodec(specificChain.chainSpec);
+    console.log("++ specifiChain-codec: ", codec);
+    return codec;
   }
 
   throw new Error("No codec found or no active connection for this chainId");

@@ -8,7 +8,6 @@ import {
   TokenTicker,
   WithCreator,
 } from "@iov/bcp";
-import { RegisterUsernameTx } from "iov-bns";
 import { Encoding, TransactionEncoder } from "@iov/encoding";
 import { ethereumCodec } from "@iov/ethereum";
 import { JsonRpcSuccessResponse, parseJsonRpcResponse } from "@iov/jsonrpc";
@@ -17,7 +16,6 @@ import { sleep } from "ui-logic";
 
 import Backgroundscript, { IovWindowExtension } from "../../extension/background/model/backgroundscript";
 import { Persona, PersonaAcccount, ProcessedTx } from "../../extension/background/model/persona";
-import { mockPersonaResponse } from "../../extension/background/model/persona/test/persona";
 import {
   buildGetIdentitiesRequest,
   generateSignAndPostRequest,
@@ -59,20 +57,6 @@ describe("DOM > Feature > Wallet Status", () => {
     recipient: "0x1212121212121212121212121212121212121212" as Address,
   };
 
-  const username = "test*iov";
-  const usernameTx: RegisterUsernameTx & WithCreator = {
-    kind: "bns/register_username",
-    creator: defaultCreator,
-    fee: {
-      gasLimit: "12345678",
-      gasPrice: { quantity: "20000000000", fractionalDigits: 18, tokenTicker: "ETH" as TokenTicker },
-    },
-    username,
-    targets: [
-      { chainId: "foobar" as ChainId, address: "tiov1k898u78hgs36uqw68dg7va5nfkgstu5z0fhz3f" as Address },
-    ],
-  };
-
   const txMock: ProcessedTx = {
     id: "111",
     signer: "Example Signer",
@@ -82,22 +66,8 @@ describe("DOM > Feature > Wallet Status", () => {
     error: null,
     original: sendTx,
   };
-  const usernameMock: ProcessedTx = {
-    id: "112",
-    signer: "Example Signer",
-    creator: ethereumCodec.identityToAddress(defaultCreator),
-    time: "Sat May 25 10:10:00 2019 +0200",
-    blockExplorerUrl: "www.blockexplorer.com",
-    error: null,
-    original: usernameTx,
-  };
-  const personaMock = mockPersonaResponse([accountMock], mnemonic, [txMock, usernameMock]);
 
   let walletStatusDom: React.Component;
-
-  beforeEach(async () => {
-    walletStatusDom = await travelToWallet(personaMock);
-  }, 60000);
 
   it("redirects to the Recovery Words view when link clicked in Drawer menu", async () => {
     await Drawer.clickRecoveryWords(walletStatusDom);
@@ -139,13 +109,6 @@ describe("DOM > Feature > Wallet Status", () => {
     const tx = TestUtils.scryRenderedDOMComponentsWithTag(walletStatusDom, "li")[1];
     const txTime = tx.children[1].children[1].textContent;
     expect(txTime).toBe(txMock.time);
-  }, 60000);
-
-  it("has a name registration transaction box", () => {
-    const tx = TestUtils.scryRenderedDOMComponentsWithTag(walletStatusDom, "li")[2];
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const txUsername = tx.children[1].children[0].querySelector("p:nth-of-type(2)")!.textContent;
-    expect(txUsername).toBe(username);
   }, 60000);
 });
 

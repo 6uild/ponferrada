@@ -9,7 +9,7 @@ import {
   TokenTicker,
   WithCreator,
 } from "@iov/bcp";
-import { ActionKind, bnsCodec, CreateProposalTx, RegisterUsernameTx, VoteOption, VoteTx } from "iov-bns";
+import { ActionKind, grafainCodec, CreateProposalTx, VoteOption, VoteTx } from "@6uild/grafain";
 import { Encoding } from "@iov/encoding";
 import { ethereumCodec } from "@iov/ethereum";
 
@@ -50,7 +50,7 @@ export function getCashTransaction(): SendTransaction & WithCreator {
   return {
     kind: "bcp/send",
     creator: defaultCreator,
-    sender: bnsCodec.identityToAddress(defaultCreator),
+    sender: grafainCodec.identityToAddress(defaultCreator),
     amount: defaultAmount,
     recipient: defaultAddress,
     memo: "paid transaction",
@@ -79,21 +79,9 @@ export function getEthTransaction(): SendTransaction & WithCreator {
   };
 }
 
-export function getUsernameTransaction(): RegisterUsernameTx & WithCreator {
-  return {
-    kind: "bns/register_username",
-    creator: defaultCreator,
-    username: "test*iov",
-    targets: [{ chainId: "foobar" as ChainId, address: defaultAddress }],
-    fee: {
-      tokens: defaultAmount,
-    },
-  };
-}
-
 export function getCreateTextResolutionActionTransaction(): CreateProposalTx & WithCreator {
   return {
-    kind: "bns/create_proposal",
+    kind: "grafain/create_proposal",
     creator: defaultCreator,
     fee: {
       tokens: defaultAmount,
@@ -112,7 +100,7 @@ export function getCreateTextResolutionActionTransaction(): CreateProposalTx & W
 
 export function getCreateReleaseEscrowActionTransaction(): CreateProposalTx & WithCreator {
   return {
-    kind: "bns/create_proposal",
+    kind: "grafain/create_proposal",
     creator: defaultCreator,
     fee: {
       tokens: defaultAmount,
@@ -136,7 +124,7 @@ export function getCreateReleaseEscrowActionTransaction(): CreateProposalTx & Wi
 
 export function getCreateSendActionTransaction(): CreateProposalTx & WithCreator {
   return {
-    kind: "bns/create_proposal",
+    kind: "grafain/create_proposal",
     creator: defaultCreator,
     fee: {
       tokens: defaultAmount,
@@ -162,7 +150,7 @@ export function getCreateSendActionTransaction(): CreateProposalTx & WithCreator
 
 export function getSetValidatorsActionTransaction(): CreateProposalTx & WithCreator {
   return {
-    kind: "bns/create_proposal",
+    kind: "grafain/create_proposal",
     creator: defaultCreator,
     fee: {
       tokens: defaultAmount,
@@ -186,7 +174,7 @@ export function getSetValidatorsActionTransaction(): CreateProposalTx & WithCrea
 
 export function getUpdateElectionRuleActionTransaction(): CreateProposalTx & WithCreator {
   return {
-    kind: "bns/create_proposal",
+    kind: "grafain/create_proposal",
     creator: defaultCreator,
     fee: {
       tokens: defaultAmount,
@@ -208,7 +196,7 @@ export function getUpdateElectionRuleActionTransaction(): CreateProposalTx & Wit
 
 export function getUpdateElectorateActionTransaction(): CreateProposalTx & WithCreator {
   return {
-    kind: "bns/create_proposal",
+    kind: "grafain/create_proposal",
     creator: defaultCreator,
     fee: {
       tokens: defaultAmount,
@@ -233,7 +221,7 @@ export function getUpdateElectorateActionTransaction(): CreateProposalTx & WithC
 
 export function getExecuteProposalBatchActionTransaction(): CreateProposalTx & WithCreator {
   return {
-    kind: "bns/create_proposal",
+    kind: "grafain/create_proposal",
     creator: defaultCreator,
     fee: {
       tokens: defaultAmount,
@@ -303,7 +291,7 @@ export function getExecuteProposalBatchActionTransaction(): CreateProposalTx & W
 
 export function getVoteTransaction(): VoteTx & WithCreator {
   return {
-    kind: "bns/vote",
+    kind: "grafain/vote",
     creator: defaultCreator,
     fee: {
       tokens: defaultAmount,

@@ -9,7 +9,7 @@ import {
   SignatureBytes,
   SignedTransaction,
 } from "@iov/bcp";
-import { bnsCodec } from "iov-bns";
+import { grafainCodec } from "@6uild/grafain";
 import { isJsonCompatibleDictionary, TransactionEncoder } from "@iov/encoding";
 import { JsonRpcRequest } from "@iov/jsonrpc";
 import {
@@ -22,7 +22,7 @@ import {
 import TransportWebUSB from "@ledgerhq/hw-transport-webusb";
 
 import { getConfig } from "../config";
-import { getConnectionForBns } from "../logic/connection";
+import { getConnectionForGrafain } from "../logic/connection";
 import { GetIdentitiesResponse, RpcEndpoint, SignAndPostResponse } from "./rpcEndpoint";
 
 const addressIndex = 0; // Leads to path m/44'/234'/0'
@@ -78,7 +78,7 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
 
     const ledgerChainIds = (await getConfig()).ledger.chainIds;
 
-    const bnsIdentity: Identity = {
+    const grafainIdentity: Identity = {
       chainId: (testnetApp ? ledgerChainIds.testnetBuild : ledgerChainIds.mainnetBuild) as ChainId,
       pubkey: {
         algo: Algorithm.Ed25519,
@@ -88,8 +88,8 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
 
     let out: readonly Identity[];
 
-    if (TransactionEncoder.fromJson(request.params.chainIds).includes(bnsIdentity.chainId)) {
-      out = [bnsIdentity];
+    if (TransactionEncoder.fromJson(request.params.chainIds).includes(grafainIdentity.chainId)) {
+      out = [grafainIdentity];
     } else {
       out = [];
     }
@@ -108,9 +108,9 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
       throw new Error("Invalid transaction format in RPC request to Ledger endpoint.");
     }
 
-    const bnsConnection = await getConnectionForBns();
-    const nonce = await bnsConnection.getNonce({ pubkey: transaction.creator.pubkey });
-    const { bytes } = bnsCodec.bytesToSign(transaction, nonce);
+    const grafainConnection = await getConnectionForGrafain();
+    const nonce = await grafainConnection.getNonce({ pubkey: transaction.creator.pubkey });
+    const { bytes } = grafainCodec.bytesToSign(transaction, nonce);
 
     let transport: TransportWebUSB;
     try {
@@ -142,9 +142,9 @@ export const ledgerRpcEndpoint: RpcEndpoint = {
       otherSignatures: [],
     };
 
-    const transactionId = bnsCodec.identifier(signedTransaction);
+    const transactionId = grafainCodec.identifier(signedTransaction);
 
-    await bnsConnection.postTx(bnsCodec.bytesToPost(signedTransaction));
+    await grafainConnection.postTx(grafainCodec.bytesToPost(signedTransaction));
 
     return transactionId;
   },

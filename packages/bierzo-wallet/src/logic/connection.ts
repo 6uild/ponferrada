@@ -1,5 +1,5 @@
 import { BlockchainConnection, ChainId } from "@iov/bcp";
-import { BnsConnection, createBnsConnector } from "iov-bns";
+import { GrafainConnection, createGrafainConnector } from "@6uild/grafain";
 import { createEthereumConnector, EthereumConnectionOptions } from "@iov/ethereum";
 import { createLiskConnector } from "@iov/lisk";
 
@@ -18,9 +18,9 @@ async function establishEthereumConnection(
   }
 }
 
-async function establishBnsConnection(url: string, chainId: ChainId): Promise<void> {
+async function establishGrafainConnection(url: string, chainId: ChainId): Promise<void> {
   if (!connections.has(chainId)) {
-    const connector = createBnsConnector(url, chainId);
+    const connector = createGrafainConnector(url, chainId);
     connections.set(chainId, await connector.establishConnection());
   }
 }
@@ -32,8 +32,8 @@ async function establishLiskConnection(url: string, chainId: ChainId): Promise<v
   }
 }
 
-export function isBnsSpec(spec: ChainSpec): boolean {
-  return spec.codecType === "bns";
+export function isGrafainSpec(spec: ChainSpec): boolean {
+  return spec.codecType === "grafain";
 }
 
 export function isLskSpec(spec: ChainSpec): boolean {
@@ -50,8 +50,8 @@ export async function establishConnection(spec: ChainSpec): Promise<void> {
       scraperApiUrl: spec.scraper,
     });
   }
-  if (isBnsSpec(spec)) {
-    return await establishBnsConnection(spec.node, spec.chainId as ChainId);
+  if (isGrafainSpec(spec)) {
+    return await establishGrafainConnection(spec.node, spec.chainId as ChainId);
   }
   if (isLskSpec(spec)) {
     return await establishLiskConnection(spec.node, spec.chainId as ChainId);
@@ -68,14 +68,14 @@ export function getConnectionForChainId(chainId: ChainId): BlockchainConnection 
   return connections.get(chainId);
 }
 
-export async function getConnectionForBns(): Promise<BnsConnection> {
+export async function getConnectionForGrafain(): Promise<GrafainConnection> {
   const chains = (await getConfig()).chains;
-  const bnsChain = chains.find(chain => isBnsSpec(chain.chainSpec));
-  if (bnsChain) {
-    return getConnectionForChainId(bnsChain.chainSpec.chainId as ChainId) as BnsConnection;
+  const grafainChain = chains.find(chain => isGrafainSpec(chain.chainSpec));
+  if (grafainChain) {
+    return getConnectionForChainId(grafainChain.chainSpec.chainId as ChainId) as GrafainConnection;
   }
 
-  throw new Error("No connection found for BNS chain");
+  throw new Error("No connection found for GRAFAIN chain");
 }
 
 /**

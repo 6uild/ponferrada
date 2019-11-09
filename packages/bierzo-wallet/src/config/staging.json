@@ -11,7 +11,7 @@
   "chains": [
     {
       "chainSpec": {
-        "codecType": "bns",
+        "codecType": "grafain",
         "chainId": "iov-clapnet",
         "name": "IOV Clapnet",
         "node": "wss://rpc-private-a-vip2-clapnet.iov.one/"

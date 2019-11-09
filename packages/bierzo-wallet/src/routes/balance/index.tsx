@@ -14,7 +14,7 @@ function onRegisterUsername(): void {
 
 const Balance = (): JSX.Element => {
   const tokens = ReactRedux.useSelector((state: RootState) => state.balances);
-  // const bnsUsername = ReactRedux.useSelector(getFirstArtifact);
+  // const grafainUsername = ReactRedux.useSelector(getFirstArtifact);
   const rpcEndpointType = ReactRedux.useSelector(getRpcEndpointType);
   const iovAddress = undefined;
 

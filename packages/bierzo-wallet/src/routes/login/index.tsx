@@ -14,7 +14,6 @@ import NeumaBillboardMessage from "../../components/BillboardMessage/NeumaBillbo
 import { getConfig, makeExtendedIdentities } from "../../config";
 import { subscribeBalance } from "../../logic/balances";
 import { establishConnection } from "../../logic/connection";
-import { drinkFaucetIfNeeded } from "../../logic/faucet";
 import { subscribeTransaction } from "../../logic/transactions";
 import { addBalancesAction, getBalances } from "../../store/balances";
 import { setIdentities } from "../../store/identities";
@@ -43,8 +42,6 @@ export const loginBootSequence = async (
 
   // Do not block the use of the wallet just because the faucet might take
   // some time send tokens
-  drinkFaucetIfNeeded(identities).catch(console.error);
-
   const balances = await getBalances(identities);
   dispatch(addBalancesAction(balances));
 

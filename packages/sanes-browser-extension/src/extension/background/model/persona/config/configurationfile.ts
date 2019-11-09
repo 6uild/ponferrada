@@ -1,7 +1,7 @@
 import { ChainId } from "@iov/bcp";
 import { singleton } from "ui-logic";
 
-export type CodecString = "bns" | "lsk" | "eth";
+export type CodecString = "grafain" | "lsk" | "eth";
 
 export interface ChainSpec {
   readonly codecType: CodecString;

@@ -25,12 +25,12 @@ const balancesAmount: DeepPartial<BalanceState> = {
   },
 };
 
-const bnsChainId = "local-iov-devnet" as ChainId;
+const grafainChainId = "local-iov-devnet" as ChainId;
 const identities = new Map([
   [
-    bnsChainId,
+    grafainChainId,
     {
-      chainId: bnsChainId,
+      chainId: grafainChainId,
       pubkey: {
         algo: Algorithm.Ed25519,
         data: Encoding.fromHex("aabbccdd") as PubkeyBytes,

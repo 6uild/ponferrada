@@ -53,7 +53,6 @@ export const extensionRpcEndpoint: RpcEndpoint = {
           resolve(undefined);
           return;
         }
-
         try {
           const identities = parseGetIdentitiesResponse(response);
           resolve(identities);
