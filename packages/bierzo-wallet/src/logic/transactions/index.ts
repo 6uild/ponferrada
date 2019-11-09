@@ -33,7 +33,7 @@ export async function subscribeTransaction(
     const address = codec.identityToAddress(identity);
 
     // subscribe to balance changes via
-    const subscription = connection.liveTx({ sentFromOrTo: address }).subscribe({
+    const subscription = connection.liveTx({ signedBy: address }).subscribe({
       next: async tx => {
         const bwTransaction = BwParserFactory.getBwTransactionFrom(tx);
         const parsedTx = await bwTransaction.parse(connection, tx, address);

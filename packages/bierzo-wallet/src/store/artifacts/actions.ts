@@ -8,11 +8,8 @@ export async function getArtifacts(identities: readonly Identity[]): Promise<rea
 
   const grafainIdentity = identities.find(ident => ident.chainId === grafainConnection.chainId());
   if (!grafainIdentity) {
-    console.log("not grafainIdentity! No artifacts");
     return [];
   }
-
-  console.log("ja, grafainIdentity");
 
   // const grafainAddress = grafainCodec.identityToAddress(grafainIdentity);
   // const artifacts = await grafainConnection.getArtifacts({ owner: grafainAddress });

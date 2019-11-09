@@ -95,11 +95,9 @@ export async function getChainName(chainId: ChainId): Promise<string> {
 export async function makeExtendedIdentities(
   identities: readonly Identity[],
 ): Promise<Map<ChainId, ExtendedIdentity>> {
-  console.log("++identities: ", identities);
   const out = new Map<ChainId, ExtendedIdentity>();
   for (const identity of identities) {
     let txCodec = await getCodecForChainId(identity.chainId);
-    console.log("++codec: ", txCodec);
     let address = "undefined" as Address;
     if (txCodec !== undefined) {
       address = txCodec.identityToAddress(identity);
