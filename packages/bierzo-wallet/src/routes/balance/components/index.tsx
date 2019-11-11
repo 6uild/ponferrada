@@ -7,7 +7,6 @@ import { amountToString } from "ui-logic";
 
 import { RpcEndpointType } from "../../../communication/rpcEndpoint";
 import PageContent from "../../../components/PageContent";
-import { GetYourAddress } from "../../artifacts/components/StarnamesNotExists";
 import wallet from "../assets/wallet.svg";
 
 const walletIcon = <Image src={wallet} alt="wallet ico" />;
@@ -37,9 +36,7 @@ const BalanceLayout = ({ iovAddress, balances, onRegisterUsername, rpcEndpointTy
           borderRadius={5}
           textAlign="center"
           border="1px solid #F3F3F3"
-        >
-          <GetYourAddress onRegisterUsername={onRegisterUsername} rpcEndpointType={rpcEndpointType} />
-        </Block>
+        ></Block>
       )}
       <Block margin={2} />
       <PageContent icon={walletIcon} width={450} avatarColor={primaryColor}>

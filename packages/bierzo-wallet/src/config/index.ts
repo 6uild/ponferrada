@@ -7,7 +7,7 @@ import developmentConfig from "./development.json";
 
 export interface Config {
   readonly extensionId: string;
-  readonly neumaUrl: string;
+  readonly extensionHomeUrl: string;
   readonly ledger: {
     readonly chainIds: {
       readonly testnetBuild: string;

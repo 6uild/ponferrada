@@ -63,9 +63,9 @@ function webUsbAvailable(): boolean {
   return typeof nav !== "undefined" && typeof nav.usb !== "undefined";
 }
 
-async function onGetNeumaExtension(): Promise<void> {
+async function onGetBrowserExtension(): Promise<void> {
   const config = await getConfig();
-  window.open(config.neumaUrl, "_blank");
+  window.open(config.extensionHomeUrl, "_blank");
 }
 
 const Login = (): JSX.Element => {
@@ -73,7 +73,7 @@ const Login = (): JSX.Element => {
   const toast = React.useContext(ToastContext);
   const dispatch = ReactRedux.useDispatch();
 
-  const onLoginWithNeuma = async (): Promise<void> => {
+  const onLoginWithExtension = async (): Promise<void> => {
     try {
       billboard.show(
         <NeumaBillboardMessage text={extensionRpcEndpoint.authorizeGetIdentitiesMessage} />,
@@ -133,9 +133,9 @@ const Login = (): JSX.Element => {
 
   return (
     <PageColumn
-      onLoginWithNeuma={onLoginWithNeuma}
+      onLoginWithExtension={onLoginWithExtension}
       onLoginWithLedger={onLoginWithLedger}
-      onGetNeumaExtension={onGetNeumaExtension}
+      onGetExtension={onGetBrowserExtension}
     />
   );
 };

@@ -6,6 +6,7 @@ import { PersonaContext } from "../../context/PersonaProvider";
 import { getConfigurationFile } from "../../extension/background/model/persona/config";
 import { history } from "../../utils/history";
 import { CREATE_WALLET_ROUTE, RESTORE_WALLET, UNLOCK_ROUTE, WELCOME_ROUTE } from "../paths";
+import { extensionName } from "../../theme/variables";
 
 export const UNLOCK_WALLET_ID = "welcome-unlock-wallet";
 export const CREATE_WALLET_ID = "welcome-create-wallet";

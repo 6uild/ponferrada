@@ -4,17 +4,17 @@ import useTheme from "@material-ui/styles/useTheme";
 import { Block, Button, contrast, Image, primaryColor, Typography } from "medulas-react-components";
 import React from "react";
 
-import { extensionName } from "../../../theme/variables";
+import { extensionName, projectName } from "../../../theme/variables";
 import ledgerIcon from "../assets/ledger.svg";
-import neumaIcon from "../assets/neuma.svg";
-import neumaWalletLogo from "../assets/neumaWalletLogo.svg";
+import extensionIcon from "../assets/extensionIcon.svg";
+import extensionLogo from "../assets/extensionLogo.svg";
 import SubtitleSection from "./SubtitleSection";
 import TitleSection from "./TitleSection";
 
 interface Props {
-  readonly onLoginWithNeuma: () => void;
+  readonly onLoginWithExtension: () => void;
   readonly onLoginWithLedger: () => void;
-  readonly onGetNeumaExtension: () => void;
+  readonly onGetExtension: () => void;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -36,17 +36,21 @@ const useStyles = makeStyles((theme: Theme) => ({
     boxShadow: "0px 2px 8px rgba(237, 239, 244, 0.5)",
     borderRadius: 5,
   },
+  ledgerDisabled: {
+    textDecorationLine: "line-through",
+    textDecorationStyle: "solid",
+  },
 }));
 
-function NeumaIcon(): JSX.Element {
-  return <Image src={neumaIcon} alt="Extension login icon" />;
+function ExtensionIcon(): JSX.Element {
+  return <Image src={extensionIcon} alt="Extension login icon" />;
 }
 
 function LedgerIcon(): JSX.Element {
   return <Image src={ledgerIcon} alt="Ledger login icon" />;
 }
 
-const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }: Props): JSX.Element => {
+const PageColumn = ({ onLoginWithExtension, onLoginWithLedger, onGetExtension }: Props): JSX.Element => {
   const classes = useStyles();
   const theme = useTheme<Theme>();
 
@@ -100,7 +104,7 @@ const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }
           borderRadius={30}
           className={classes.rect3}
         ></Block>
-        <Image src={neumaWalletLogo} alt="Extension logo" />
+        <Image src={extensionLogo} alt="Extension logo" />
       </Block>
       <Block flexGrow={1} display="flex" alignItems="center" justifyContent="center">
         <Block
@@ -110,17 +114,24 @@ const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }
           padding={5}
           textAlign="center"
         >
-          <TitleSection primaryTitle="Welcome" secondaryTitle={`to your ${extensionName} wallet`} />
+          <TitleSection primaryTitle="Welcome" secondaryTitle={`to the ${projectName}`} />
           <SubtitleSection>
-            {`To access the wallet please authenticate using ${extensionName} Browser Extension or Ledger Nano S`}
+            {`To access the app please authenticate using ${extensionName} Browser Extension or Ledger Nano S`}
           </SubtitleSection>
           <Block marginBottom={2}>
-            <Button fullWidth onClick={onLoginWithNeuma} startIcon={<NeumaIcon />}>
+            <Button fullWidth onClick={onLoginWithExtension} startIcon={<ExtensionIcon />}>
               {`Continue with ${extensionName} Browser Extension`}
             </Button>
           </Block>
           <Block marginBottom={4}>
-            <Button fullWidth color="inverted" onClick={onLoginWithLedger} startIcon={<LedgerIcon />}>
+            <Button
+              fullWidth
+              color="inverted"
+              onClick={onLoginWithLedger}
+              startIcon={<LedgerIcon />}
+              disabled={true}
+              className={classes.ledgerDisabled}
+            >
               Continue with Ledger Nano S
             </Button>
           </Block>
@@ -132,7 +143,7 @@ const PageColumn = ({ onLoginWithNeuma, onLoginWithLedger, onGetNeumaExtension }
           <Button
             fullWidth
             variant="text"
-            onClick={onGetNeumaExtension}
+            onClick={onGetExtension}
             endIcon={<ArrowForwardIcon fontSize="small" />}
           >
             Get {extensionName} Browser Extension

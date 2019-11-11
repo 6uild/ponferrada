@@ -18,10 +18,9 @@ import { amountToString } from "ui-logic";
 
 import { AddressesTableProps } from "../../../components/AddressesTable";
 import PageContent from "../../../components/PageContent";
-import { companyName } from "../../../theme/variables";
 import shield from "../assets/shield.svg";
 
-export const REGISTER_USERNAME_VIEW_ID = "register-username-view-id";
+export const REGISTER_ARTIFACT_VIEW_ID = "register-artifact-view-id";
 export const REGISTER_IMAGE_FIELD = "register-image-field";
 export const REGISTER_CHECKSUM_FIELD = "register-checksum-field";
 
@@ -93,7 +92,7 @@ interface Props extends AddressesTableProps {
   readonly transactionFee: Fee | undefined;
 }
 
-const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }: Props): JSX.Element => {
+const Layout = ({ validate, onSubmit, onCancel, transactionFee }: Props): JSX.Element => {
   const { form, handleSubmit, invalid, pristine, submitting, validating } = useForm({
     onSubmit,
     validate,
@@ -128,7 +127,7 @@ const Layout = ({ chainAddresses, validate, onSubmit, onCancel, transactionFee }
 
   return (
     <Form onSubmit={handleSubmit}>
-      <PageContent id={REGISTER_USERNAME_VIEW_ID} icon={registerIcon} buttons={buttons} avatarColor="#31E6C9">
+      <PageContent id={REGISTER_ARTIFACT_VIEW_ID} icon={registerIcon} buttons={buttons} avatarColor="#31E6C9">
         <Block textAlign="left">
           <Block display="flex" justifyContent="space-between" marginBottom={1}>
             <Typography variant="subtitle2" weight="semibold">

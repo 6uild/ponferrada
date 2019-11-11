@@ -1,6 +1,6 @@
 {
-  "extensionId": "dafekhlcpidfaopcimocbcpciholgkkb",
-  "neumaUrl": "https://grafain.net/",
+  "extensionId": "ahebjlhiimjbogncehongdlglampaefb",
+  "extensionHomeUrl": "https://grafain.net/",
   "ledger": {
     "chainIds": {
       "testnetBuild": "local-iov-devnet",
