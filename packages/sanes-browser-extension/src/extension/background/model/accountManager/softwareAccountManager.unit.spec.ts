@@ -1,7 +1,7 @@
 import { Algorithm, ChainId } from "@iov/bcp";
 import { HdPaths } from "@iov/keycontrol";
 
-import { createTwoWalletProfile } from "../persona/userprofilehelpers";
+import { createTwoKeyringProfile } from "../persona/userprofilehelpers";
 import { SoftwareAccountManager, SoftwareAccountManagerChainConfig } from "./softwareAccountManager";
 
 describe("SoftwareAccountManager", () => {
@@ -20,14 +20,14 @@ describe("SoftwareAccountManager", () => {
   };
 
   it("can be created", async () => {
-    const userProfile = createTwoWalletProfile(defaultMnemonic);
+    const userProfile = createTwoKeyringProfile(defaultMnemonic);
     const manager = new SoftwareAccountManager(userProfile, []);
     expect(manager).toBeTruthy();
   });
 
   describe("accounts", () => {
     it("returns an empty list of accounts by default", async () => {
-      const userProfile = createTwoWalletProfile(defaultMnemonic);
+      const userProfile = createTwoKeyringProfile(defaultMnemonic);
       const manager = new SoftwareAccountManager(userProfile, []);
       expect(await manager.accounts()).toEqual([]);
     });
@@ -35,14 +35,14 @@ describe("SoftwareAccountManager", () => {
 
   describe("generateNextAccount", () => {
     it("does not change accounts for empty chains list", async () => {
-      const userProfile = createTwoWalletProfile(defaultMnemonic);
+      const userProfile = createTwoKeyringProfile(defaultMnemonic);
       const manager = new SoftwareAccountManager(userProfile, []);
       await manager.generateNextAccount();
       expect(await manager.accounts()).toEqual([]);
     });
 
     it("generates one account with one identity when chains list has one element", async () => {
-      const userProfile = createTwoWalletProfile(defaultMnemonic);
+      const userProfile = createTwoKeyringProfile(defaultMnemonic);
       const manager = new SoftwareAccountManager(userProfile, [chain1]);
       await manager.generateNextAccount();
       const accounts = await manager.accounts();
@@ -54,7 +54,7 @@ describe("SoftwareAccountManager", () => {
     });
 
     it("generates one account with two identities when chains list has two elements", async () => {
-      const userProfile = createTwoWalletProfile(defaultMnemonic);
+      const userProfile = createTwoKeyringProfile(defaultMnemonic);
       const manager = new SoftwareAccountManager(userProfile, [chain1, chain2]);
       await manager.generateNextAccount();
       const accounts = await manager.accounts();
@@ -66,7 +66,7 @@ describe("SoftwareAccountManager", () => {
     });
 
     it("can be used multiple times", async () => {
-      const userProfile = createTwoWalletProfile(defaultMnemonic);
+      const userProfile = createTwoKeyringProfile(defaultMnemonic);
       const manager = new SoftwareAccountManager(userProfile, [chain1]);
       await manager.generateNextAccount();
       await manager.generateNextAccount();

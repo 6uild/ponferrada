@@ -6,7 +6,7 @@ import NeumaPageLayout from "../../components/NeumaPageLayout";
 import { RequestContext } from "../../context/RequestProvider";
 import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
 import { history } from "../../utils/history";
-import { REQUEST_ROUTE, WALLET_STATUS_ROUTE } from "../paths";
+import { KEYRING_STATUS_ROUTE, REQUEST_ROUTE } from "../paths";
 import RequestList, { REQUEST_FIELD } from "./components/RequestList";
 
 function getIdFrom(location: Location): number | undefined {
@@ -32,7 +32,7 @@ const Requests = (): JSX.Element => {
   const hasRequests = requests.length > 0;
 
   const onBack = (): void => {
-    history.push(WALLET_STATUS_ROUTE);
+    history.push(KEYRING_STATUS_ROUTE);
   };
 
   return (

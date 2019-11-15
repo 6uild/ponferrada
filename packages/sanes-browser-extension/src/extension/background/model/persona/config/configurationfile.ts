@@ -22,8 +22,8 @@ export interface BlockExplorers {
 export interface ConfigurationFile {
   readonly chains: ChainConfig[];
   readonly blockExplorers: BlockExplorers;
-  /** If set to true, wallet creation is disabled. Unsets is interpreted as false. */
-  readonly walletCreationDisabled?: boolean;
+  /** If set to true, keyring creation is disabled. Unsets is interpreted as false. */
+  readonly keyringCreationDisabled?: boolean;
   /** If set to true, account creation is disabled. Unsets is interpreted as false. */
   readonly accountCreationDisabled?: boolean;
 }

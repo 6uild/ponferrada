@@ -1,13 +1,13 @@
-import { Address, isSendTransaction, SendTransaction, UnsignedTransaction, WithCreator } from "@iov/bcp";
 import {
-  GrafainConnection,
   CreateArtifactTX,
   CreateProposalTx,
+  GrafainConnection,
   isCreateArtifactTX,
   isCreateProposalTx,
   isVoteTx,
   VoteTx,
 } from "@6uild/grafain";
+import { Address, isSendTransaction, SendTransaction, UnsignedTransaction, WithCreator } from "@iov/bcp";
 import { Bip39, Random } from "@iov/crypto";
 import { Encoding } from "@iov/encoding";
 import { UserProfile, UserProfileEncryptionKey } from "@iov/keycontrol";
@@ -35,7 +35,7 @@ import {
   getConfigurationFile,
   pathBuilderForCodec,
 } from "./config";
-import { createTwoWalletProfile } from "./userprofilehelpers";
+import { createTwoKeyringProfile } from "./userprofilehelpers";
 
 function isNonNull<T>(t: T | null): t is T {
   return t !== null;
@@ -116,7 +116,7 @@ export class Persona {
 
     const entropyBytes = 16;
     const mnemonic = fixedMnemonic || Bip39.encode(await Random.getBytes(entropyBytes)).toString();
-    const profile = createTwoWalletProfile(mnemonic);
+    const profile = createTwoKeyringProfile(mnemonic);
     const signer = new MultiChainSigner(profile);
     const managerChains = await Persona.connectToAllConfiguredChains(signer);
     const manager = new SoftwareAccountManager(profile, managerChains);
@@ -281,11 +281,11 @@ export class Persona {
   }
 
   public get mnemonic(): string {
-    const wallets = this.profile.wallets.value;
-    const mnemonics = new Set(wallets.map(info => this.profile.printableSecret(info.id)));
+    const keyrings = this.profile.wallets.value;
+    const mnemonics = new Set(keyrings.map(info => this.profile.printableSecret(info.id)));
 
     if (mnemonics.size !== 1) {
-      throw new Error("Found multiple different mnemoics in different wallets. This is not supported.");
+      throw new Error("Found multiple different mnemoics in different keyrings. This is not supported.");
     }
 
     return mnemonics.values().next().value;

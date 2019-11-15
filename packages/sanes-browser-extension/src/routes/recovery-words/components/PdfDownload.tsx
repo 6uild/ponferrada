@@ -13,7 +13,7 @@ const PdfDownload = ({ mnemonic }: Props): JSX.Element => {
 
     pdf.createHeader([
       "Your Recovery Words are 12 random words that are set in a particular order that acts as a",
-      "tool to recover or back up your wallet on any platform.",
+      "tool to recover or back up your keyring on any platform.",
       "",
       "Your recovery words:",
     ]);

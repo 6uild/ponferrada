@@ -1,13 +1,13 @@
-import { isSendTransaction } from "@iov/bcp";
 import { isCreateArtifactTX, isCreateProposalTx, isVoteTx } from "@6uild/grafain";
+import { isSendTransaction } from "@iov/bcp";
 import { Block, Button, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import NeumaPageLayout from "../../../../components/NeumaPageLayout";
 import { SupportedTransaction } from "../../../../extension/background/model/persona";
 import { TX_REQUEST } from "../../../paths";
-import ReqCreateProposalTx from "./ReqCreateProposalTx";
 import ReqCreateArtifactTx from "./ReqCreateArtifactTx";
+import ReqCreateProposalTx from "./ReqCreateProposalTx";
 import ReqSendTransaction from "./ReqSendTransaction";
 import ReqVoteTx from "./ReqVoteTx";
 

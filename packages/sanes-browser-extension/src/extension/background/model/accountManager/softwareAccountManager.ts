@@ -58,11 +58,11 @@ export class SoftwareAccountManager implements AccountManager {
     for (const chain of this.chains) {
       const { chainId, algorithm, derivePath } = chain;
       const path = derivePath(derivation);
-      const wallet = this.walletForAlgorithm(algorithm);
-      const identityCreated = await this.userProfile.identityExists(wallet, chainId, path);
+      const keyring = this.keyringForAlgorithm(algorithm);
+      const identityCreated = await this.userProfile.identityExists(keyring, chainId, path);
 
       if (!identityCreated) {
-        const identity = await this.userProfile.createIdentity(wallet, chainId, path);
+        const identity = await this.userProfile.createIdentity(keyring, chainId, path);
         await this.userProfile.setIdentityLabel(identity, `${derivation}`);
       }
     }
@@ -78,11 +78,11 @@ export class SoftwareAccountManager implements AccountManager {
     if (!firstChain) {
       return 0;
     }
-    const firstWallet = this.walletForAlgorithm(firstChain.algorithm);
+    const firstKeyring = this.keyringForAlgorithm(firstChain.algorithm);
 
     for (let i = 0; ; i++) {
       const path = firstChain.derivePath(i);
-      const existsAccount = await this.userProfile.identityExists(firstWallet, firstChain.chainId, path);
+      const existsAccount = await this.userProfile.identityExists(firstKeyring, firstChain.chainId, path);
 
       if (!existsAccount) {
         return i;
@@ -90,8 +90,8 @@ export class SoftwareAccountManager implements AccountManager {
     }
   }
 
-  private walletForAlgorithm(algorithm: Algorithm): WalletId {
-    const [edWallet, secpWallet] = this.userProfile.wallets.value.map(x => x.id);
-    return algorithm === Algorithm.Ed25519 ? edWallet : secpWallet;
+  private keyringForAlgorithm(algorithm: Algorithm): WalletId {
+    const [edKeyring, secpKeyring] = this.userProfile.wallets.value.map(x => x.id);
+    return algorithm === Algorithm.Ed25519 ? edKeyring : secpKeyring;
   }
 }

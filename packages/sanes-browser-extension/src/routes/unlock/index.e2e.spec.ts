@@ -12,12 +12,12 @@ import {
 import { findRenderedE2EComponentWithId } from "../../utils/test/reactElemFinder";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import {
-  submitNewWalletE2E,
+  submitNewKeyringE2E,
   submitSecurityHintE2E,
   submitShowWordsE2E,
-  travelToCreateWalletNewWalletStep,
-} from "../create-wallet/test/operateCreateWallet";
-import { UNLOCK_ROUTE, WALLET_STATUS_ROUTE } from "../paths";
+  travelToCreateKeyringNewKeyringStep,
+} from "../create-keyring/test/operateCreateKeyring";
+import { KEYRING_STATUS_ROUTE, UNLOCK_ROUTE } from "../paths";
 import { submitE2EUnlockForm } from "./test/submitUnlockForm";
 
 withChainsDescribe("DOM > Unlock route", (): void => {
@@ -38,16 +38,16 @@ withChainsDescribe("DOM > Unlock route", (): void => {
   );
 
   it("should redirect to unlock route after browser restart", async (): Promise<void> => {
-    await travelToCreateWalletNewWalletStep(page);
+    await travelToCreateKeyringNewKeyringStep(page);
     const password = randomString(10);
-    await submitNewWalletE2E(page, randomString(10), password);
+    await submitNewKeyringE2E(page, randomString(10), password);
     await submitShowWordsE2E(page);
     await submitSecurityHintE2E(page, randomString(10));
     // Simulating reload
     await page.goto(`chrome-extension://${EXTENSION_ID}/index.html`, {
       waitUntil: "networkidle2",
     });
-    await findRenderedE2EComponentWithId(page, WALLET_STATUS_ROUTE);
+    await findRenderedE2EComponentWithId(page, KEYRING_STATUS_ROUTE);
 
     await bgPage.evaluate((): void => {
       (window as IovWindowExtension).clearPersona();
@@ -59,6 +59,6 @@ withChainsDescribe("DOM > Unlock route", (): void => {
     });
     await findRenderedE2EComponentWithId(page, UNLOCK_ROUTE);
     await submitE2EUnlockForm(page, password);
-    await findRenderedE2EComponentWithId(page, WALLET_STATUS_ROUTE);
+    await findRenderedE2EComponentWithId(page, KEYRING_STATUS_ROUTE);
   }, 45000);
 });

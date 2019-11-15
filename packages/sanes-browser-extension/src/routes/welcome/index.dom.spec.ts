@@ -2,19 +2,19 @@ import TestUtils from "react-dom/test-utils";
 
 import { click } from "../../utils/test/dom";
 import { travelToWelcome, whenOnNavigatedToRoute } from "../../utils/test/navigation";
-import { CREATE_WALLET_ROUTE, RESTORE_WALLET, UNLOCK_ROUTE } from "../paths";
+import { CREATE_KEYRING_ROUTE, RESTORE_KEYRING, UNLOCK_ROUTE } from "../paths";
 
 describe("DOM > Feature > Welcome", () => {
   let welcomeDom: React.Component;
   let buttons: Element[];
   let unlockButton: Element;
-  let newWalletButton: Element;
+  let newKeyringButton: Element;
   let importAccountButton: Element;
 
   beforeEach(async () => {
     welcomeDom = await travelToWelcome(true);
     buttons = TestUtils.scryRenderedDOMComponentsWithTag(welcomeDom, "button");
-    [unlockButton, newWalletButton, importAccountButton] = buttons;
+    [unlockButton, newKeyringButton, importAccountButton] = buttons;
   }, 60000);
 
   it("has three buttons", () => {
@@ -33,15 +33,15 @@ describe("DOM > Feature > Welcome", () => {
     await whenOnNavigatedToRoute(UNLOCK_ROUTE);
   }, 60000);
 
-  it('has a "Create Wallet" button that redirects to the Sign Up view when clicked', async () => {
-    expect(newWalletButton.textContent).toBe("Create Wallet");
-    click(newWalletButton);
-    await whenOnNavigatedToRoute(CREATE_WALLET_ROUTE);
+  it('has a "Create Keyring" button that redirects to the Sign Up view when clicked', async () => {
+    expect(newKeyringButton.textContent).toBe("Create Keyring");
+    click(newKeyringButton);
+    await whenOnNavigatedToRoute(CREATE_KEYRING_ROUTE);
   }, 60000);
 
-  it('has an "Import Wallet" button that redirects to the Restore Wallet view when clicked', async () => {
-    expect(importAccountButton.textContent).toBe("Import Wallet");
+  it('has an "Import Keyring" button that redirects to the Restore Keyring view when clicked', async () => {
+    expect(importAccountButton.textContent).toBe("Import Keyring");
     click(importAccountButton);
-    await whenOnNavigatedToRoute(RESTORE_WALLET);
+    await whenOnNavigatedToRoute(RESTORE_KEYRING);
   }, 60000);
 });

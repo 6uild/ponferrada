@@ -5,12 +5,12 @@ import {
   mockCreatePersona,
   mockLoadPersona,
   mockPersonaResponse,
-  processCreateWallet,
+  processCreateKeyring,
 } from "../../extension/background/model/persona/test/persona";
 import { click, input, submit } from "../../utils/test/dom";
 import { travelToUnlock, whenOnNavigatedToRoute } from "../../utils/test/navigation";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
-import { RESTORE_WALLET, WALLET_STATUS_ROUTE, WELCOME_ROUTE } from "../paths";
+import { KEYRING_STATUS_ROUTE, RESTORE_KEYRING, WELCOME_ROUTE } from "../paths";
 import { getPasswordValidity, isButtonDisabled } from "./test/operateUnlock";
 
 describe("DOM > Feature > Unlock", () => {
@@ -57,7 +57,7 @@ describe("DOM > Feature > Unlock", () => {
     const personaMock = mockPersonaResponse([], mnemonic, []);
 
     mockCreatePersona(personaMock);
-    await processCreateWallet(undefined, password);
+    await processCreateKeyring(undefined, password);
     unlockDom = await travelToUnlock();
 
     continueButton = TestUtils.scryRenderedDOMComponentsWithTag(unlockDom, "button")[1];
@@ -72,7 +72,7 @@ describe("DOM > Feature > Unlock", () => {
 
     mockLoadPersona(personaMock);
     await submit(continueButton);
-    await whenOnNavigatedToRoute(WALLET_STATUS_ROUTE);
+    await whenOnNavigatedToRoute(KEYRING_STATUS_ROUTE);
   }, 60000);
 
   it('shows "Error during unlock" toast message if unlock unsuccessful', async () => {
@@ -82,9 +82,9 @@ describe("DOM > Feature > Unlock", () => {
     expect(toast.textContent).toBe("Error during unlock");
   }, 60000);
 
-  it('has a "Restore wallet" link that redirects to the Restore Wallet view when clicked', async () => {
-    expect(restoreAccountLink.textContent).toBe("Restore wallet");
+  it('has a "Restore keyring" link that redirects to the Restore Keyring view when clicked', async () => {
+    expect(restoreAccountLink.textContent).toBe("Restore keyring");
     await click(restoreAccountLink);
-    await whenOnNavigatedToRoute(RESTORE_WALLET);
+    await whenOnNavigatedToRoute(RESTORE_KEYRING);
   }, 60000);
 });

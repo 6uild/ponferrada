@@ -4,36 +4,36 @@ import * as React from "react";
 import NeumaPageLayout from "../../components/NeumaPageLayout";
 import { PersonaContext } from "../../context/PersonaProvider";
 import { getConfigurationFile } from "../../extension/background/model/persona/config";
-import { history } from "../../utils/history";
-import { CREATE_WALLET_ROUTE, RESTORE_WALLET, UNLOCK_ROUTE, WELCOME_ROUTE } from "../paths";
 import { extensionName } from "../../theme/variables";
+import { history } from "../../utils/history";
+import { CREATE_KEYRING_ROUTE, RESTORE_KEYRING, UNLOCK_ROUTE, WELCOME_ROUTE } from "../paths";
 
-export const UNLOCK_WALLET_ID = "welcome-unlock-wallet";
-export const CREATE_WALLET_ID = "welcome-create-wallet";
-export const IMPORT_WALLET_ID = "welcome-import-wallet";
+export const UNLOCK_KEYRING_ID = "welcome-unlock-keyring";
+export const CREATE_KEYRING_ID = "welcome-create-keyring";
+export const IMPORT_KEYRING_ID = "welcome-import-keyring";
 
 const Welcome = (): JSX.Element => {
   const personaProvider = React.useContext(PersonaContext);
   const toast = React.useContext(ToastContext);
 
-  const createNewWallet = async (): Promise<void> => {
-    if ((await getConfigurationFile()).walletCreationDisabled) {
+  const createNewKeyring = async (): Promise<void> => {
+    if ((await getConfigurationFile()).keyringCreationDisabled) {
       toast.show(
-        "Please use an external address generator and import the Wallet using your mnemonic.",
+        "Please use an external address generator and import the Keyring using your mnemonic.",
         ToastVariant.INFO,
       );
       return;
     }
 
-    history.push(CREATE_WALLET_ROUTE);
+    history.push(CREATE_KEYRING_ROUTE);
   };
 
   const unlock = (): void => {
     history.push(UNLOCK_ROUTE);
   };
 
-  const importWallet = (): void => {
-    history.push(RESTORE_WALLET);
+  const importKeyring = (): void => {
+    history.push(RESTORE_KEYRING);
   };
 
   return (
@@ -43,17 +43,17 @@ const Welcome = (): JSX.Element => {
       </Typography>
       <Block marginTop={2} />
       {personaProvider.hasStoredPersona && (
-        <Button variant="contained" fullWidth onClick={unlock} id={UNLOCK_WALLET_ID}>
+        <Button variant="contained" fullWidth onClick={unlock} id={UNLOCK_KEYRING_ID}>
           Unlock
         </Button>
       )}
       <Block marginTop={2} />
-      <Button variant="contained" fullWidth onClick={createNewWallet} id={CREATE_WALLET_ID}>
-        Create Wallet
+      <Button variant="contained" fullWidth onClick={createNewKeyring} id={CREATE_KEYRING_ID}>
+        Create Keyring
       </Button>
       <Block marginTop={2} />
-      <Button variant="contained" fullWidth onClick={importWallet} id={IMPORT_WALLET_ID}>
-        Import Wallet
+      <Button variant="contained" fullWidth onClick={importKeyring} id={IMPORT_KEYRING_ID}>
+        Import Keyring
       </Button>
     </NeumaPageLayout>
   );

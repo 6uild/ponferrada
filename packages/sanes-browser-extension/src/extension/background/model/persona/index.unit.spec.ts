@@ -1,9 +1,4 @@
-import { TokenTicker, WithCreator } from "@iov/bcp";
-import { grafainCodec, GrafainConnection } from "@6uild/grafain";
-import { Bip39, EnglishMnemonic, Random } from "@iov/crypto";
-import { IovFaucet } from "@iov/faucets";
-import { Ed25519HdWallet, HdPaths, UserProfile } from "@iov/keycontrol";
-import { sleep } from "ui-logic";
+import { EnglishMnemonic } from "@iov/crypto";
 
 import { withChainsDescribe } from "../../../../utils/test/testExecutor";
 import * as txsUpdater from "../../updaters/appUpdater";

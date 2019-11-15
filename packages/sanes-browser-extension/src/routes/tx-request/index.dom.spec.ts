@@ -8,8 +8,8 @@ import { REQ_CREATE_ARTIFACT } from "./components/ShowRequest/ReqCreateArtifactT
 import { REQ_SEND_TX } from "./components/ShowRequest/ReqSendTransaction";
 import {
   getCashTransaction,
-  getCreateTextResolutionActionTransaction,
   getCreateArtifactActionTransaction,
+  getCreateTextResolutionActionTransaction,
 } from "./test";
 import {
   checkPermanentRejection,

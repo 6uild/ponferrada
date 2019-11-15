@@ -1,8 +1,8 @@
+import { CreateArtifactTX } from "@6uild/grafain";
 import { Block, List, Typography } from "medulas-react-components";
 import * as React from "react";
 
 import TransactionFee from "./TransactionFee";
-import { CreateArtifactTX } from "@6uild/grafain";
 
 export const REQ_CREATE_ARTIFACT = "req-create-artifact-tx";
 

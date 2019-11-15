@@ -2,28 +2,28 @@ import { randomString } from "ui-logic";
 
 import { PersonaAcccount, ProcessedTx } from "..";
 import {
-  submitNewWallet,
+  submitNewKeyring,
   submitSecurityHint,
   submitShowWords,
-} from "../../../../../routes/create-wallet/test/operateCreateWallet";
-import { WALLET_STATUS_ROUTE } from "../../../../../routes/paths";
+} from "../../../../../routes/create-keyring/test/operateCreateKeyring";
+import { KEYRING_STATUS_ROUTE } from "../../../../../routes/paths";
 import * as chromeInternalMsgs from "../../../../../utils/chrome";
-import { travelToCreateWallet, whenOnNavigatedToRoute } from "../../../../../utils/test/navigation";
+import { travelToCreateKeyring, whenOnNavigatedToRoute } from "../../../../../utils/test/navigation";
 import { PersonaData } from "../../backgroundscript";
 
-export async function processCreateWallet(
+export async function processCreateKeyring(
   password: string = randomString(10),
   hint: string = randomString(10),
 ): Promise<React.Component> {
-  const createWalletDom = await travelToCreateWallet();
+  const createKeyringDom = await travelToCreateKeyring();
 
-  await submitNewWallet(createWalletDom, password);
-  await submitShowWords(createWalletDom);
-  await submitSecurityHint(createWalletDom, hint);
+  await submitNewKeyring(createKeyringDom, password);
+  await submitShowWords(createKeyringDom);
+  await submitSecurityHint(createKeyringDom, hint);
 
-  await whenOnNavigatedToRoute(WALLET_STATUS_ROUTE);
+  await whenOnNavigatedToRoute(KEYRING_STATUS_ROUTE);
 
-  const accountStatusDom = createWalletDom;
+  const accountStatusDom = createKeyringDom;
 
   return accountStatusDom;
 }

@@ -1,4 +1,4 @@
-import { initialUrl, REQUEST_ROUTE, UNLOCK_ROUTE, WALLET_STATUS_ROUTE, WELCOME_ROUTE } from "./paths";
+import { initialUrl, KEYRING_STATUS_ROUTE, REQUEST_ROUTE, UNLOCK_ROUTE, WELCOME_ROUTE } from "./paths";
 
 describe("Paths", () => {
   describe("calculates correctly initial route", () => {
@@ -12,8 +12,8 @@ describe("Paths", () => {
     it("goes to account status view", () => {
       const personaLoaded = true;
       const hasRequests = false;
-      expect(initialUrl(personaLoaded, true, hasRequests)).toBe(WALLET_STATUS_ROUTE);
-      expect(initialUrl(personaLoaded, false, hasRequests)).toBe(WALLET_STATUS_ROUTE);
+      expect(initialUrl(personaLoaded, true, hasRequests)).toBe(KEYRING_STATUS_ROUTE);
+      expect(initialUrl(personaLoaded, false, hasRequests)).toBe(KEYRING_STATUS_ROUTE);
     });
 
     it("goes to unlock route", () => {

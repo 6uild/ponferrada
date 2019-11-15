@@ -4,15 +4,15 @@ import { whenTrue } from "ui-logic";
 import { GetPersonaResponse } from "../../extension/background/model/backgroundscript";
 import { Request } from "../../extension/background/model/requestsHandler/requestQueueManager";
 import {
-  CREATE_WALLET_ROUTE,
-  DELETE_WALLET_ROUTE,
+  CREATE_KEYRING_ROUTE,
+  DELETE_KEYRING_ROUTE,
+  KEYRING_STATUS_ROUTE,
   RECOVERY_WORDS_ROUTE,
   REQUEST_ROUTE,
-  RESTORE_WALLET,
+  RESTORE_KEYRING,
   SHARE_IDENTITY,
   TX_REQUEST,
   UNLOCK_ROUTE,
-  WALLET_STATUS_ROUTE,
   WELCOME_ROUTE,
 } from "../../routes/paths";
 import { REQUEST_FIELD } from "../../routes/requests/components/RequestList";
@@ -51,8 +51,8 @@ export const travelToWelcome = async (hasStoredPersona: boolean): Promise<React.
   return travelTo(WELCOME_ROUTE, undefined, undefined, hasStoredPersona);
 };
 
-export const travelToCreateWallet = async (): Promise<React.Component> => {
-  return travelTo(CREATE_WALLET_ROUTE);
+export const travelToCreateKeyring = async (): Promise<React.Component> => {
+  return travelTo(CREATE_KEYRING_ROUTE);
 };
 
 export const travelToUnlock = async (): Promise<React.Component> => {
@@ -63,12 +63,12 @@ export const travelToRecoveryWords = async (persona?: GetPersonaResponse): Promi
   return travelTo(RECOVERY_WORDS_ROUTE, [], persona);
 };
 
-export const travelToRestoreWallet = async (): Promise<React.Component> => {
-  return travelTo(RESTORE_WALLET);
+export const travelToRestoreKeyring = async (): Promise<React.Component> => {
+  return travelTo(RESTORE_KEYRING);
 };
 
-export const travelToDeleteWallet = async (persona?: GetPersonaResponse): Promise<React.Component> => {
-  return travelTo(DELETE_WALLET_ROUTE, [], persona);
+export const travelToDeleteKeyring = async (persona?: GetPersonaResponse): Promise<React.Component> => {
+  return travelTo(DELETE_KEYRING_ROUTE, [], persona);
 };
 
 export const travelToShareIdentity = async (requests: readonly Request[]): Promise<React.Component> => {
@@ -83,8 +83,8 @@ export const travelToTXRequest = async (requests: readonly Request[]): Promise<R
   return travelTo(TX_REQUEST, requests);
 };
 
-export const travelToWallet = async (persona?: GetPersonaResponse): Promise<React.Component> => {
-  return travelTo(WALLET_STATUS_ROUTE, [], persona);
+export const travelToKeyring = async (persona?: GetPersonaResponse): Promise<React.Component> => {
+  return travelTo(KEYRING_STATUS_ROUTE, [], persona);
 };
 
 export const travelToRequests = async (requests?: readonly Request[]): Promise<React.Component> => {

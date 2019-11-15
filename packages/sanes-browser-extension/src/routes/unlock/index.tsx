@@ -5,8 +5,8 @@ import NeumaPageLayout from "../../components/NeumaPageLayout";
 import { PersonaContext } from "../../context/PersonaProvider";
 import { loadPersona } from "../../utils/chrome";
 import { history } from "../../utils/history";
-import { PASSWORD_FIELD } from "../create-wallet/components/NewWalletForm";
-import { UNLOCK_ROUTE, WALLET_STATUS_ROUTE, WELCOME_ROUTE } from "../paths";
+import { PASSWORD_FIELD } from "../create-keyring/components/NewKeyringForm";
+import { KEYRING_STATUS_ROUTE, UNLOCK_ROUTE, WELCOME_ROUTE } from "../paths";
 import UnlockControls from "./components/UnlockControls";
 import UnlockForm from "./components/UnlockForm";
 
@@ -37,7 +37,7 @@ const Unlock = (): JSX.Element => {
         mnemonic: response.mnemonic,
         txs: response.txs,
       });
-      history.push(WALLET_STATUS_ROUTE);
+      history.push(KEYRING_STATUS_ROUTE);
     } catch (_) {
       toast.show("Error during unlock", ToastVariant.ERROR);
     }

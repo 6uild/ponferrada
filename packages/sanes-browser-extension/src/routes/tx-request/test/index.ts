@@ -1,4 +1,12 @@
 import {
+  ActionKind,
+  CreateArtifactTX,
+  CreateProposalTx,
+  grafainCodec,
+  VoteOption,
+  VoteTx,
+} from "@6uild/grafain";
+import {
   Address,
   Algorithm,
   Amount,
@@ -9,14 +17,6 @@ import {
   TokenTicker,
   WithCreator,
 } from "@iov/bcp";
-import {
-  ActionKind,
-  grafainCodec,
-  CreateProposalTx,
-  VoteOption,
-  VoteTx,
-  CreateArtifactTX,
-} from "@6uild/grafain";
 import { Encoding } from "@iov/encoding";
 import { ethereumCodec } from "@iov/ethereum";
 

@@ -1,6 +1,5 @@
-import { Algorithm, ChainConnector, ChainId } from "@iov/bcp";
-
 import { createGrafainConnector } from "@6uild/grafain";
+import { Algorithm, ChainConnector, ChainId } from "@iov/bcp";
 import { Slip10RawIndex } from "@iov/crypto";
 import { HdPaths } from "@iov/keycontrol";
 

@@ -13,7 +13,7 @@ const ShowRecoveryWords = ({ mnemonic }: Props): JSX.Element => {
       <Block marginRight={1}>
         <Typography variant="subtitle2">
           Your Recovery Words are 12 random words that are set in a particular order that acts as a tool to
-          recover or back up your wallet on any platform.
+          recover or back up your keyring on any platform.
         </Typography>
       </Block>
 
