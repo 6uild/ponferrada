@@ -11,7 +11,7 @@
     "48": "assets/icons/icon48.png",
     "128": "assets/icons/icon128.png"
   },
-  "key": "ahebjlhiimjbogncehongdlglampaefb",
+  "key": "LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUF0by83SVI5RzlWdkFPNTV3d3JoNQo5bTlOSVFlNWVPV09BQW5JL3dWZ25DWUZzenV3aTk3Ukt6bDhpZkRMK1ZLcVZEeXZDOElocU5LbmorQkk0eUpECnQvM1RKQ0xNcjRJRlBQS2VteEZTeTYxK1l0U0E5YnBkaGt6cnJxdmN0RHI2ZEtubXZvWDZJcVpJWGpmUGtMVngKcWhzK0JweHlwZ0RYU2tLUy80RDdXSWJlRnhwdi82eGZiendrTU4zeUpVcndjT21MV2NPRVRvbTBmU09JRDY2UgpFajJFaW1jK3hCa3hvZ09QVVNGcStIZ0NYcXhuSzJ0dG9sZG9tQ1puREhkbk53cXVMcnI5MXpkVHdSN2JBcm9RCms3QnpuS0FFNndpZ0wzVW52R0Fuc2d6Undjc2s0RmFISDRISEJBZ3d2MXM0RWRvQmVIN0hZdTNwWTZINmU4bzEKb1FJREFRQUIKLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0tCg==\n",
   "content_scripts": [],
   "externally_connectable": {
     "matches": ["http://localhost/*", "https://*.grafain.net/*", "https://*.6uild.net/*"]
