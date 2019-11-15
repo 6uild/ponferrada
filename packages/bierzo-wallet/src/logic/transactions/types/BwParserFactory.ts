@@ -1,3 +1,4 @@
+import { CreateArtifactTX, isCreateArtifactTX } from "@6uild/grafain";
 import {
   Address,
   ConfirmedTransaction,
@@ -10,10 +11,9 @@ import {
 
 import { ProcessedSendTransaction } from "../../../store/notifications";
 import { BwParser, ProcessedTx } from "../types/BwParser";
+import { BwCreateArtifactParser } from "./BwCreateArtifactTx";
 import { BwSendParser } from "./BwSendTransaction";
 import { BwUnkownParser } from "./BwUnkownTransaction";
-import { CreateArtifactTX, isCreateArtifactTX } from "@6uild/grafain";
-import { BwCreateArtifactParser } from "./BwCreateArtifactTx";
 
 function isProcessedSendTransaction(tx: ProcessedTx): tx is ProcessedSendTransaction {
   return isSendTransaction(tx.original);

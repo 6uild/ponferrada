@@ -15,12 +15,12 @@ import { getConfig, makeExtendedIdentities } from "../../config";
 import { subscribeBalance } from "../../logic/balances";
 import { establishConnection } from "../../logic/connection";
 import { subscribeTransaction } from "../../logic/transactions";
+import { addArtifactAction, getArtifacts } from "../../store/artifacts/actions";
 import { addBalancesAction, getBalances } from "../../store/balances";
 import { setIdentities } from "../../store/identities";
 import { setRpcEndpoint } from "../../store/rpcendpoint";
 import { addTickersAction, getTokens } from "../../store/tokens";
-import { addArtifactAction, getArtifacts } from "../../store/artifacts/actions";
-import { BALANCE_ROUTE } from "../paths";
+import { ARTIFACT_ROUTE } from "../paths";
 import PageColumn from "./components/PageColumn";
 
 export const loginBootSequence = async (
@@ -49,7 +49,6 @@ export const loginBootSequence = async (
   await subscribeTransaction(identities, dispatch);
 
   const artifacts = await getArtifacts(identities);
-  console.log("got #artifacts: ", artifacts.length);
   dispatch(addArtifactAction(artifacts));
 };
 
@@ -89,7 +88,7 @@ const Login = (): JSX.Element => {
         dispatch(setIdentities(await makeExtendedIdentities(identities)));
         dispatch(setRpcEndpoint(extensionRpcEndpoint));
         await loginBootSequence(identities, dispatch);
-        history.push(BALANCE_ROUTE);
+        history.push(ARTIFACT_ROUTE);
       }
     } catch (error) {
       console.error(error);
@@ -121,7 +120,7 @@ const Login = (): JSX.Element => {
         dispatch(setIdentities(await makeExtendedIdentities(identities)));
         dispatch(setRpcEndpoint(ledgerRpcEndpoint));
         await loginBootSequence(identities, dispatch);
-        history.push(BALANCE_ROUTE);
+        history.push(ARTIFACT_ROUTE);
       }
     } catch (error) {
       console.error(error);

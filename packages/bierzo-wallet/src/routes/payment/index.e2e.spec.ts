@@ -8,7 +8,7 @@ import { acceptEnqueuedRequest, clickOnFirstRequest, rejectEnqueuedRequest } fro
 import { findRenderedE2EComponentWithId } from "../../utils/test/reactElemFinder";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { waitForAllBalances } from "../balance/test/operateBalances";
-import { travelToBalanceE2E } from "../balance/test/travelToBalance";
+import { travelToArtifactsE2E } from "../balance/test/travelToArtifacts";
 import { PAYMENT_CONFIRMATION_VIEW_ID } from "./components/ConfirmPayment";
 import { fillPaymentForm, getInvalidAddressError, getPaymentRequestData } from "./test/operatePayment";
 import { travelToPaymentE2E } from "./test/travelToPayment";
@@ -44,7 +44,7 @@ withChainsDescribe("E2E > Payment route", () => {
   });
 
   it("should make payment and redirected to payment confirmation page", async () => {
-    await travelToBalanceE2E(browser, page);
+    await travelToArtifactsE2E(browser, page);
     await waitForAllBalances(page);
 
     await travelToPaymentE2E(page);
@@ -55,7 +55,7 @@ withChainsDescribe("E2E > Payment route", () => {
   }, 35000);
 
   it("should not let to make payment address is not valid", async () => {
-    await travelToBalanceE2E(browser, page);
+    await travelToArtifactsE2E(browser, page);
     await waitForAllBalances(page);
 
     await travelToPaymentE2E(page);
@@ -65,7 +65,7 @@ withChainsDescribe("E2E > Payment route", () => {
   }, 35000);
 
   it("should have proper information about payment request", async () => {
-    await travelToBalanceE2E(browser, page);
+    await travelToArtifactsE2E(browser, page);
     await waitForAllBalances(page);
 
     await travelToPaymentE2E(page);
@@ -83,7 +83,7 @@ withChainsDescribe("E2E > Payment route", () => {
   }, 35000);
 
   it("should show toast message in case if payment will be rejected", async () => {
-    await travelToBalanceE2E(browser, page);
+    await travelToArtifactsE2E(browser, page);
     await waitForAllBalances(page);
 
     await travelToPaymentE2E(page);

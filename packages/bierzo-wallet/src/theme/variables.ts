@@ -1,3 +1,3 @@
 export const companyName = "Guild";
-export const extensionName = "Signer";
+export const extensionName = "Seal";
 export const projectName = "Grafain Control Plane";

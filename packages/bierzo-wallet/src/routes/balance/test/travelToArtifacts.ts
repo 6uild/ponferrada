@@ -8,19 +8,19 @@ import { createDom } from "../../../utils/test/dom";
 import { createExtensionPage, getBackgroundPage } from "../../../utils/test/e2e";
 import { whenOnNavigatedToE2eRoute, whenOnNavigatedToRoute } from "../../../utils/test/navigation";
 import { acceptEnqueuedRequest, submitExtensionCreateWalletForm } from "../../../utils/test/persona";
-import { BALANCE_ROUTE } from "../../paths";
+import { ARTIFACT_ROUTE } from "../../paths";
 
-export const travelToBalance = async (store: Store): Promise<React.Component> => {
+export const travelToArtifacts = async (store: Store): Promise<React.Component> => {
   const dom = createDom(store);
   TestUtils.act((): void => {
-    history.push(BALANCE_ROUTE);
+    history.push(ARTIFACT_ROUTE);
   });
-  await whenOnNavigatedToRoute(BALANCE_ROUTE);
+  await whenOnNavigatedToRoute(ARTIFACT_ROUTE);
 
   return dom;
 };
 
-export async function travelToBalanceE2E(browser: Browser, page: Page): Promise<void> {
+export async function travelToArtifactsE2E(browser: Browser, page: Page): Promise<void> {
   await getBackgroundPage(browser);
   const extensionPage = await createExtensionPage(browser);
   await submitExtensionCreateWalletForm(extensionPage, "12345678");
@@ -31,5 +31,5 @@ export async function travelToBalanceE2E(browser: Browser, page: Page): Promise<
   await sleep(1000);
   await acceptEnqueuedRequest(browser);
   await page.bringToFront();
-  await whenOnNavigatedToE2eRoute(page, BALANCE_ROUTE);
+  await whenOnNavigatedToE2eRoute(page, ARTIFACT_ROUTE);
 }

@@ -8,7 +8,7 @@ import { closeBrowser, createPage, launchBrowser } from "../../utils/test/e2e";
 import { whenOnNavigatedToE2eRoute } from "../../utils/test/navigation";
 import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { waitForAllBalances } from "../balance/test/operateBalances";
-import { travelToBalanceE2E } from "../balance/test/travelToBalance";
+import { travelToArtifactsE2E } from "../balance/test/travelToArtifacts";
 import { TRANSACTIONS_ROUTE } from "../paths";
 
 withChainsDescribe("E2E > Transactions route", () => {
@@ -31,7 +31,7 @@ withChainsDescribe("E2E > Transactions route", () => {
   beforeEach(async () => {
     browser = await launchBrowser();
     page = await createPage(browser);
-    await travelToBalanceE2E(browser, page);
+    await travelToArtifactsE2E(browser, page);
   }, 60000);
 
   afterEach(async () => {

@@ -1,5 +1,4 @@
 import { ChainId } from "@iov/bcp";
-import { randomString } from "ui-logic";
 
 import { establishAllConnections } from "../utils/test/connections";
 import { withChainsDescribe } from "../utils/test/testExecutor";

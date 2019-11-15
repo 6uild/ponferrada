@@ -3,7 +3,7 @@ import { Server } from "http";
 import { Browser, Page } from "puppeteer";
 import { sleep } from "ui-logic";
 
-import { travelToBalanceE2E } from "../../../../routes/balance/test/travelToBalance";
+import { travelToArtifactsE2E } from "../../../../routes/balance/test/travelToArtifacts";
 import { LOGIN_ROUTE } from "../../../../routes/paths";
 import { closeBrowser, createPage, launchBrowser } from "../../../../utils/test/e2e";
 import { whenOnNavigatedToE2eRoute } from "../../../../utils/test/navigation";
@@ -41,7 +41,7 @@ withChainsDescribe("E2E > Hi Menu component", () => {
   });
 
   it("should click on logout", async () => {
-    await travelToBalanceE2E(browser, page);
+    await travelToArtifactsE2E(browser, page);
     await page.click(`#${MENU_ID}`);
     await sleep(500);
     await page.click(`#${LOG_OUT_ID}`);

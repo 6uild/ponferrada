@@ -1,8 +1,8 @@
 import { Hairline } from "medulas-react-components";
 import * as React from "react";
 
+import AddArtifact from "./AddArtifact";
 import NoTransactions from "./NoTransactions";
-import SendTokens from "./SendTokens";
 import TxTable from "./TxTable";
 import { TxTableProps } from "./TxTable/rowTxBuilder";
 
@@ -20,7 +20,7 @@ const Layout = ({
   return (
     <React.Fragment>
       <Hairline />
-      <SendTokens />
+      <AddArtifact />
       <Hairline />
       {hasRows ? (
         <TxTable

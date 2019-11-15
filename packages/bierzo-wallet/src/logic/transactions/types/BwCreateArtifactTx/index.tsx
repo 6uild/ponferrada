@@ -1,5 +1,5 @@
-import { Address, BlockchainConnection, ConfirmedTransaction } from "@iov/bcp";
 import { CreateArtifactTX } from "@6uild/grafain";
+import { Address, BlockchainConnection, ConfirmedTransaction } from "@iov/bcp";
 import * as React from "react";
 
 import { BwParser, ProcessedTx } from "../../types/BwParser";

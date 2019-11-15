@@ -2,12 +2,12 @@ import { Action, combineReducers, Reducer } from "redux";
 import { ActionType } from "typesafe-actions";
 
 import * as actions from "./actions";
+import { artifactReducer, ArtifactState } from "./artifacts";
 import { balancesReducer, BalanceState } from "./balances";
 import { identitiesReducer, IdentitiesState } from "./identities";
 import { notificationReducer, NotificationState } from "./notifications";
 import { rpcEndpointReducer, RpcEndpointState } from "./rpcendpoint";
 import { tokensReducer, TokenState } from "./tokens";
-import { artifactReducer, ArtifactState } from "./artifacts";
 
 export interface ResetAppActionType extends Action {
   type: "@@app/RESET";

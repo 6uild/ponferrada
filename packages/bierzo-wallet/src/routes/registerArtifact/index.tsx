@@ -1,5 +1,5 @@
-import { ChainId, Identity, TransactionId } from "@iov/bcp";
 import { GrafainConnection } from "@6uild/grafain";
+import { ChainId, Identity, TransactionId } from "@iov/bcp";
 import {
   BillboardContext,
   FormValues,

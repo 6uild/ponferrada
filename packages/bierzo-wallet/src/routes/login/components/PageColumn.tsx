@@ -5,9 +5,9 @@ import { Block, Button, contrast, Image, primaryColor, Typography } from "medula
 import React from "react";
 
 import { extensionName, projectName } from "../../../theme/variables";
-import ledgerIcon from "../assets/ledger.svg";
 import extensionIcon from "../assets/extensionIcon.svg";
 import extensionLogo from "../assets/extensionLogo.svg";
+import ledgerIcon from "../assets/ledger.svg";
 import SubtitleSection from "./SubtitleSection";
 import TitleSection from "./TitleSection";
 

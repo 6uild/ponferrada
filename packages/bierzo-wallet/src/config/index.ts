@@ -97,7 +97,7 @@ export async function makeExtendedIdentities(
 ): Promise<Map<ChainId, ExtendedIdentity>> {
   const out = new Map<ChainId, ExtendedIdentity>();
   for (const identity of identities) {
-    let txCodec = await getCodecForChainId(identity.chainId);
+    const txCodec = await getCodecForChainId(identity.chainId);
     let address = "undefined" as Address;
     if (txCodec !== undefined) {
       address = txCodec.identityToAddress(identity);

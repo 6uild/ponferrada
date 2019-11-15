@@ -1,11 +1,11 @@
-import { ChainId, Identity, isFailedTransaction } from "@iov/bcp";
 import { CreateArtifactTX, isCreateArtifactTX } from "@6uild/grafain";
+import { ChainId, Identity, isFailedTransaction } from "@iov/bcp";
 import { Dispatch } from "redux";
 import { Subscription } from "xstream";
 
 import { getConfig } from "../../config";
-import { addTransaction } from "../../store/notifications";
 import { addArtifactAction, BwArtifact } from "../../store/artifacts";
+import { addTransaction } from "../../store/notifications";
 import { getCodec } from "../codec";
 import { getConnectionForChainId } from "../connection";
 import { BwParserFactory } from "./types/BwParserFactory";

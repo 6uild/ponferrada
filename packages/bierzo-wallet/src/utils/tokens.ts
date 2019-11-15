@@ -1,5 +1,5 @@
-import { BlockchainConnection, ChainId, Identity } from "@iov/bcp";
 import { ChainAddressPair } from "@6uild/grafain";
+import { BlockchainConnection, ChainId, Identity } from "@iov/bcp";
 
 import { ChainAddressPairWithName } from "../components/AddressesTable";
 import { getChainName } from "../config";

@@ -10,7 +10,7 @@ import {
   registerPersonalizedAddress,
   waitForAllBalances,
 } from "./test/operateBalances";
-import { travelToBalanceE2E } from "./test/travelToBalance";
+import { travelToArtifactsE2E } from "./test/travelToArtifacts";
 
 withChainsDescribe("E2E > Balance route", () => {
   let browser: Browser;
@@ -32,7 +32,7 @@ withChainsDescribe("E2E > Balance route", () => {
   beforeEach(async () => {
     browser = await launchBrowser();
     page = await createPage(browser);
-    await travelToBalanceE2E(browser, page);
+    await travelToArtifactsE2E(browser, page);
   }, 30000);
 
   afterEach(async () => {

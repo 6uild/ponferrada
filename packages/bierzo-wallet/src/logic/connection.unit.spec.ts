@@ -1,4 +1,4 @@
-import { EthereumConnection } from "@iov/ethereum";
+import { GrafainConnection } from "@6uild/grafain";
 
 import { ChainConfig, getConfig } from "../config";
 import { withChainsDescribe } from "../utils/test/testExecutor";
@@ -14,30 +14,30 @@ withChainsDescribe("Logic :: connection", () => {
   afterAll(() => disconnect());
 
   it("calls connections only once", async () => {
-    const ethereumConnectionSpy = jest.spyOn(EthereumConnection, "establish");
+    const GrafainConnectionSpy = jest.spyOn(GrafainConnection, "establish");
 
     expect(firstChain.chainSpec.codecType).toBe("eth");
     await establishConnection(firstChain.chainSpec);
     await establishConnection(firstChain.chainSpec);
     await establishConnection(firstChain.chainSpec);
 
-    expect(ethereumConnectionSpy).toHaveBeenCalledTimes(1);
+    expect(GrafainConnectionSpy).toHaveBeenCalledTimes(1);
   });
 
   it("reset connections correctly when disconnecting", async () => {
     // GIVEN
     expect(firstChain.chainSpec.codecType).toBe("eth");
 
-    const ethereumConnectionSpy = jest.spyOn(EthereumConnection, "establish");
+    const GrafainConnectionSpy = jest.spyOn(GrafainConnection, "establish");
     await establishConnection(firstChain.chainSpec);
 
     // WHEN
     disconnect();
 
     // THEN
-    expect(ethereumConnectionSpy).toHaveBeenCalledTimes(1);
+    expect(GrafainConnectionSpy).toHaveBeenCalledTimes(1);
     await establishConnection(firstChain.chainSpec);
-    expect(ethereumConnectionSpy).toHaveBeenCalledTimes(2);
+    expect(GrafainConnectionSpy).toHaveBeenCalledTimes(2);
   });
 
   it("returns list of active connections", async () => {

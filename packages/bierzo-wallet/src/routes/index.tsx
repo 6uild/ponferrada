@@ -4,11 +4,9 @@ import { Route, Router, Switch } from "react-router";
 
 import RequireLogin from "../components/RequireLogin";
 import Artifacts from "./artifacts";
-import Balance from "./balance";
 import Login from "./login";
 import {
   ARTIFACT_ROUTE,
-  BALANCE_ROUTE,
   LOGIN_ROUTE,
   PAYMENT_ROUTE,
   POLICY_ROUTE,
@@ -33,7 +31,6 @@ const Routes = (): JSX.Element => (
         <Route exact path={PAYMENT_ROUTE} component={Payment} />
         <Route exact path={ARTIFACT_ROUTE} component={Artifacts} />
         <Route exact path={TRANSACTIONS_ROUTE} component={Transactions} />
-        <Route exact path={BALANCE_ROUTE} component={Balance} />
         <Route exact path={REGISTER_ARTIFACT_ROUTE} component={RegisterArtifact} />
         <Route exact path={TERMS_ROUTE} component={Terms} />
         <Route exact path={POLICY_ROUTE} component={Policy} />

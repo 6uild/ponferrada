@@ -1,17 +1,11 @@
+import { Table, TableBody, TableCell, TableHead, TableRow, Theme } from "@material-ui/core";
+import { Block, defaultColor, makeStyles, Typography } from "medulas-react-components";
 import React from "react";
 import * as ReactRedux from "react-redux";
-import { history } from "..";
 
 import PageMenu from "../../components/PageMenu";
 import { RootState } from "../../store/reducers";
-import { Table, TableBody, TableCell, TableHead, TableRow, Theme } from "@material-ui/core";
-import { Block, defaultColor, makeStyles, Typography } from "medulas-react-components";
-import { REGISTER_ARTIFACT_ROUTE } from "../paths";
-import { RpcEndpointType } from "../../communication/rpcEndpoint";
-
-function onCreateArtifact(): void {
-  history.push(REGISTER_ARTIFACT_ROUTE);
-}
+import AddArtifact from "../transactions/components/AddArtifact";
 
 const useStyles = makeStyles((theme: Theme) => ({
   cell: {
@@ -69,19 +63,12 @@ const Artifacts = (): JSX.Element => {
           ))}
         </TableBody>
       </Table>
-      <DoRegisterArtifact onCreateArtifact={onCreateArtifact} />
+      <DoRegisterArtifact />
     </PageMenu>
   );
 };
 
-interface ArtifactNotExistsProps {
-  readonly onCreateArtifact: () => void;
-  readonly rpcEndpointType: RpcEndpointType;
-}
-
-export function DoRegisterArtifact({
-  onCreateArtifact,
-}: Omit<ArtifactNotExistsProps, "rpcEndpointType">): JSX.Element {
+export function DoRegisterArtifact(): JSX.Element {
   return (
     <Block display="flex" flexDirection="column" alignItems="center">
       <Block marginTop={3} />
@@ -92,17 +79,7 @@ export function DoRegisterArtifact({
         This list of artifacts is whitelisted for the admission controller.
       </Typography>
       <Block marginTop={3} />
-      <Typography
-        id={REGISTER_ARTIFACT_ROUTE}
-        variant="subtitle1"
-        color="primary"
-        weight="semibold"
-        inline
-        link
-        onClick={onCreateArtifact}
-      >
-        Add more
-      </Typography>
+      <AddArtifact />
     </Block>
   );
 }

@@ -1,4 +1,6 @@
 import "regenerator-runtime"; // required by @ledgerhq/hw-transport-webusb
+
+import { grafainCodec } from "@6uild/grafain";
 import {
   Algorithm,
   ChainId,
@@ -9,7 +11,6 @@ import {
   SignatureBytes,
   SignedTransaction,
 } from "@iov/bcp";
-import { grafainCodec } from "@6uild/grafain";
 import { isJsonCompatibleDictionary, TransactionEncoder } from "@iov/encoding";
 import { JsonRpcRequest } from "@iov/jsonrpc";
 import {

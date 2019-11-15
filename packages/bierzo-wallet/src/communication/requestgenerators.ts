@@ -1,3 +1,4 @@
+import { CreateArtifactTX } from "@6uild/grafain";
 import {
   Address,
   Amount,
@@ -7,7 +8,6 @@ import {
   UnsignedTransaction,
   WithCreator,
 } from "@iov/bcp";
-import { CreateArtifactTX } from "@6uild/grafain";
 import { TransactionEncoder } from "@iov/encoding";
 import { JsonRpcRequest, makeJsonRpcId } from "@iov/jsonrpc";
 

@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core";
 import { Block, Typography } from "medulas-react-components";
 import * as React from "react";
 import { amountToString } from "ui-logic";
+
 import { formatTime } from "../../../../../../utils/date";
 import { ProcessedTx } from "../../../../types/BwParser";
 

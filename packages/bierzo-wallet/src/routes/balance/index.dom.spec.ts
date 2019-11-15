@@ -1,10 +1,8 @@
 import { Address, Algorithm, ChainId, PubkeyBytes, TokenTicker } from "@iov/bcp";
 import { Encoding } from "@iov/encoding";
-import TestUtils from "react-dom/test-utils";
 import { DeepPartial, Store } from "redux";
 
 import { extensionRpcEndpoint } from "../../communication/extensionRpcEndpoint";
-import { ledgerRpcEndpoint } from "../../communication/ledgerRpcEndpoint";
 import { TRANSACTIONS_TEXT } from "../../components/Header/components/LinksMenu";
 import { aNewStore } from "../../store";
 import { BalanceState } from "../../store/balances";
@@ -13,8 +11,7 @@ import { RootState } from "../../store/reducers";
 import { click, expectRoute } from "../../utils/test/dom";
 import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder";
 import { TRANSACTIONS_ROUTE } from "../paths";
-import { getIovUsername, getLedgerUsernameWarning, getNoFundsMessage } from "./test/operateBalances";
-import { travelToBalance } from "./test/travelToBalance";
+import { travelToArtifacts } from "./test/travelToArtifacts";
 
 const balancesAmount: DeepPartial<BalanceState> = {
   BASH: {
@@ -48,7 +45,7 @@ const identities: IdentitiesState = new Map<ChainId, ExtendedIdentity>([
   ],
 ]);
 
-describe("The /balance route", () => {
+describe("The /artifacts route", () => {
   let store: Store<RootState>;
   let balanceDom: React.Component;
   describe("with balance and username", () => {
@@ -58,7 +55,7 @@ describe("The /balance route", () => {
         balances: balancesAmount,
         rpcEndpoint: extensionRpcEndpoint,
       });
-      balanceDom = await travelToBalance(store);
+      balanceDom = await travelToArtifacts(store);
     });
 
     it("redirects to the /transactions route when clicked", async () => {
@@ -72,55 +69,5 @@ describe("The /balance route", () => {
       await click(transactionsCard);
       expectRoute(TRANSACTIONS_ROUTE);
     }, 15000);
-
-    // deactivated during migration. fails with response 4 not 2
-    xit("should check list of available balances", async () => {
-      const balances = TestUtils.scryRenderedDOMComponentsWithClass(balanceDom, "MuiTypography-colorPrimary");
-
-      expect(balances.length).toBe(2);
-
-      expect(balances[0].textContent).toBe("8.25 BASH");
-      expect(balances[1].textContent).toBe("12.26775 CASH");
-    });
-  });
-
-  describe("without balance and username with extension RPC Endpoint", () => {
-    beforeEach(async () => {
-      store = aNewStore({
-        identities,
-        rpcEndpoint: extensionRpcEndpoint,
-      });
-      balanceDom = await travelToBalance(store);
-    });
-
-    it("should show that there is no balance available", async () => {
-      const noFundsMessage = getNoFundsMessage(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, "h6"));
-
-      expect(noFundsMessage).toBe("You have no funds available");
-    });
-
-    it("should show that there is no grafain username available", async () => {
-      const noUsernameMessage = getIovUsername(TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, "h6"));
-
-      expect(noUsernameMessage).toBe("You have no starnames");
-    });
-  });
-
-  describe("without balance and username with Ledger RPC Endpoint", () => {
-    beforeEach(async () => {
-      store = aNewStore({
-        identities,
-        rpcEndpoint: ledgerRpcEndpoint,
-      });
-      balanceDom = await travelToBalance(store);
-    });
-
-    it("should show that there is no grafain username available", async () => {
-      const noUsernameMessage = getLedgerUsernameWarning(
-        TestUtils.scryRenderedDOMComponentsWithTag(balanceDom, "p"),
-      );
-
-      expect(noUsernameMessage).toBe("You can not register");
-    });
   });
 });

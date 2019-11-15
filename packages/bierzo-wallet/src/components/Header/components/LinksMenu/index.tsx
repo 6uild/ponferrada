@@ -5,7 +5,7 @@ import * as React from "react";
 
 import { ProcessedTx } from "../../../../logic/transactions/types/BwParser";
 import { history } from "../../../../routes";
-import { ARTIFACT_ROUTE, BALANCE_ROUTE, TRANSACTIONS_ROUTE } from "../../../../routes/paths";
+import { ARTIFACT_ROUTE, TRANSACTIONS_ROUTE } from "../../../../routes/paths";
 import { getLastTx, TxMeta } from "../../../../utils/localstorage/transactions";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -34,10 +34,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: "4px",
   },
 }));
-
-const onBalance = (): void => {
-  history.push(BALANCE_ROUTE);
-};
 
 const onAddresses = (): void => {
   history.push(ARTIFACT_ROUTE);
@@ -68,14 +64,9 @@ const calcTxBadgeVisibilityState = (
     return true;
   }
 
-  if (lastTx.id !== lastStoredTx.id) {
-    return true;
-  }
-
-  return false;
+  return lastTx.id !== lastStoredTx.id;
 };
 
-const BALANCE_TEXT = "Balances";
 export const ARTIFACT_TEXT = "Artifacts";
 export const TRANSACTIONS_TEXT = "Transactions";
 
@@ -107,11 +98,9 @@ interface Props {
 
 const LinksMenu = ({ path, lastTx }: Props): JSX.Element => {
   const classes = useStyles();
-  const showBalance = path === BALANCE_ROUTE;
   const showTransactions = path === TRANSACTIONS_ROUTE;
   const showAddresses = path === ARTIFACT_ROUTE;
 
-  const balanceClasses = classNames(classes.item, showBalance ? classes.activated : undefined);
   const addressesClasses = classNames(classes.item, showAddresses ? classes.activated : undefined);
   const transactionsClasses = classNames(classes.item, showTransactions ? classes.activated : undefined);
 
@@ -119,10 +108,6 @@ const LinksMenu = ({ path, lastTx }: Props): JSX.Element => {
 
   return (
     <Block className={classes.root}>
-      <Block className={balanceClasses}>
-        <LinkMenuItem onClick={onBalance} itemTitle={BALANCE_TEXT} />
-        <Block className={classes.line} />
-      </Block>
       <Block className={addressesClasses}>
         <LinkMenuItem onClick={onAddresses} itemTitle={ARTIFACT_TEXT} />
         <Block className={classes.line} />
