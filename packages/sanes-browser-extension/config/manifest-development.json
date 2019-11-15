@@ -11,6 +11,7 @@
     "48": "assets/icons/icon48.png",
     "128": "assets/icons/icon128.png"
   },
+  "key": "ahebjlhiimjbogncehongdlglampaefb",
   "content_scripts": [],
   "externally_connectable": {
     "matches": ["http://localhost/*", "https://*.grafain.net/*", "https://*.6uild.net/*"]
