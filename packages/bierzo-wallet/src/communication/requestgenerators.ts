@@ -23,7 +23,7 @@ export async function generateGetIdentitiesRequest(): Promise<JsonRpcRequest> {
     id: makeJsonRpcId(),
     method: "getIdentities",
     params: {
-      reason: TransactionEncoder.toJson("I would like to know who you are on Ethereum"),
+      reason: TransactionEncoder.toJson("I would like to know who you are"),
       chainIds: TransactionEncoder.toJson(chainIdsToRequest),
     },
   };

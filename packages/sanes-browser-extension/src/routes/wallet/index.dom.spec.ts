@@ -16,6 +16,7 @@ import { sleep } from "ui-logic";
 
 import Backgroundscript, { IovWindowExtension } from "../../extension/background/model/backgroundscript";
 import { Persona, PersonaAcccount, ProcessedTx } from "../../extension/background/model/persona";
+import { mockPersonaResponse } from "../../extension/background/model/persona/test/persona";
 import {
   buildGetIdentitiesRequest,
   generateSignAndPostRequest,
@@ -28,6 +29,7 @@ import { withChainsDescribe } from "../../utils/test/testExecutor";
 import { DELETE_WALLET_ROUTE, RECOVERY_WORDS_ROUTE, REQUEST_ROUTE, TERMS_URL } from "../paths";
 import * as Drawer from "../wallet/test/drawer";
 import { checkCreateAccount, getTransactionsCount } from "./test/operateWallet";
+import { CreateArtifactTX } from "@6uild/grafain";
 
 describe("DOM > Feature > Wallet Status", () => {
   const ACCOUNT = "Account 0";
@@ -57,7 +59,18 @@ describe("DOM > Feature > Wallet Status", () => {
     recipient: "0x1212121212121212121212121212121212121212" as Address,
   };
 
-  const txMock: ProcessedTx = {
+  const createArtifactTx: CreateArtifactTX & WithCreator = {
+    kind: "grafain/create_artifact",
+    image: "any:test",
+    checksum: "any",
+    creator: defaultCreator,
+    fee: {
+      gasLimit: "12345678",
+      gasPrice: { quantity: "20000000000", fractionalDigits: 18, tokenTicker: "ETH" as TokenTicker },
+    },
+  };
+
+  const aProcessedTx: ProcessedTx = {
     id: "111",
     signer: "Example Signer",
     creator: ethereumCodec.identityToAddress(defaultCreator),
@@ -66,8 +79,22 @@ describe("DOM > Feature > Wallet Status", () => {
     error: null,
     original: sendTx,
   };
+  const anotherProcessedTx: ProcessedTx = {
+    id: "112",
+    signer: "Example Signer",
+    creator: ethereumCodec.identityToAddress(defaultCreator),
+    time: "Sat May 25 10:10:00 2019 +0200",
+    blockExplorerUrl: "www.blockexplorer.com",
+    error: null,
+    original: createArtifactTx,
+  };
+  const personaMock = mockPersonaResponse([accountMock], mnemonic, [aProcessedTx, anotherProcessedTx]);
 
   let walletStatusDom: React.Component;
+
+  beforeEach(async () => {
+    walletStatusDom = await travelToWallet(personaMock);
+  }, 60000);
 
   it("redirects to the Recovery Words view when link clicked in Drawer menu", async () => {
     await Drawer.clickRecoveryWords(walletStatusDom);
@@ -108,7 +135,7 @@ describe("DOM > Feature > Wallet Status", () => {
   it("has a send transaction box", () => {
     const tx = TestUtils.scryRenderedDOMComponentsWithTag(walletStatusDom, "li")[1];
     const txTime = tx.children[1].children[1].textContent;
-    expect(txTime).toBe(txMock.time);
+    expect(txTime).toBe(aProcessedTx.time);
   }, 60000);
 });
 

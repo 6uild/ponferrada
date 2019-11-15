@@ -2,7 +2,7 @@ import puppeteer, { Browser, Page } from "puppeteer";
 
 import { EXTENSION_HEIGHT, EXTENSION_WIDTH } from "../../theme/constants";
 
-export const EXTENSION_ID = "dafekhlcpidfaopcimocbcpciholgkkb";
+export const EXTENSION_ID = "ahebjlhiimjbogncehongdlglampaefb";
 
 export function launchBrowser(slowMo: number = 0): Promise<Browser> {
   const CRX_PATH = require("path").join(__dirname, "../../../build");

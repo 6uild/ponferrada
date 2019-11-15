@@ -6,7 +6,11 @@ import { findRenderedDOMComponentWithId } from "../../utils/test/reactElemFinder
 import { REQUEST_ROUTE } from "../paths";
 import { REQ_CREATE_ARTIFACT } from "./components/ShowRequest/ReqCreateArtifactTx";
 import { REQ_SEND_TX } from "./components/ShowRequest/ReqSendTransaction";
-import { getCashTransaction, getCreateTextResolutionActionTransaction, getUsernameTransaction } from "./test";
+import {
+  getCashTransaction,
+  getCreateTextResolutionActionTransaction,
+  getCreateArtifactActionTransaction,
+} from "./test";
 import {
   checkPermanentRejection,
   clickOnRejectButton,
@@ -94,14 +98,14 @@ describe("DOM > Feature > Send Transaction Request", () => {
   }, 60000);
 });
 
-describe("DOM > Feature > Username Registration Request", () => {
+describe("DOM > Feature > Artifact Registration Request", () => {
   const requests: readonly Request[] = [
     {
       id: 1,
       senderUrl: "http://finnex.com",
-      reason: "Test username registration",
+      reason: "Test artifact registration",
       responseData: {
-        tx: getUsernameTransaction(),
+        tx: getCreateArtifactActionTransaction(),
       },
       accept: jest.fn(),
       reject: jest.fn(),
@@ -114,7 +118,7 @@ describe("DOM > Feature > Username Registration Request", () => {
     txRequestDOM = await travelToTXRequest(requests);
   }, 60000);
 
-  it("should show register username request accept view", async () => {
+  it("should show register artifact request accept view", async () => {
     await findRenderedDOMComponentWithId(txRequestDOM, REQ_CREATE_ARTIFACT);
   }, 60000);
 });

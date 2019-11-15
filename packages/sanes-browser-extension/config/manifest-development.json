@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "6uild KM (development)",
+  "name": "6uild Seal (development)",
   "description": "Key manager and transaction signer for the 6uild grafain toolset,",
   "browser_action": {
-    "default_title": "6uild KM (development)",
+    "default_title": "6uild Seal  (development)",
     "default_popup": "index.html"
   },
   "icons": {

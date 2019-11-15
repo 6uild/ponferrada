@@ -50,11 +50,11 @@ const Layout = ({ sender, tx, onAcceptRequest, showRejectView }: Props): JSX.Ele
       </Block>
       {req}
       <Block marginBottom={3} />
-      <Button variant="contained" fullWidth onClick={onAcceptRequest}>
+      <Button variant="contained" fullWidth color="secondary" onClick={onAcceptRequest}>
         Approve
       </Button>
       <Block marginTop={2} />
-      <Button variant="contained" fullWidth color="secondary" onClick={showRejectView}>
+      <Button variant="contained" fullWidth onClick={showRejectView}>
         Reject
       </Button>
       <Block marginBottom={2} />

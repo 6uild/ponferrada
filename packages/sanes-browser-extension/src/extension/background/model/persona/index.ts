@@ -48,10 +48,6 @@ export type SupportedTransaction = (SendTransaction | CreateArtifactTX | CreateP
   WithCreator;
 
 export function isSupportedTransaction(tx: UnsignedTransaction): tx is SupportedTransaction {
-  console.log("1: ", isSendTransaction(tx));
-  console.log("2: ", isCreateArtifactTX(tx));
-  console.log("4: ", isCreateProposalTx(tx));
-  console.log("5: ", isVoteTx(tx));
   return isSendTransaction(tx) || isCreateArtifactTX(tx) || isCreateProposalTx(tx) || isVoteTx(tx);
 }
 

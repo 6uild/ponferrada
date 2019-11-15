@@ -9,7 +9,14 @@ import {
   TokenTicker,
   WithCreator,
 } from "@iov/bcp";
-import { ActionKind, grafainCodec, CreateProposalTx, VoteOption, VoteTx } from "@6uild/grafain";
+import {
+  ActionKind,
+  grafainCodec,
+  CreateProposalTx,
+  VoteOption,
+  VoteTx,
+  CreateArtifactTX,
+} from "@6uild/grafain";
 import { Encoding } from "@iov/encoding";
 import { ethereumCodec } from "@iov/ethereum";
 
@@ -94,6 +101,18 @@ export function getCreateTextResolutionActionTransaction(): CreateProposalTx & W
     action: {
       kind: ActionKind.CreateTextResolution,
       resolution: "Stop all this blockchain stuff",
+    },
+  };
+}
+
+export function getCreateArtifactActionTransaction(): CreateArtifactTX & WithCreator {
+  return {
+    kind: "grafain/create_artifact",
+    image: "test/foo:bar",
+    checksum: "anyValidChecksum",
+    creator: defaultCreator,
+    fee: {
+      tokens: defaultAmount,
     },
   };
 }

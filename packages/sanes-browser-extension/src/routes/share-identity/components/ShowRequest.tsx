@@ -46,11 +46,11 @@ const Layout = ({ sender, data, onAcceptRequest, showRejectView }: Props): JSX.E
       })}
     </List>
     <Block marginTop={2} />
-    <Button variant="contained" fullWidth onClick={onAcceptRequest}>
+    <Button variant="contained" fullWidth color="secondary" onClick={onAcceptRequest}>
       Accept
     </Button>
     <Block marginTop={2} />
-    <Button variant="contained" fullWidth color="secondary" onClick={showRejectView}>
+    <Button variant="contained" fullWidth onClick={showRejectView}>
       Reject
     </Button>
   </NeumaPageLayout>
